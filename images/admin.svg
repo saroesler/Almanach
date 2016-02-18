@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="48"
+   height="48"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="Neues Dokument 1">
+  <defs
+     id="defs4">
+    <linearGradient
+       id="linearGradient3775">
+      <stop
+         style="stop-color:#ffbb00;stop-opacity:1;"
+         offset="0"
+         id="stop3777" />
+      <stop
+         id="stop3789"
+         offset="0.82604432"
+         style="stop-color:#ffbb00;stop-opacity:0.74901961;" />
+      <stop
+         id="stop3787"
+         offset="0.9426446"
+         style="stop-color:#ffbb00;stop-opacity:1;" />
+      <stop
+         style="stop-color:#ffbb00;stop-opacity:1;"
+         offset="1"
+         id="stop3779" />
+    </linearGradient>
+    <filter
+       inkscape:collect="always"
+       id="filter3771">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="0.17604912"
+         id="feGaussianBlur3773" />
+    </filter>
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3775"
+       id="radialGradient3785"
+       cx="24.054258"
+       cy="1028.1185"
+       fx="24.054258"
+       fy="1028.1185"
+       r="21.644806"
+       gradientTransform="matrix(1,0,0,0.96208092,0,38.985314)"
+       gradientUnits="userSpaceOnUse" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="11.2"
+     inkscape:cx="23.306959"
+     inkscape:cy="22.31765"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1301"
+     inkscape:window-height="744"
+     inkscape:window-x="65"
+     inkscape:window-y="1104"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Ebene 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-1004.3622)">
+    <rect
+       style="fill:#4d4d4d;fill-opacity:0;stroke:url(#radialGradient3785);stroke-width:6.41400003000000041;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;filter:url(#filter3771)"
+       id="rect2985"
+       width="36.030575"
+       height="34.389072"
+       x="6.0389714"
+       y="1010.924" />
+    <rect
+       style="fill:#eeeff2;fill-opacity:1;stroke:none"
+       id="rect3791"
+       width="30.052038"
+       height="21.970819"
+       x="9.0913734"
+       y="1020.5424" />
+    <rect
+       style="fill:#0000ff;fill-opacity:1;stroke:none"
+       id="rect3793"
+       width="30.08136"
+       height="7.5761442"
+       x="9.0913725"
+       y="1013.8502" />
+    <text
+       xml:space="preserve"
+       style="font-size:40px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Tahoma;-inkscape-font-specification:Tahoma"
+       x="24.991686"
+       y="1019.1533"
+       id="text3795"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3797"
+         x="24.991686"
+         y="1019.1533"
+         style="font-size:5px;text-align:center;text-anchor:middle;fill:#ffffff;fill-opacity:1">Januar</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Tahoma;-inkscape-font-specification:Tahoma"
+       x="15.292336"
+       y="1035.6963"
+       id="text3799"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3801"
+         x="15.292336"
+         y="1035.6963"
+         style="font-size:14px">22</tspan></text>
+    <path
+       sodipodi:type="arc"
+       style="fill:#ffffff;fill-opacity:1;stroke:none"
+       id="path3803"
+       sodipodi:cx="13.125"
+       sodipodi:cy="11.839286"
+       sodipodi:rx="0.98214287"
+       sodipodi:ry="0.89285713"
+       d="m 14.107143,11.839286 a 0.98214287,0.89285713 0 1 1 -1.964286,0 0.98214287,0.89285713 0 1 1 1.964286,0 z"
+       transform="translate(-0.80357143,1004.0051)" />
+    <path
+       sodipodi:type="arc"
+       style="fill:#ffffff;fill-opacity:1;stroke:none"
+       id="path3803-1"
+       sodipodi:cx="13.125"
+       sodipodi:cy="11.839286"
+       sodipodi:rx="0.98214287"
+       sodipodi:ry="0.89285713"
+       d="m 14.107143,11.839286 a 0.98214287,0.89285713 0 1 1 -1.964286,0 0.98214287,0.89285713 0 1 1 1.964286,0 z"
+       transform="translate(22.321429,1003.8265)" />
+    <path
+       style="fill:none;stroke:#dddede;stroke-width:1.1663003px;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 12.321428,1007.449 0,7.7729"
+       id="path3825"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:none;stroke:#dddede;stroke-width:1.13680446px;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 35.446428,1007.5537 0,7.3847"
+       id="path3825-3"
+       inkscape:connector-curvature="0" />
+    <text
+       xml:space="preserve"
+       style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Tahoma;-inkscape-font-specification:Tahoma"
+       x="11.875"
+       y="1041.0229"
+       id="text3845"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3847"
+         x="11.875"
+         y="1041.0229"
+         style="font-size:5px;-inkscape-font-specification:cmmi10;font-family:cmmi10;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal">Almanach</tspan></text>
+  </g>
+</svg>
