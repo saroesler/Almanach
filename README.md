@@ -3,9 +3,18 @@ Almanach
 This is a calendar module for zikula. You can create a lot of calendars, witch inherits from each other. There are groups as smalest entity, too. Every date can belongs to a group and can be entered in one ore more calendars. Dates can be colored, too. There is a ranking of different color modes. You can read more in Color- Ranking below.
 
 #Installation
-You can download this module and instal it via the zikula- interface. If module needs datafields in the profile module.
+You can download this module and instal it via the zikula- interface.
+
+This module needs data- fields in the profile module. Before you install the module you set if Profile fields should be create by the installer. If you input NONE you has to create the fields manuelly by Profile and set the fieldnames manuelly via the "General Settings"-tab.
 
 #Getting Started!
+
+Before you begin to work with the module, you should have a loog to the general settings:
+
+#General Settings
+In the "General Settings"-tab you can set the time in days when dates are deleted automaticly. The standard setting is three years (that are 1095 days). Then you can descide if user not having the ACCESS_ADMIN-permission can give their dates custom colors. This can be a problem, if the all dates of a group has to be in the same color. After that there are three fields where you have to input the name of the Profile-fields where people has to input their real first- and surname and their form of address. This data it inportant to give the contact person to a date.
+
+
 At first you should create a group:
 
 #Groups
