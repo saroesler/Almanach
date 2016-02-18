@@ -43,6 +43,7 @@ function calendarInput()
 	var aid = e.options[e.selectedIndex].value;
 	var almanachName = e.options[e.selectedIndex].text;
 	var newId = parseInt(document.getElementById('newCalendarsNum').value);
+	var allowDateColloring = document.getElementById('allowDateColloring').value;
 	
 	if(aid <= 0)
 		return;
@@ -86,7 +87,8 @@ function calendarInput()
 	
 	cell1.appendChild(input);
 	cell2.innerHTML = almanachName;
-	cell3.appendChild(div);
+	if(allowDateColloring != 0)
+		cell3.appendChild(div);
 	cell4.appendChild(a);
 
 	//newRow.innerHTML = returns['newHeredity'];

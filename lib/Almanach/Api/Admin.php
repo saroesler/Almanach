@@ -32,7 +32,6 @@ class Almanach_Api_Admin extends Zikula_AbstractApi
 				'text'  => $this->__('Groups'),
 				'title' => $this->__('show the groups'),
 				'class' => 'z-icon-es-display',
-				'links' => $outputlist
 			);
 		}
 		
@@ -42,7 +41,6 @@ class Almanach_Api_Admin extends Zikula_AbstractApi
 				'text'  => $this->__('Calendar'),
 				'title' => $this->__('manage the calendars'),
 				'class' => 'z-icon-es-display',
-				'links' => $outputlist
 			);
 		}
 		
@@ -50,8 +48,18 @@ class Almanach_Api_Admin extends Zikula_AbstractApi
             $links[] = array(
                 'url' => ModUtil::url('Almanach', 'admin', 'editDate'),
                 'text' => $this->__('Create new Date'),
+                'title' => $this->__('Create new Date'),
                 'class' => 'z-icon-es-cubes');
         }
+        
+        if (SecurityUtil::checkPermission('Almanach::', '::', ACCESS_ADMIN)) {
+			$links[] = array(
+				'url'=> ModUtil::url('Almanach', 'admin', 'generalSettings'),
+				'text'  => $this->__('General Settings'),
+				'title' => $this->__('General Settings'),
+				'class' => 'z-icon-es-config',
+			);
+		}
 		
 		return $links;
 	}
@@ -79,5 +87,15 @@ class Almanach_Api_Admin extends Zikula_AbstractApi
 	{
 		$group = $this->entityManager->find('Almanach_Entity_Group', $args['gid']);
 		return $group->getName();
+	}
+	
+	public function getContactPerson($args){
+		$vars = UserUtil::getVars($args['uid']);
+        if($vars['__ATTRIBUTES__'][$this->getVar('FormOfAddressField')] == 2)
+        	$sex = $this->__('Mr.');
+        else{
+        	$sex = $this->__('Mrs.');
+        }
+        return $sex . ' ' .  substr ( $vars['__ATTRIBUTES__'][$this->getVar('FirstNameField')] , 0, 1 ) . '. ' . $vars['__ATTRIBUTES__'][$this->getVar('SurnameField')];
 	}
 }

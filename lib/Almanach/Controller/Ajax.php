@@ -19,6 +19,7 @@ class Almanach_Controller_Ajax extends Zikula_AbstractController
 
 		$ok = 0;
 		$name = FormUtil::getPassedValue('name', null, 'POST');
+		$color = FormUtil::getPassedValue('color', null, 'POST');
 		if(!$name)
 			$text = ($this->__("There is no valid name!"));
 			
@@ -26,6 +27,7 @@ class Almanach_Controller_Ajax extends Zikula_AbstractController
 		{
 			$group = new Almanach_Entity_Group();
 			$group->setName($name);
+			$group->setColor($color);
 			$this->entityManager->persist($group);
 			$this->entityManager->flush();
 			LogUtil::RegisterStatus($this->__("Group has been added successfully."));
@@ -35,6 +37,8 @@ class Almanach_Controller_Ajax extends Zikula_AbstractController
 		
 		$result['ok'] = $ok;
 		$result['text'] = $text;
+		$result['gid'] = $group->getGid();
+		$result['color'] = $group->getColor();
 
     	$result["newGroup"] = $this->view
     		->assign('group', $group)
@@ -88,6 +92,7 @@ class Almanach_Controller_Ajax extends Zikula_AbstractController
 		$text = "";
 		$name = FormUtil::getPassedValue('name', null, 'POST');
 		$gid = FormUtil::getPassedValue('gid', null, 'POST');
+		$color = FormUtil::getPassedValue('color', null, 'POST');
 		if(!$name)
 			$text = ($this->__("There is no valid name!"));
 		if(!$gid)
@@ -96,6 +101,7 @@ class Almanach_Controller_Ajax extends Zikula_AbstractController
 		{
 			$group = $this->entityManager->find('Almanach_Entity_Group', $gid);
 			$group->setName($name);
+			$group->setColor($color);
 			$this->entityManager->persist($group);
 			$this->entityManager->flush();
 			$ok = 1;
@@ -104,6 +110,7 @@ class Almanach_Controller_Ajax extends Zikula_AbstractController
 		$result['ok'] = $ok;
 		$result['text'] = $text;
 		$result['name'] = $name;
+		$result['color'] = $color;
 		return new Zikula_Response_Ajax($result);
 	}
 	

@@ -306,13 +306,7 @@ class Almanach_Entity_Date extends Zikula_EntityAccess
 
 	public function getUserName()
     {
-        $vars = UserUtil::getVars($this->uid);
-        if($vars['__ATTRIBUTES__'][sex] == 2)
-        	$sex = 'Hr.';
-        else{
-        	$sex = 'Fr.';
-        }
-        return $sex . ' ' .  substr ( $vars['__ATTRIBUTES__'][first_name] , 0, 1 ) . '. ' . $vars['__ATTRIBUTES__'][realname];
+        return ModUtil::apiFunc('Almanach', 'Admin', 'getContactPerson', array('uid' => $this->uid));
     }
     
     public function setUid($uid)

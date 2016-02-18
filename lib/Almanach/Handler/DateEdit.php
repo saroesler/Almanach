@@ -35,10 +35,17 @@ class Almanach_Handler_DateEdit extends Zikula_Form_AbstractHandler
                 return LogUtil::registerError($this->__f('Date with id %s not found', $did));
             }
             
-            if(!SecurityUtil::checkPermission('Almanach::Group', '::'. $date->getGid() , ACCESS_EDIT)) {
-            	LogUtil::RegisterError($this->__("You cant edit this date."));
-            	return false;
-            }
+            if($date->getGid() > 0){
+		        if(!(SecurityUtil::checkPermission('Almanach::Group', '::'. $date->getGid() , ACCESS_EDIT) || $date->getUid() == SessionUtil::getVar('uid') )) {
+		        	LogUtil::RegisterError($this->__("You cant edit this date."));
+		        	return false;
+		        }
+	        }
+	        
+	        if(!($date->getUid() == SessionUtil::getVar('uid') )) {
+	        	LogUtil::RegisterError($this->__("You cant edit this date."));
+	        	return false;
+	        }
             
 			$connections = $this->entityManager->getRepository('Almanach_Entity_AlmanachElement')->findBy(array('did'=>$did));
 			
@@ -101,6 +108,7 @@ class Almanach_Handler_DateEdit extends Zikula_Form_AbstractHandler
 		);
 		
 		$view->assign('date',$date);
+		$view->assign('allowDateColloring',$this->getVar('AllowDateColloring'));
         $view->assign('connections',$connections);
         $view->assign('almanachSelector',$almanachSelector);
         $view->assign('almanachHide',$almanachHide);
@@ -142,10 +150,13 @@ class Almanach_Handler_DateEdit extends Zikula_Form_AbstractHandler
         	return false;
         }
         
-        if (!SecurityUtil::checkPermission('Almanach::Group', '::'. $d['gid'] , ACCESS_EDIT)) {
-        	LogUtil::RegisterError($this->__("You dont have the permission to create a date for the selected group. Please choose one you can create a date for."));
-        	return false;
-        }
+        if($d['gid'] > 0)
+        {
+		    if (!SecurityUtil::checkPermission('Almanach::Group', '::'. $d['gid'] , ACCESS_EDIT)) {
+		    	LogUtil::RegisterError($this->__("You dont have the permission to create a date for the selected group. Please choose one you can create a date for."));
+		    	return false;
+		    }
+		}
         
         if($did > 0){
         	$date = $this->entityManager->find('Almanach_Entity_Date', $did);
@@ -180,7 +191,8 @@ class Almanach_Handler_DateEdit extends Zikula_Form_AbstractHandler
 				$this->entityManager->flush();
 				LogUtil::RegisterStatus($this->__("Date sucessfully deleted of calendar %s." , array($item->getAlmanachName())));
         	} elseif($myColor != $item->getColor()){
-		    	$item->setColor($myColor);
+        		if($this->getVar('AllowDateColloring') || SecurityUtil::checkPermission('Almanach::', '::' , ACCESS_ADMIN))
+		    		$item->setColor($myColor);
 		    	$this->entityManager->persist($item);
 				$this->entityManager->flush();
 				LogUtil::RegisterStatus($this->__("Date sucessfully edited in calendar %s.", array($item->getAlmanachName())));
@@ -220,7 +232,8 @@ class Almanach_Handler_DateEdit extends Zikula_Form_AbstractHandler
         	$connection = new Almanach_Entity_AlmanachElement();
 			$connection->setDid($did);
 			$connection->setAid($aid);
-			$connection->setColor($myColor);
+			if($this->getVar('AllowDateColloring') || SecurityUtil::checkPermission('Almanach::', '::' , ACCESS_ADMIN))
+				$connection->setColor($myColor);
 			$this->entityManager->persist($connection);
 			$this->entityManager->flush();
 			LogUtil::RegisterStatus($this->__f("The date has been entered into calendar %s successfully.", array($almanachName)));

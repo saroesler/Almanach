@@ -4,7 +4,13 @@
  */
 class Almanach_Installer extends Zikula_AbstractInstaller
 {
-
+	/*
+	*	PROFILE_STATE
+	* This creates fields in Profile for the Surname, the first name
+	* and the form of address. This fields are important!
+	*/
+	const PROFILE_STATE = 'DE';
+	
 	/**
 	 * @brief Provides an array containing default values for module variables (settings).
 	 * @return array An array indexed by variable name containing the default values for those variables.
@@ -13,7 +19,91 @@ class Almanach_Installer extends Zikula_AbstractInstaller
 	 */
 	protected function getDefaultModVars()
 	{
-		return array();
+		if(self::PROFILE_STATE == 'DE' || PROFILE_STATE == 'EN')
+			return array(
+			'Savetime' => 1095,
+			'AllowDateColoring' => 1,
+			'FormOfAddressField' => 'sex',
+			'SurnameField' => 'surname',
+			'FirstNameField' => 'first_name'
+			);
+		else
+			return array(
+			'Savetime' => 1095,
+			'AllowDateColoring' => 1,
+			'FormOfAddressField' => '',
+			'SurnameField' => '',
+			'FirstNameField' => ''
+			);
+	}
+	
+	public function addProfileProperties(){
+		if(self::PROFILE_STATE == 'DE'){
+			ModUtil::apiFunc('Profile', 'admin', 'create', array(
+				'label'          => "Anrede",
+				'attribute_name' => sex,
+				'required'       => 1,
+				'viewby'         => 2,
+				'dtype'          => 3,
+				'displaytype'    => 3,
+				'listoptions'    => "@@Frau@1@@Herr@2",
+				'note'           => "",
+			));
+			ModUtil::apiFunc('Profile', 'admin', 'create', array(
+				'label'          => "Vorname",
+				'attribute_name' => first_name,
+				'required'       => 1,
+				'viewby'         => 2,
+				'dtype'          => 0,
+				'displaytype'    => 0,
+				'listoptions'    => "",
+				'note'           => "Ihr Vorname",
+			));
+			ModUtil::apiFunc('Profile', 'admin', 'create', array(
+				'label'          => "Vorname",
+				'attribute_name' => surname,
+				'required'       => 1,
+				'viewby'         => 2,
+				'dtype'          => 0,
+				'displaytype'    => 0,
+				'listoptions'    => "",
+				'note'           => "Ihr Nachname",
+			));
+		}
+		
+		
+		if(self::PROFILE_STATE == 'EN'){
+			ModUtil::apiFunc('Profile', 'admin', 'create', array(
+				'label'          => "Form of address",
+				'attribute_name' => sex,
+				'required'       => 1,
+				'viewby'         => 2,
+				'dtype'          => 3,
+				'displaytype'    => 3,
+				'listoptions'    => "@@Missus@1@@Mister@2",
+				'note'           => "",
+			));
+			ModUtil::apiFunc('Profile', 'admin', 'create', array(
+				'label'          => "first name",
+				'attribute_name' => first_name,
+				'required'       => 1,
+				'viewby'         => 2,
+				'dtype'          => 0,
+				'displaytype'    => 0,
+				'listoptions'    => "",
+				'note'           => "your first name",
+			));
+			ModUtil::apiFunc('Profile', 'admin', 'create', array(
+				'label'          => "Surname",
+				'attribute_name' => surname,
+				'required'       => 1,
+				'viewby'         => 2,
+				'dtype'          => 0,
+				'displaytype'    => 0,
+				'listoptions'    => "",
+				'note'           => "your surname",
+			));
+		}
 	}
 
 	/**
@@ -27,6 +117,7 @@ class Almanach_Installer extends Zikula_AbstractInstaller
 	public function install()
 	{
 		$this->setVars($this->getDefaultModVars());
+		$this->addProfileProperties();
 
 		// Create database tables.
 		try {
@@ -126,7 +217,9 @@ class Almanach_Installer extends Zikula_AbstractInstaller
 				} catch (Exception $e) {
 					return LogUtil::registerError($e);
 				}
-				break;
+			case "0.0.3":
+				$this->setVars($this->getDefaultModVars());
+				$this->addProfileProperties();
 		}
 		return true;
 	}

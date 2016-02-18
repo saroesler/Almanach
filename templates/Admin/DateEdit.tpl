@@ -30,6 +30,7 @@ jQuery(function() {
 });
 </script>
 <input id="did" style="display:none" value="{$date->getDid()}">
+<input id="allowDateColloring" style="display:none" value="{$allowDateColloring}">
 <a id="deleteImage" style="display:none">{img src='14_layer_deletelayer.png' modname='core' set='icons/extrasmall'}</a>
 {form cssClass="z-form"}
 	<fieldset>
@@ -58,22 +59,24 @@ jQuery(function() {
         {formlabel for='gid' __text='Group:'}
 		{formdropdownlist id="gid" size="1" mandatory=false items=$groupSelection selectedValue=$date->getGid()"}
 	</div>
-	<div class="z-formrow">
-        {formlabel for='color' __text='Color:'}
-		{formtextinput id="color" maxLength=7 mandatory=false text=$date->getColor()}
-	</div>
-	<script type="text/javascript" charset="utf-8">
-	    /* <![CDATA[ */
+	{if $allowDateColloring <> 0}
+		<div class="z-formrow">
+		    {formlabel for='color' __text='Color:'}
+			{formtextinput id="color" maxLength=7 mandatory=false text=$date->getColor()}
+		</div>
+		<script type="text/javascript" charset="utf-8">
+			/* <![CDATA[ */
 
-		var colorPicky = new PickyColor({
-			field: 'color',
-			color: '{{$date->getColor()|safetext}}',
-			colorWell: 'color',
-			closeText: "{{gt text='Close'}}",
-		})
+			var colorPicky = new PickyColor({
+				field: 'color',
+				color: '{{$date->getColor()|safetext}}',
+				colorWell: 'color',
+				closeText: "{{gt text='Close'}}",
+			})
 
-		/* ]]> */
-	</script>
+			/* ]]> */
+		</script>
+	{/if}
 	<div class="z-formrow">
 		{formlabel for='visibility' __text='Visibility:'}
 		{formdropdownlist id="visibility" size="1" mandatory=false items=$visibilitySelection selectedValue=$date->getVisibility()"}
@@ -113,7 +116,11 @@ jQuery(function() {
 			<tr>
 				<th>{gt text='Id'}</th>
 				<th>{gt text='Calendar'}</th>
-				<th>{gt text='Color'}</th>
+				<th>
+					{if $allowDateColloring <> 0}
+						{gt text='Color'}
+					{/if}
+				</th>			
 				<th></th>
 			</tr>
 		</thead>
@@ -123,21 +130,23 @@ jQuery(function() {
 					<td>{$connection->getEid()}</td>
 					<td>{$connection->getAlmanachName()}</td>
 					<td>
-						<div class="z-formrow">
-						    <input id="CalendarColorinput{$connection->getEid()}" class="colorpicker" name="CalendarColorinput{$connection->getEid()}" type="text" value="{$connection->getColor()|safetext}" maxlength="7" size="7"/>
-						</div>
-						<script type="text/javascript" charset="utf-8">
-						    /* <![CDATA[ */
+						{if $allowDateColloring <> 0}
+							<div class="z-formrow">
+								<input id="CalendarColorinput{$connection->getEid()}" class="colorpicker" name="CalendarColorinput{$connection->getEid()}" type="text" value="{$connection->getColor()|safetext}" maxlength="7" size="7"/>
+							</div>
+							<script type="text/javascript" charset="utf-8">
+								/* <![CDATA[ */
 
-							var color{{$connection->getEid()}}Picky = new PickyColor({
-								field: 'CalendarColorinput{{$connection->getEid()}}',
-								color: '{{$connection->getColor()|safetext}}',
-								colorWell: 'CalendarColorinput{{$connection->getEid()}}',
-								closeText: "{{gt text='Close'}}",
-							})
+								var color{{$connection->getEid()}}Picky = new PickyColor({
+									field: 'CalendarColorinput{{$connection->getEid()}}',
+									color: '{{$connection->getColor()|safetext}}',
+									colorWell: 'CalendarColorinput{{$connection->getEid()}}',
+									closeText: "{{gt text='Close'}}",
+								})
 
-							/* ]]> */
-						</script>
+								/* ]]> */
+							</script>
+						{/if}
 						<input type="text" id="almanachId{$connection->getEid()}" style="display:none;" value="{$connection->getAid()}"/>
 					</td>
 					<td>

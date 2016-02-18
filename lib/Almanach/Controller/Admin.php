@@ -91,5 +91,18 @@ class Almanach_Controller_Admin extends Zikula_AbstractController
 		$form = FormUtil::newForm('Almanach', $this);
 		return $form->execute('Admin/DateEdit.tpl', new Almanach_Handler_DateEdit());
     }
+    
+    /**
+     * @brief general settings administrate function.
+     * @throws Zikula_Forbidden If not ACCESS_ADMIN
+     * @return template Admin/GeneralSettings.tpl
+     */
+    public function generalSettings()
+    {
+    	$this->throwForbiddenUnless(SecurityUtil::checkPermission('Almanach::', '::', ACCESS_ADMIN));
+		
+		$form = FormUtil::newForm('Almanach', $this);
+		return $form->execute('Admin/GeneralSettings.tpl', new Almanach_Handler_GeneralSettings());
+    }
 }
 
