@@ -1,4 +1,4 @@
-{include file='Admin/Header.tpl' __title='Calendar' icon='view'}
+{include file='Admin/Header.tpl' __title='Calendar' icon='cubes'}
 {pageaddvar name="javascript" value="modules/Almanach/javascript/CalendarAdmin.js"}
 
 <a href="{modurl modname=Almanach type=admin func=editCalendar id=0}">{gt text="create new Calendar"}</a>

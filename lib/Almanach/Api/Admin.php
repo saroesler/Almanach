@@ -22,7 +22,7 @@ class Almanach_Api_Admin extends Zikula_AbstractApi
 				'url'=> ModUtil::url('Almanach', 'admin', 'main'),
 				'text'  => $this->__('Main'),
 				'title' => $this->__('Main'),
-				'class' => 'z-icon-es-config',
+				'class' => 'z-icon-es-home',
 			);
 		}
 		
@@ -31,7 +31,7 @@ class Almanach_Api_Admin extends Zikula_AbstractApi
 				'url'=> ModUtil::url('Almanach', 'admin', 'groups'),
 				'text'  => $this->__('Groups'),
 				'title' => $this->__('show the groups'),
-				'class' => 'z-icon-es-display',
+				'class' => 'z-icon-es-group',
 			);
 		}
 		
@@ -40,7 +40,7 @@ class Almanach_Api_Admin extends Zikula_AbstractApi
 				'url'=> ModUtil::url('Almanach', 'admin', 'calendar'),
 				'text'  => $this->__('Calendar'),
 				'title' => $this->__('manage the calendars'),
-				'class' => 'z-icon-es-display',
+				'class' => 'z-icon-es-cubes',
 			);
 		}
 		
@@ -49,7 +49,7 @@ class Almanach_Api_Admin extends Zikula_AbstractApi
                 'url' => ModUtil::url('Almanach', 'admin', 'editDate'),
                 'text' => $this->__('Create new Date'),
                 'title' => $this->__('Create new Date'),
-                'class' => 'z-icon-es-cubes');
+                'class' => 'z-icon-es-add');
         }
         
         if (SecurityUtil::checkPermission('Almanach::', '::', ACCESS_ADMIN)) {

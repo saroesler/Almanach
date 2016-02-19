@@ -1,4 +1,4 @@
-{include file='Admin/Header.tpl' __title='Calendar' icon='config'}
+{include file='Admin/Header.tpl' __title='Calendar' icon='cubes'}
 {pageaddvar name="javascript" value="modules/Almanach/javascript/CalendarEdit.js"}
 {pageaddvar name="javascript" value="javascript/picky_color/picky_color.js"}
 {pageaddvar name="stylesheet" value="javascript/picky_color/picky_color.css"}

@@ -1,4 +1,4 @@
-{include file='Admin/Header.tpl' __title='Date' icon='config'}
+{include file='Admin/Header.tpl' __title='Date' icon='add'}
 {pageaddvar name="javascript" value="modules/Almanach/javascript/DateEdit.js"}
 {pageaddvar name="javascript" value="javascript/picky_color/picky_color.js"}
 {pageaddvar name="stylesheet" value="javascript/picky_color/picky_color.css"}

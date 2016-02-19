@@ -1,4 +1,4 @@
-{include file='Admin/Header.tpl' __title='Groups' icon='view'}
+{include file='Admin/Header.tpl' __title='Groups' icon='group'}
 {pageaddvar name="javascript" value="modules/Almanach/javascript/Group.js"}
 {pageaddvar name="javascript" value="javascript/picky_color/picky_color.js"}
 {pageaddvar name="stylesheet" value="javascript/picky_color/picky_color.css"}
