@@ -165,4 +165,69 @@ class Almanach_Controller_Ajax extends Zikula_AbstractController
 		$result['id'] = $id;
 		return new Zikula_Response_Ajax($result);
 	}
+	
+	public function subscribeAlmanach()
+	{
+		if (!SecurityUtil::checkPermission('Almanach::', '::', ACCESS_COMMENT))
+			return new Zikula_Response_Ajax(LogUtil::registerPermissionError());
+
+		$uid = SessionUtil::getVar('uid');
+		
+		$ok = 0;
+		$text = "";
+		$aid = FormUtil::getPassedValue('aid', null, 'POST');
+		if(!$aid)
+			$text = ($this->__("There is no valid id!"));
+		if(!SecurityUtil::checkPermission('Almanach::Almanach', '::'. $aid , ACCESS_READ)){
+			return new Zikula_Response_Ajax(LogUtil::registerPermissionError());
+		}
+		if($aid && $uid)
+		{
+			$subscribtion = new Almanach_Entity_SubscribeAlmanach();
+			$subscribtion->setAid($aid);
+			$subscribtion->setUid($uid);
+			$this->entityManager->persist($subscribtion);
+			$this->entityManager->flush();
+			$ok = 1;
+		}
+		
+		$result['ok'] = $ok;
+		$result['uid'] = $uid;
+		$result['text'] = $text;
+		$result['aid'] = $aid;
+		return new Zikula_Response_Ajax($result);
+	}
+	
+	public function unsubscribeAlmanach()
+	{
+		if (!SecurityUtil::checkPermission('Almanach::', '::', ACCESS_COMMENT))
+			return new Zikula_Response_Ajax(LogUtil::registerPermissionError());
+
+		$uid = SessionUtil::getVar('uid');
+		
+		$ok = 0;
+		$text = "";
+		$aid = FormUtil::getPassedValue('aid', null, 'POST');
+		if(!$aid)
+			$text = ($this->__("There is no valid id!"));
+		if(!SecurityUtil::checkPermission('Almanach::Almanach', '::'. $aid , ACCESS_READ)){
+			return new Zikula_Response_Ajax(LogUtil::registerPermissionError());
+		}
+		if($aid && $uid)
+		{
+			$subscribtions = $this->entityManager->getRepository('Almanach_Entity_SubscribeAlmanach')->findBy(array('aid' => $aid, 'uid' => $uid));
+			
+			foreach($subscribtions as $subscition){
+				$this->entityManager->remove($subscition);
+				$this->entityManager->flush();
+			}
+			
+			$ok = 1;
+		}
+		
+		$result['ok'] = $ok;
+		$result['text'] = $text;
+		$result['aid'] = $aid;
+		return new Zikula_Response_Ajax($result);
+	}
 }

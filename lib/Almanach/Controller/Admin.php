@@ -14,7 +14,8 @@ class Almanach_Controller_Admin extends Zikula_AbstractController
      */
     public function main()
     {
-    	$this->throwForbiddenUnless(SecurityUtil::checkPermission('Almanach::', '::', ACCESS_MODERATE));
+    	$uid = SessionUtil::getVar('uid');
+    	$this->throwForbiddenUnless(SecurityUtil::checkPermission('Almanach::', '::', ACCESS_COMMENT));
     	
     	/**
     	* This creates the mainpage, witch shows:
@@ -22,7 +23,26 @@ class Almanach_Controller_Admin extends Zikula_AbstractController
     	* - subscibted dates and calendars
     	* - visible calendars
     	**/
+    	
+    	
+    	//get visible calendars
+    	$almanachs = $this->entityManager->getRepository('Almanach_Entity_Almanach')->findBy(array());
+    	$calendarSubscribtions = array();
+    	foreach($almanachs as $key => $almanach){
+    		if(!(SecurityUtil::checkPermission('Almanach::Almanach', '::'. $almanach->getAid() , ACCESS_READ))) {
+	        	unset($almanachs[$key]);
+	        } else {
+	        	$mySubscribtion = $this->entityManager->getRepository('Almanach_Entity_SubscribeAlmanach')->findBy(array('aid' => $almanach->getAid(), 'uid' => $uid));
+	        	
+	        	if(! empty($mySubscribtion)){
+	        		$calendarSubscribtions[$key] = 1;
+	        	}
+	        }
+    	}
+    	
     	return $this->view
+    		->assign('almanachs', $almanachs)
+    		->assign('calendarSubscribtions', $calendarSubscribtions)
     		->fetch('Admin/Main.tpl');
     }
     

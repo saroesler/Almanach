@@ -37,28 +37,28 @@ class Almanach_Entity_SubscribeAlmanach extends Zikula_EntityAccess
     private $aid;
 
     
-    public function getTfid()
+    public function getSaid()
     {
-        return $this->tfid;
+        return $this->said;
     }
     
-    public function getTid()
+    public function getUid()
     {
-        return $this->tid;
+        return $this->uid;
     }
 
-    public function setTid($tid)
+    public function setUid($uid)
     {
-        $this->tid = $tid;
+        $this->uid = $uid;
     }
     
-    public function getName()
+    public function getAid()
     {
-        return $this->name;
+        return $this->aid;
     }
 
-    public function setName($name)
+    public function setAid($aid)
     {
-        $this->name = $name;
+        $this->aid = $aid;
     }
 }
