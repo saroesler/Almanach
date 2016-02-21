@@ -43,7 +43,7 @@ class Almanach_Entity_AlmanachElement extends Zikula_EntityAccess
      */
     private $color;
     
-    public function getEidid()
+    public function getEid()
     {
         return $this->eid;
     }

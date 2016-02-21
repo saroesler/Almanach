@@ -107,8 +107,12 @@ class Almanach_Handler_DateEdit extends Zikula_Form_AbstractHandler
 			'value' => 2,
 		);
 		
+		if($this->getVar('AllowDateColloring') || SecurityUtil::checkPermission('Almanach::', '::' , ACCESS_ADMIN))
+			$view->assign('allowDateColoring', 1);
+		else
+			$view->assign('allowDateColoring', 0);
+		
 		$view->assign('date',$date);
-		$view->assign('allowDateColloring',$this->getVar('AllowDateColloring'));
         $view->assign('connections',$connections);
         $view->assign('almanachSelector',$almanachSelector);
         $view->assign('almanachHide',$almanachHide);
@@ -171,8 +175,6 @@ class Almanach_Handler_DateEdit extends Zikula_Form_AbstractHandler
         $date->merge($d);
         $this->entityManager->persist($date);
         $this->entityManager->flush();
-        print_r($d);
-        die();
         
         $did = $date->getDid();
         

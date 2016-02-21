@@ -30,7 +30,7 @@ jQuery(function() {
 });
 </script>
 <input id="did" style="display:none" value="{$date->getDid()}">
-<input id="allowDateColloring" style="display:none" value="{$allowDateColloring}">
+<input id="allowDateColoring" style="display:none" value="{$allowDateColoring}">
 <a id="deleteImage" style="display:none">{img src='14_layer_deletelayer.png' modname='core' set='icons/extrasmall'}</a>
 {form cssClass="z-form"}
 	<fieldset>
@@ -53,13 +53,13 @@ jQuery(function() {
 	</div>
 	<div class="z-formrow">
         {formlabel for='description' __text='Description:'}
-		{formtextinput id="description" maxLength=2000 mandatory=false text=$date->getDescription()}
+		{formtextinput id="description" maxLength=2000 mandatory=false text=$date->getDescription() rows='15' textMode='multiline'}
 	</div>
 	<div class="z-formrow">
         {formlabel for='gid' __text='Group:'}
 		{formdropdownlist id="gid" size="1" mandatory=false items=$groupSelection selectedValue=$date->getGid()"}
 	</div>
-	{if $allowDateColloring <> 0}
+	{if $allowDateColoring <> 0}
 		<div class="z-formrow">
 		    {formlabel for='color' __text='Color:'}
 			{formtextinput id="color" maxLength=7 mandatory=false text=$date->getColor()}
@@ -117,7 +117,7 @@ jQuery(function() {
 				<th>{gt text='Id'}</th>
 				<th>{gt text='Calendar'}</th>
 				<th>
-					{if $allowDateColloring <> 0}
+					{if $allowDateColoring <> 0}
 						{gt text='Color'}
 					{/if}
 				</th>			
@@ -130,7 +130,7 @@ jQuery(function() {
 					<td>{$connection->getEid()}</td>
 					<td>{$connection->getAlmanachName()}</td>
 					<td>
-						{if $allowDateColloring <> 0}
+						{if $allowDateColoring <> 0}
 							<div class="z-formrow">
 								<input id="CalendarColorinput{$connection->getEid()}" class="colorpicker" name="CalendarColorinput{$connection->getEid()}" type="text" value="{$connection->getColor()|safetext}" maxlength="7" size="7"/>
 							</div>

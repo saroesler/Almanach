@@ -230,4 +230,91 @@ class Almanach_Controller_Ajax extends Zikula_AbstractController
 		$result['aid'] = $aid;
 		return new Zikula_Response_Ajax($result);
 	}
+	
+	public function unsubscribeDate()
+	{
+		if (!SecurityUtil::checkPermission('Almanach::', '::', ACCESS_COMMENT))
+			return new Zikula_Response_Ajax(LogUtil::registerPermissionError());
+
+		$uid = SessionUtil::getVar('uid');
+		
+		$ok = 0;
+		$text = "";
+		$did = FormUtil::getPassedValue('did', null, 'POST');
+		if(!$did)
+			$text = ($this->__("There is no valid id!"));
+		if($aid && $uid)
+		{
+			$subscribtions = $this->entityManager->getRepository('Almanach_Entity_SubscribeDate')->findBy(array('did' => $did, 'uid' => $uid));
+			
+			foreach($subscribtions as $subscition){
+				$this->entityManager->remove($subscition);
+				$this->entityManager->flush();
+			}
+			
+			$ok = 1;
+		}
+		
+		$result['ok'] = $ok;
+		$result['text'] = $text;
+		$result['did'] = $did;
+		return new Zikula_Response_Ajax($result);
+	}
+	
+	public function dateDel()
+	{
+		if (!SecurityUtil::checkPermission('Almanach::', '::', ACCESS_COMMENT))
+			return new Zikula_Response_Ajax(LogUtil::registerPermissionError());
+
+		$result['ok'] = 0;
+		$did = FormUtil::getPassedValue('did', null, 'POST');
+		if(!isset($did)) {
+			return new Zikula_Response_Ajax_BadData($this->__('missing $id'));
+		}
+		if($did)
+		{
+			$allowed = 0;
+			$date = $this->entityManager->find('Almanach_Entity_Date', $did);
+			
+			//get all almanachs of this date:
+    		$thisalmanachs = $this->entityManager->getRepository('Almanach_Entity_AlmanachElement')->findBy(array('did' => $did));
+    		
+    		foreach($thisalmanachs as $thisalmanach){
+    			if(SecurityUtil::checkPermission('Almanach::Almanach', '::'. $thisalmanach->getAid() , ACCESS_ADD)){
+    				$allowed = 1;
+    				break;
+				}		
+    		}
+    		
+    		if($date->getUid() == $uid ||
+    		SecurityUtil::checkPermission('Almanach::Group', '::'. $date->getGid() , ACCESS_EDIT)) {
+    			$allowed = 1;
+    		}
+    		
+    		if($allowed){
+    			//delete this date from all almanachs:
+    			foreach($thisalmanachs as $thisalmanach){
+					$this->entityManager->remove($thisalmanach);
+					$this->entityManager->flush();
+				}
+				
+				//delete this date from all subscribtions:
+				$subscribtions = $this->entityManager->getRepository('Almanach_Entity_SubscribeDate')->findBy(array('did' => $did));
+    			foreach($subscribtions as $subscribtion){
+					$this->entityManager->remove($subscribtion);
+					$this->entityManager->flush();
+				}
+				$date = $this->entityManager->find('Almanach_Entity_Date', $did);
+				$this->entityManager->remove($date);
+				$this->entityManager->flush();
+				LogUtil::RegisterStatus($this->__("Date has been removed successfully."));
+				
+				$result['ok'] = 1;
+			
+    		}
+		}
+		
+		$result['did'] = $did;
+		return new Zikula_Response_Ajax($result);
+	}
 }

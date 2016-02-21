@@ -37,28 +37,28 @@ class Almanach_Entity_SubscribeDate extends Zikula_EntityAccess
     private $did;
 
     
-    public function getTfid()
+    public function getSdid()
     {
-        return $this->tfid;
+        return $this->sdid;
     }
     
-    public function getTid()
+    public function getUid()
     {
-        return $this->tid;
+        return $this->uid;
     }
 
-    public function setTid($tid)
+    public function setUid($uid)
     {
-        $this->tid = $tid;
+        $this->uid = $uid;
     }
     
-    public function getName()
+    public function getDid()
     {
-        return $this->name;
+        return $this->did;
     }
 
-    public function setName($name)
+    public function setDid($did)
     {
-        $this->name = $name;
+        $this->did = $did;
     }
 }

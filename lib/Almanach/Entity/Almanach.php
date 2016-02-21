@@ -50,6 +50,9 @@ class Almanach_Entity_Almanach extends Zikula_EntityAccess
      */
     private $template;
     
+    //no database field
+    private $color;
+    
     public function getAid()
     {
         return $this->aid;
@@ -93,5 +96,15 @@ class Almanach_Entity_Almanach extends Zikula_EntityAccess
     public function setTemplate($template)
     {
         $this->template = $template;
+    }
+    
+    public function getColor()
+    {
+        return $this->color;
+    }
+
+    public function setColor($color)
+    {
+        $this->color = $color;
     }
 }

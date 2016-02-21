@@ -1,6 +1,7 @@
 {include file='Admin/Header.tpl' __title='Mainpage' icon='home'}
 
 {pageaddvar name="javascript" value="modules/Almanach/javascript/Mainpage.js"}
+{pageaddvar name="javascript" value="modules/Almanach/javascript/AlmanachDateAdmin.js"}
 
 <style>
 	.calendarContainer{
@@ -10,7 +11,7 @@
 		border-radius: 10px;
 	}
 	
-	.calendarDiv{
+	.calendarDiv, .dateDiv{
 		padding: 10px;
 		margin: 10px;
 		border: 1px solid #aaa;
@@ -31,6 +32,42 @@
 	.calendarSubscribe img{
 		box-shadow: 0px 0px;
 		margin-right: 10px;
+	}
+	
+	.dateTimes{
+		color: #555 !important;
+		font-style: italic;
+		font-size: 14px;
+	}
+	
+	.dateTimes img{
+		box-shadow: 0px 0px;
+	}
+	
+	.dateTitle{
+		color: #000 !important;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 20px;
+	}
+	
+	.dateDescription{
+		color: #000 !important;
+		font-style: normal;
+		font-size: 14px;
+	}
+	
+	.dateAdmin img{
+		box-shadow: 0px 0px;
+	}
+	
+	.oldDate{
+		display:none;
+	}
+	
+	.shownOldDate{
+		background-color: #ddd;
+		border-width: 3px;
 	}
 </style>
 <h2>{gt text="My Calendars"}</h2>
@@ -57,6 +94,60 @@
 		</div>
 	{foreachelse}
 		<p>{gt text="There are no calendars"}</p>
+	{/foreach}
+</div>
+
+<h2>{gt text="My Dates"}</h2>
+
+<div>
+	<div style="float:right;">
+		<a id="hideOld" onclick="hideOldDates()" style="display:none;">{img src='14_layer_visible.png' modname='core' set='icons/extrasmall' __title="hide old dates"}</a>
+		<a id="showOld" onclick="showOldDates()">{img src='14_layer_novisible.png' modname='core' set='icons/extrasmall' __title="show old dates"}</a>
+	</div>
+	<div>
+		<a id="datesDown" onclick="showDateList()" style="display:none;">{img src='14_layer_lowerlayer.png' modname='core' set='icons/extrasmall'}</a>
+		<a id="datesUp" onclick="hideDateList()">{img src='14_layer_raiselayer.png' modname='core' set='icons/extrasmall'}</a>
+	</div>
+</div>
+
+<div style="clear:both;"></div>
+
+<div id="dateList" class="dateContainer">
+	{foreach from=$myDates key=i item='myDate'}
+		<div class="dateDiv
+			{if $i <= $oldKey}
+				oldDate
+			{/if}
+			" id="date{$myDate->getDid()}"
+			{if $myDate->getColor() <> '' and $myDate->getColor() <> '#'}
+				style="border-color:{$myDate->getColor()};"
+			{/if}
+			>
+			<div class="dateAdmin" style="float:right;">
+				{if $subscribedDates.$i == 1}
+					<a id="unsubscibe{$myDate->getDid()}" onclick="unsubscribeDate({$myDate->getDid()})">{img src='favorites.png' modname='Almanach' set="favorites" __title="unsubscribe date"}</a>
+				{/if}
+				{if $adminDates.$i == 1}
+					<a href="{modurl modname=Almanach type=admin func=editDate id=$myDate->getDid()}">{img src='xedit.png' modname='core' set="icons/extrasmall" __title="edit date"}</a>
+					<a onclick="deleteDate({$myDate->getDid()})">{img src='14_layer_deletelayer.png' modname='core' set="icons/extrasmall" __title="delete date"}</a>
+				{/if}
+			</div>
+			<div>
+				<a class="dateTimes">
+					{$myDate->getStartdateFormattedout()} - {$myDate->getEnddateFormattedout()}
+					{if $myDate->getGuests()}
+						{img src='package_favorite.png' modname='core' set='icons/extrasmall' __title="guests are welcome"}
+					{/if}
+				</a>
+			</div>
+			<div style="clear:both;"></div>
+			<div>
+				<a class="dateTitle">{$myDate->getTitle()} </a> <br/>
+				<a class="dateDescription">{$myDate->getDescription()} </a>
+			</div>
+		</div>
+	{foreachelse}
+		<p>{gt text="There are no dates"}</p>
 	{/foreach}
 </div>
 {include file='Admin/Footer.tpl'}
