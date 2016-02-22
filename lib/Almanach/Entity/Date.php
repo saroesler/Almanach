@@ -152,7 +152,7 @@ class Almanach_Entity_Date extends Zikula_EntityAccess
 			);
 			$weekday = $this->startdate->format('D');
 			$weekday = strtr($weekday, $trans);  
-			$date = $this->startdate->format(' d. M  H:i');
+			$date = $this->startdate->format(' d. M Y, H:i');
 			$date = strtr($date, $trans);  
 		    return $weekday . ",<nobr>" . $date . "</nobr> Uhr" ;
 	    }
@@ -212,9 +212,13 @@ class Almanach_Entity_Date extends Zikula_EntityAccess
 				'Oct'   => 'Okt',
 				'Dec'  => 'Dez',
 			);
+			
+			if($this->enddate->format(' d. M. Y') == $this->startdate->format(' d. M. Y')){
+				return $this->enddate->format('H:i') . "Uhr";
+			}
 			$weekday = $this->enddate->format('D');
 			$weekday = strtr($weekday, $trans);  
-			$date = $this->enddate->format(' d. M,  H:i');
+			$date = $this->enddate->format(' d. M Y,  H:i');
 			$date = strtr($date, $trans);  
 		    return $weekday . ",<nobr>" . $date . "</nobr> Uhr" ;
 	    }
@@ -366,9 +370,9 @@ class Almanach_Entity_Date extends Zikula_EntityAccess
 			);
 			$weekday = $this->creationdate->format('D');
 			$weekday = strtr($weekday, $trans);  
-			$date = $this->creationdate->format(' d. M  H:i');
+			$date = $this->creationdate->format(' d. M Y, H:i');
 			$date = strtr($date, $trans);  
-		    return $weekday . ",<nobr>" . $date . "</nobr>" ;
+		    return $weekday . ",<nobr>" . $date . "</nobr>" . " Uhr" ;
 	    }
 	    else{
 	    	return null;

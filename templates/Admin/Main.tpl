@@ -34,14 +34,10 @@
 		margin-right: 10px;
 	}
 	
-	.dateTimes{
+	.dateTimes, .dateLocation{
 		color: #555 !important;
 		font-style: italic;
 		font-size: 14px;
-	}
-	
-	.dateTimes img{
-		box-shadow: 0px 0px;
 	}
 	
 	.dateTitle{
@@ -57,7 +53,7 @@
 		font-size: 14px;
 	}
 	
-	.dateAdmin img{
+	.dateDiv img{
 		box-shadow: 0px 0px;
 	}
 	
@@ -68,6 +64,11 @@
 	.shownOldDate{
 		background-color: #ddd;
 		border-width: 3px;
+	}
+	
+	.noData{
+		font-size: 20px;
+		font-weight: bold;
 	}
 </style>
 <h2>{gt text="My Calendars"}</h2>
@@ -93,7 +94,7 @@
 			<div style="clear:both;"></div>
 		</div>
 	{foreachelse}
-		<p>{gt text="There are no calendars"}</p>
+		<p  class="noData">{gt text="There are no calendars!"}</p>
 	{/foreach}
 </div>
 
@@ -133,12 +134,22 @@
 				{/if}
 			</div>
 			<div>
-				<a class="dateTimes">
-					{$myDate->getStartdateFormattedout()} - {$myDate->getEnddateFormattedout()}
-					{if $myDate->getGuests()}
-						{img src='package_favorite.png' modname='core' set='icons/extrasmall' __title="guests are welcome"}
+				{if $myDate->getGuests()}
+					<div style="float:left;">{img src='package_favorite.png' modname='core' set='icons/extrasmall' __title="guests are welcome"}</div>
+					<div style=" margin-left: 26px;">
+				{else}
+					<div style="margin-left: 26px;">
+				{/if}
+					<a class="dateTimes">
+						{$myDate->getStartdateFormattedout()} - {$myDate->getEnddateFormattedout()}
+					</a>
+					{if $myDate->getLocation() <> ''}
+						<br/>
+						<a class="dateLocation">
+							{gt text="Location"}: {$myDate->getLocation()}
+						</a>
 					{/if}
-				</a>
+				</div>
 			</div>
 			<div style="clear:both;"></div>
 			<div>
@@ -147,7 +158,10 @@
 			</div>
 		</div>
 	{foreachelse}
-		<p>{gt text="There are no dates"}</p>
+		<p class="noData">{gt text="There are no dates!"}</p>
 	{/foreach}
+	{if $i == $oldKey}
+		<p class="noData">{gt text="There are no dates!"}</p>
+	{/if}
 </div>
 {include file='Admin/Footer.tpl'}
