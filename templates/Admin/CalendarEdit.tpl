@@ -29,7 +29,7 @@
    <fieldset>
    <legend>Heredity</legend>
    <br/><br/>
-   This Calendar inherits the dates of the following calendars. All dates of this calendar has the selected color. If no color is selected, the date keeps the former color.<br/><br/>
+   {gt text="This Calendar inherits the dates of the following calendars. All dates of this calendar has the selected color. If no color is selected, the date keeps the former color."}<br/><br/>
    <input type="text" style="display:none;" value="0" id="newHereditiesNum" name="newHereditiesNum"/>
    <a onclick="hereditySave()">{gt text="create new Heredity to"}</a> 
    <select name="HereditySelection" id="HereditySelection"> 
@@ -91,7 +91,7 @@
    <fieldset>
    <legend>Groups</legend>
    <br/><br/>
-   Every date is show by a color. This color can selected for every group.<br/><br/>
+   {gt text="Every date is show by a color. This color can selected for every group."}<br/><br/>
    
    <input type="text" style="display:none;" value="0" id="newColorsNum" name="newColorsNum"/> 
    <a onclick="colorSave()">{gt text="create color for group"}</a>

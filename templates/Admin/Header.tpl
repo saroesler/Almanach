@@ -9,7 +9,6 @@
 </div>
 
 <div class="z-errormsg" id="BrowserError" style="display:block;"><p>{gt text="Sie nutzen einen zu alten InternetExplorer ! ! !      Es wird bei der Eingabe von Daten und beim Drucken zu Fehlern kommen ! Nutzen Sie bitte allgemein ein anderes Programm (z.B. Firefox, Chrome oder Opera)."}</p></div>
-<div class="z-warningmsg" id="BrowserWarning" style="display:none;"><p>{gt text="Bitte benutzen Sie nicht den InternetExplorer! Dies kann zu Problemen beim Drucken führen!"}</p></div>
 
 <script type="text/javascript" language="JavaScript">
 	//look for Browser
@@ -35,7 +34,6 @@
 	if(rv>8)
 	{
 		document.getElementById("BrowserError").style.display = "none";
-		document.getElementById("BrowserWarning").style.display = "block";
 	}
 	else if(rv != -1)
 		alert("Sie nutzen einen veralteten InternetExplorer!!! \nBitte verwenden Sie allgemein ein anderes Programm!");

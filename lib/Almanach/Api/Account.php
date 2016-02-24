@@ -30,7 +30,7 @@ class Almanach_Api_Account extends Zikula_AbstractApi
         if (SecurityUtil::checkPermission($this->name . '::', '::', ACCESS_ADMIN)) {
             $items[] = array(
                 'url'   => ModUtil::url($this->name, 'admin', 'main'),
-                'title' => $this->__('Kalender'),
+                'title' => $this->__('Calendar'),
                 'icon'   => 'admin.png',
                 'module' => 'Almanach'
             );

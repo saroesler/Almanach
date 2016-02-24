@@ -214,7 +214,7 @@ class Almanach_Entity_Date extends Zikula_EntityAccess
 			);
 			
 			if($this->enddate->format(' d. M. Y') == $this->startdate->format(' d. M. Y')){
-				return $this->enddate->format('H:i') . "Uhr";
+				return $this->enddate->format('H:i') . " Uhr";
 			}
 			$weekday = $this->enddate->format('D');
 			$weekday = strtr($weekday, $trans);  

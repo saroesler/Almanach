@@ -1,0 +1,510 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Almanach\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-02-24 20:32+0000\n"
+"PO-Revision-Date: 2016-02-24 21:35+0100\n"
+"Last-Translator: \n"
+"Language-Team: Sascha Rösler <i-loko@t-online.de>\n"
+"Language: Deutsch (DE)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
+
+#: lib/Almanach/Handler/DateEdit.php:35
+#, php-format
+msgid "Date with id %s not found"
+msgstr "Der Termin mit der Id%s konnte nicht gefunden werden."
+
+#: lib/Almanach/Handler/DateEdit.php:39
+msgid "You cant edit this date."
+msgstr "Sie können diesen Termin nicht bearbeiten."
+
+#: lib/Almanach/Handler/DateEdit.php:75
+msgid "No Group"
+msgstr "Keine  Gruppe"
+
+#: lib/Almanach/Handler/DateEdit.php:91
+msgid "public: This Date can be seen by everyone."
+msgstr "öffentlich: Dieser Termin kann von allen gesehen werden."
+
+#: lib/Almanach/Handler/DateEdit.php:95
+msgid "hidden: This Date can be seen by those, how has a higher permission."
+msgstr ""
+"versteckt: Dieser Termin kann nur von denjenigen gesehen werden, die eine "
+"spezielle Berechtigung dafür haben."
+
+#: lib/Almanach/Handler/DateEdit.php:99
+msgid ""
+"secret: This Date can be seen by those, how can create Dates in the Calendar."
+msgstr ""
+"geheim: Dieser Termin kann nur von der Gruppe und Administratoren des "
+"Kalenders gesehen werden "
+
+#: lib/Almanach/Handler/DateEdit.php:146
+msgid "The end can not be before the beginning!"
+msgstr "Das Ende kann nicht vor dem Anfang liegen"
+
+#: lib/Almanach/Handler/DateEdit.php:153
+msgid ""
+"You dont have the permission to create a date for the selected group. Please "
+"choose one you can create a date for."
+msgstr ""
+"Sie haben nicht die Berechtigung einen Termin für die ausgewählte Gruppe zu "
+"erstellen. Bitte wählen Sie eine andere."
+
+#: lib/Almanach/Handler/DateEdit.php:178
+#, php-format
+msgid "You dont have the permission to edit the connection to the calendar %s."
+msgstr ""
+"Sie haben nicht die Berechtigung den Eintrag in den Kalender %s zu "
+"bearbeiten."
+
+#: lib/Almanach/Handler/DateEdit.php:187
+#, php-format
+msgid "Date sucessfully deleted of calendar %s."
+msgstr "Der Termin wurde erfolgreich aus dem Kalender %s ausgetragen."
+
+#: lib/Almanach/Handler/DateEdit.php:193
+#, php-format
+msgid "Date sucessfully edited in calendar %s."
+msgstr "Der Termin wurde erfolgreich im Kalender %s abgeändert."
+
+#: lib/Almanach/Handler/DateEdit.php:208
+#, php-format
+msgid "You dont have the permission to input the date into the calendar %s."
+msgstr ""
+"Sie haben nicht die Rechte um den Termin in den Kalender %s einzutragen."
+
+#: lib/Almanach/Handler/DateEdit.php:220
+#, php-format
+msgid ""
+"This date overlaps with an other date in calendar %s. So the date cant be "
+"entered into calendar %s. Please contact %s."
+msgstr ""
+"Dieser Termin überschneidet sich im Kalender %s mit einem anderen Termin, "
+"deshalb konnte er nicht in den Kalender %s eingetragen werden. Bitte "
+"kontaktieren Sie %s."
+
+#: lib/Almanach/Handler/DateEdit.php:224
+#, php-format
+msgid ""
+"Please notice that this date overlaps with an other date in calendar %s. "
+"Please contact %s."
+msgstr ""
+"Bitte beachten Sie, dass sich dieser Termin mit einem anderen im Kalender %s "
+"überschneidet. Bei Bedarf kontaktiere Sie bitte %s."
+
+#: lib/Almanach/Handler/DateEdit.php:236
+#, php-format
+msgid "The date has been entered into calendar %s successfully."
+msgstr "Der Termin wurde erfolgreich in den Kalender %s eingetragen."
+
+#: lib/Almanach/Handler/AlmanachEdit.php:36
+#, php-format
+msgid "Almanach with id %s not found"
+msgstr "Der Kalender mit der Id %s konnte nicht gefunden werden."
+
+#: lib/Almanach/Handler/AlmanachEdit.php:139
+msgid "Heredity has been removed successfully."
+msgstr "Die Vererbung wurde erfolgreich gelöscht."
+
+#: lib/Almanach/Handler/AlmanachEdit.php:144
+msgid "Color of Heredity has been updated successfully."
+msgstr "Die Farbe der Vererbung wurde erfolgreich geändert."
+
+#: lib/Almanach/Handler/AlmanachEdit.php:162
+msgid "Heredity has been added successfully."
+msgstr "Eine Vererbung wurde erstellt."
+
+#: lib/Almanach/Handler/AlmanachEdit.php:174
+msgid "Color has been removed successfully."
+msgstr "EIne Farbe wurde erfolgreich entfernt."
+
+#: lib/Almanach/Handler/AlmanachEdit.php:179
+msgid "Color of a Group has been updated successfully."
+msgstr "Die Farbe einer Gruppe wurde erfolgreich geändert."
+
+#: lib/Almanach/Handler/AlmanachEdit.php:197
+msgid "A color of a group has been added successfully."
+msgstr "Die Farbe für eine Gruppe wurde erfolgreich hinzugefügt."
+
+#: lib/Almanach/Version.php:15 lib/Almanach/Version.php:17
+msgid "Almanach"
+msgstr "Almanach"
+
+#: lib/Almanach/Version.php:16
+msgid "A calendar module to manage many calendars"
+msgstr "Ein Kalendermodul um mehrere Kalender zu verwalten."
+
+#: lib/Almanach/Api/Admin.php:23 lib/Almanach/Api/Admin.php:24
+msgid "Main"
+msgstr "Startseite"
+
+#: lib/Almanach/Api/Admin.php:32 templates/Admin/Groups.tpl:1
+msgid "Groups"
+msgstr "Gruppen"
+
+#: lib/Almanach/Api/Admin.php:33
+msgid "show the groups"
+msgstr "zeigt die Gruppen an"
+
+#: lib/Almanach/Api/Admin.php:41 lib/Almanach/Api/Account.php:33
+#: templates/Admin/Calendar.tpl:1 templates/Admin/DateEdit.tpl:118
+#: templates/Admin/CalendarEdit.tpl:1 templates/Admin/CalendarEdit.tpl:52
+msgid "Calendar"
+msgstr "Kalender"
+
+#: lib/Almanach/Api/Admin.php:42
+msgid "manage the calendars"
+msgstr "verwalten der Kalender"
+
+#: lib/Almanach/Api/Admin.php:50 lib/Almanach/Api/Admin.php:51
+msgid "Create new Date"
+msgstr "Ein neuen Termin erstellen"
+
+#: lib/Almanach/Api/Admin.php:58 lib/Almanach/Api/Admin.php:59
+#: templates/Admin/GeneralSettings.tpl:1
+msgid "General Settings"
+msgstr "Einstellungen"
+
+#: lib/Almanach/Api/Admin.php:101
+msgid "Mr."
+msgstr "Hr."
+
+#: lib/Almanach/Api/Admin.php:103
+msgid "Mrs."
+msgstr "Fr."
+
+#: lib/Almanach/Controller/User.php:23 lib/Almanach/Controller/User.php:28
+msgid "No valid calendar!"
+msgstr "Kein existierender Kalender"
+
+#: lib/Almanach/Controller/User.php:121 lib/Almanach/Controller/User.php:126
+msgid "No valid date!"
+msgstr "Kein existierender Kalender"
+
+#: lib/Almanach/Controller/Ajax.php:24 lib/Almanach/Controller/Ajax.php:97
+msgid "There is no valid name!"
+msgstr "Der Name fehlt!"
+
+#: lib/Almanach/Controller/Ajax.php:33
+msgid "Group has been added successfully."
+msgstr "Die Gruppe wurde erfolgreich erstellt."
+
+#: lib/Almanach/Controller/Ajax.php:58 lib/Almanach/Controller/Ajax.php:125
+#: lib/Almanach/Controller/Ajax.php:272
+msgid "missing $id"
+msgstr "Die Id fehlt"
+
+#: lib/Almanach/Controller/Ajax.php:77
+msgid "Group has been removed successfully."
+msgstr "Die Gruppe wurde erfolgreich gelöscht."
+
+#: lib/Almanach/Controller/Ajax.php:99 lib/Almanach/Controller/Ajax.php:180
+#: lib/Almanach/Controller/Ajax.php:212 lib/Almanach/Controller/Ajax.php:245
+msgid "There is no valid id!"
+msgstr "Es gibt keine gültige Id."
+
+#: lib/Almanach/Controller/Ajax.php:162
+msgid "Almanach has been removed successfully."
+msgstr "Der Kalender wurde erfolgreich gelöscht."
+
+#: lib/Almanach/Controller/Ajax.php:310
+msgid "Date has been removed successfully."
+msgstr "Der Termin wurde erfolgreich gelöscht."
+
+#: templates/Admin/Header.tpl:11
+msgid ""
+"Sie nutzen einen zu alten InternetExplorer ! ! !      Es wird bei der "
+"Eingabe von Daten und beim Drucken zu Fehlern kommen ! Nutzen Sie bitte "
+"allgemein ein anderes Programm (z.B. Firefox, Chrome oder Opera)."
+msgstr ""
+
+#: templates/Admin/Main.tpl:1
+msgid "Mainpage"
+msgstr "Startseite"
+
+#: templates/Admin/Main.tpl:68
+msgid "My Calendars"
+msgstr "Mein Kalender"
+
+#: templates/Admin/Main.tpl:78 templates/Admin/Main.tpl:81
+#: templates/User/View.tpl:113 templates/User/View.tpl:116
+msgid "Subscribe"
+msgstr "In meine Kalender Übernehmen"
+
+#: templates/Admin/Main.tpl:79 templates/Admin/Main.tpl:82
+#: templates/User/View.tpl:114 templates/User/View.tpl:117
+msgid "Unsubscribe"
+msgstr "Aus meinem Kalender entfernen"
+
+#: templates/Admin/Main.tpl:91
+msgid "There are no calendars!"
+msgstr "Es gibt keine Kalender"
+
+#: templates/Admin/Main.tpl:95
+msgid "My Dates"
+msgstr "Meine Termine"
+
+#: templates/Admin/Main.tpl:99 templates/User/View.tpl:157
+msgid "hide old dates"
+msgstr "alte Termine verbergen"
+
+#: templates/Admin/Main.tpl:100 templates/User/View.tpl:158
+msgid "show old dates"
+msgstr "alte Termine anzeigen"
+
+#: templates/Admin/Main.tpl:123 templates/User/View.tpl:180
+msgid "unsubscribe date"
+msgstr "Termin aus meien Kalender entfernen"
+
+#: templates/Admin/Main.tpl:126 templates/User/ShowDate.tpl:18
+#: templates/User/View.tpl:183
+msgid "edit date"
+msgstr "Termin bearbeiten"
+
+#: templates/Admin/Main.tpl:127 templates/User/View.tpl:184
+msgid "delete date"
+msgstr "Termin löschen"
+
+#: templates/Admin/Main.tpl:132 templates/User/ShowDate.tpl:23
+#: templates/User/View.tpl:189
+msgid "guests are welcome"
+msgstr "Gäste sind willkommen"
+
+#: templates/Admin/Main.tpl:143 templates/User/View.tpl:200
+msgid "Location"
+msgstr "Ort"
+
+#: templates/Admin/Main.tpl:155 templates/Admin/Main.tpl:158
+#: templates/User/View.tpl:212 templates/User/View.tpl:215
+msgid "There are no dates!"
+msgstr "Es gibt keine Termine"
+
+#: templates/Admin/Groups.tpl:13 templates/Admin/Calendar.tpl:11
+#: templates/Admin/DateEdit.tpl:117 templates/Admin/CalendarEdit.tpl:51
+#: templates/Admin/CalendarEdit.tpl:113
+msgid "Id"
+msgstr "ID"
+
+#: templates/Admin/Groups.tpl:14 templates/Admin/Calendar.tpl:12
+msgid "Name"
+msgstr "Name"
+
+#: templates/Admin/Groups.tpl:15 templates/Admin/DateEdit.tpl:121
+#: templates/Admin/CalendarEdit.tpl:53 templates/Admin/CalendarEdit.tpl:115
+msgid "Color"
+msgstr "Farbe"
+
+#: templates/Admin/Groups.tpl:40 templates/Admin/Groups.tpl:68
+#: templates/Admin/DateEdit.tpl:74 templates/Admin/DateEdit.tpl:143
+#: templates/Admin/CalendarEdit.tpl:72 templates/Admin/CalendarEdit.tpl:134
+msgid "Close"
+msgstr "Schließen"
+
+#: templates/Admin/Calendar.tpl:4
+msgid "create new Calendar"
+msgstr "neuen Kalender erstellen"
+
+#: templates/Admin/DateEdit.tpl:1
+msgid "Date"
+msgstr "Datum"
+
+#: templates/Admin/DateEdit.tpl:39
+msgid "Begin:"
+msgstr "Anfang:"
+
+#: templates/Admin/DateEdit.tpl:43
+msgid "End:"
+msgstr "Ende:"
+
+#: templates/Admin/DateEdit.tpl:47
+msgid "Title:"
+msgstr "Titel:"
+
+#: templates/Admin/DateEdit.tpl:51 templates/User/ShowDate.tpl:28
+msgid "Location:"
+msgstr "Ort:"
+
+#: templates/Admin/DateEdit.tpl:55
+msgid "Description:"
+msgstr "Beschreibung:"
+
+#: templates/Admin/DateEdit.tpl:59
+msgid "Group:"
+msgstr "Gruppe:"
+
+#: templates/Admin/DateEdit.tpl:64
+msgid "Color:"
+msgstr "Farbe:"
+
+#: templates/Admin/DateEdit.tpl:81
+msgid "Visibility:"
+msgstr "Sichtbarkeit:"
+
+#: templates/Admin/DateEdit.tpl:85
+msgid "Guests are welcome:"
+msgstr "Gäste sind willkommen:"
+
+#: templates/Admin/DateEdit.tpl:90
+#, php-format
+msgid "This date was created by user %s at %s"
+msgstr "Dieser Termin wurde von %s am %s erstellt"
+
+#: templates/Admin/DateEdit.tpl:100
+msgid "Input this Date into "
+msgstr "Diesen Termin in folgenden Kalener eintragen"
+
+#: templates/Admin/DateEdit.tpl:102 templates/Admin/CalendarEdit.tpl:36
+msgid "no calendar selected"
+msgstr "Kein Kalender ausgewählt"
+
+#: templates/Admin/DateEdit.tpl:163 templates/Admin/CalendarEdit.tpl:154
+#: templates/Admin/GeneralSettings.tpl:35
+msgid "Save"
+msgstr "Speichern"
+
+#: templates/Admin/DateEdit.tpl:164 templates/Admin/CalendarEdit.tpl:155
+#: templates/Admin/GeneralSettings.tpl:36
+msgid "Cancel"
+msgstr "Abbrechen"
+
+#: templates/Admin/CalendarEdit.tpl:12
+msgid "Name:"
+msgstr "Name:"
+
+#: templates/Admin/CalendarEdit.tpl:16
+msgid "Overlapping:"
+msgstr "Überschneidungen:"
+
+#: templates/Admin/CalendarEdit.tpl:20
+msgid "Allow Date input:"
+msgstr "Termine dürfe direkt eingetragen werden:"
+
+#: templates/Admin/CalendarEdit.tpl:24
+msgid "Template:"
+msgstr "Vorlage:"
+
+#: templates/Admin/CalendarEdit.tpl:32
+msgid ""
+"This Calendar inherits the dates of the following calendars. All dates of "
+"this calendar has the selected color. If no color is selected, the date "
+"keeps the former color."
+msgstr ""
+"Dieser Kalender übernimmt alle Termine aus den folgenden Kalendern. DIe "
+"Termine bekommen dann die unten ausgewälte Farbe. Wenn keine Farbe "
+"eingestellt wurde, behält der Termin die Farbe, die er bisher hatte."
+
+#: templates/Admin/CalendarEdit.tpl:34
+msgid "create new Heredity to"
+msgstr "neuen Kalender mit übernehmen"
+
+#: templates/Admin/CalendarEdit.tpl:93
+msgid "Every date is show by a color. This color can selected for every group."
+msgstr ""
+"Jeder Termin wird zusammen mit seiner Farbe angezeigt. Die Farbe kann für "
+"jede Gruppe neu gewählt werde."
+
+#: templates/Admin/CalendarEdit.tpl:96
+msgid "create color for group"
+msgstr "erstelle Farbe für Gruppe"
+
+#: templates/Admin/CalendarEdit.tpl:98
+msgid "no group selected"
+msgstr "keine Gruppe ausgewählt"
+
+#: templates/Admin/CalendarEdit.tpl:114
+msgid "Group"
+msgstr "Gruppe"
+
+#: templates/Admin/GeneralSettings.tpl:7
+msgid "Save Time (in days):"
+msgstr "Speicherzeit (in Tagen)"
+
+#: templates/Admin/GeneralSettings.tpl:11
+msgid ""
+"If you dont want users dont being administrators give dates extra colors "
+"delet this hook."
+msgstr ""
+"Wenn sie nicht wollen, dass Benutzer, die keine Administratorrechte haben, "
+"ihren Terminen extra Farben geben, entfernen Sie bitte den Haken."
+
+#: templates/Admin/GeneralSettings.tpl:12
+msgid "Allow extra colors for dates:"
+msgstr "Termine dürfen eigenen Farben haben:"
+
+#: templates/Admin/GeneralSettings.tpl:18
+msgid "Please insert in the following fields the name of the Profile- fields."
+msgstr ""
+"Bitte stellen SIe in den nächsten Feldern die Namen der Profile- Felder ein."
+
+#: templates/Admin/GeneralSettings.tpl:20
+msgid "Form of address:"
+msgstr "Andrede:"
+
+#: templates/Admin/GeneralSettings.tpl:24
+msgid "Surname:"
+msgstr "Nachname:"
+
+#: templates/Admin/GeneralSettings.tpl:28
+msgid "Frist name:"
+msgstr "Vorname:"
+
+#: templates/User/ShowDate.tpl:18
+msgid "Edit this date"
+msgstr "Diesen Termin bearbeiten"
+
+#: templates/User/ShowDate.tpl:29
+msgid "Contact Person:"
+msgstr "Kontaktperson:"
+
+#: templates/User/ShowDate.tpl:32
+msgid "Guests are welcome!"
+msgstr "Gäste sind willkommen!"
+
+#: templates/User/ShowDate.tpl:38
+msgid "This is a date of the group"
+msgstr "Dies ist ein Termin der Gruppe"
+
+#: templates/User/ShowDate.tpl:51
+msgid "Created on"
+msgstr "Erstellt am"
+
+#: templates/User/View.tpl:95
+msgid "My Calendar"
+msgstr "Mein Kalender"
+
+#: templates/User/View.tpl:101
+msgid "This calendar has this subcalendars:"
+msgstr "Dieser Kalender beinhaltet die folgenden Kalender:"
+
+#: templates/User/View.tpl:121
+msgid "Filter"
+msgstr "Filter"
+
+#: templates/User/View.tpl:122
+msgid "You can filter the dates below by groups."
+msgstr "Sie können sich nur Termine bestimmter Gruppen anzeigen lassen."
+
+#: templates/User/View.tpl:126
+msgid "select all"
+msgstr "Alle auswählen"
+
+#: templates/User/View.tpl:126
+msgid "select none"
+msgstr "Auswahl löschen"
+
+#: templates/User/View.tpl:130
+msgid "show Date belong to no group"
+msgstr "zeigt Termine, die keiner Gruppe zugeordnet sind"
+
+#: templates/User/View.tpl:147
+msgid "Apply"
+msgstr "Anwenden"
