@@ -146,7 +146,7 @@ class Almanach_Installer extends Zikula_AbstractInstaller
 		
 		try {
 			DoctrineHelper::createSchema($this->entityManager, array(
-				'Almanach_Entity_Data'
+				'Almanach_Entity_Date'
 			));
 		} catch (Exception $e) {
 			return LogUtil::registerError($e);
