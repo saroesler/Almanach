@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Almanach\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-24 19:45+0000\n"
-"PO-Revision-Date: 2016-02-24 21:23+0100\n"
+"POT-Creation-Date: 2016-02-24 20:32+0000\n"
+"PO-Revision-Date: 2016-02-24 22:02+0100\n"
 "Last-Translator: \n"
 "Language-Team: Sascha Rösler <i-loko@t-online.de>\n"
+"Language: Deutsch (DE)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.5.4\n"
-"Language: Deutsch (DE)\n"
 
 #: lib/Almanach/Handler/DateEdit.php:35
 #, php-format
@@ -155,9 +155,9 @@ msgstr "Gruppen"
 msgid "show the groups"
 msgstr "zeigt die Gruppen an"
 
-#: lib/Almanach/Api/Admin.php:41 templates/Admin/Calendar.tpl:1
-#: templates/Admin/DateEdit.tpl:118 templates/Admin/CalendarEdit.tpl:1
-#: templates/Admin/CalendarEdit.tpl:52
+#: lib/Almanach/Api/Admin.php:41 lib/Almanach/Api/Account.php:33
+#: templates/Admin/Calendar.tpl:1 templates/Admin/DateEdit.tpl:118
+#: templates/Admin/CalendarEdit.tpl:1 templates/Admin/CalendarEdit.tpl:52
 msgid "Calendar"
 msgstr "Kalender"
 
@@ -181,10 +181,6 @@ msgstr "Hr."
 #: lib/Almanach/Api/Admin.php:103
 msgid "Mrs."
 msgstr "Fr."
-
-#: lib/Almanach/Api/Account.php:33
-msgid "Kalender"
-msgstr ""
 
 #: lib/Almanach/Controller/User.php:23 lib/Almanach/Controller/User.php:28
 msgid "No valid calendar!"
@@ -229,12 +225,6 @@ msgid ""
 "Sie nutzen einen zu alten InternetExplorer ! ! !      Es wird bei der "
 "Eingabe von Daten und beim Drucken zu Fehlern kommen ! Nutzen Sie bitte "
 "allgemein ein anderes Programm (z.B. Firefox, Chrome oder Opera)."
-msgstr ""
-
-#: templates/Admin/Header.tpl:12
-msgid ""
-"Bitte benutzen Sie nicht den InternetExplorer! Dies kann zu Problemen beim "
-"Drucken führen!"
 msgstr ""
 
 #: templates/Admin/Main.tpl:1
@@ -402,9 +392,25 @@ msgstr "Termine dürfe direkt eingetragen werden:"
 msgid "Template:"
 msgstr "Vorlage:"
 
+#: templates/Admin/CalendarEdit.tpl:32
+msgid ""
+"This Calendar inherits the dates of the following calendars. All dates of "
+"this calendar has the selected color. If no color is selected, the date "
+"keeps the former color."
+msgstr ""
+"Dieser Kalender beinhaltet Termine aus den folgenden Kalendern. Alle Termine "
+"dieser Kalender werden mit den neuen Farben übernommen. Wenn keine Farbe "
+"ausgewählt wurde behalten die Termine ihre ursprünglichen Farben."
+
 #: templates/Admin/CalendarEdit.tpl:34
 msgid "create new Heredity to"
 msgstr "neuen Kalender mit übernehmen"
+
+#: templates/Admin/CalendarEdit.tpl:93
+msgid "Every date is show by a color. This color can selected for every group."
+msgstr ""
+"Jeder Termin wird mit einer Farbe angezeigt. Jede Gruppe kann für ihre "
+"Termine in diesem Kalender eine gesonderte Farbe bekommen."
 
 #: templates/Admin/CalendarEdit.tpl:96
 msgid "create color for group"
