@@ -17,7 +17,7 @@ class Almanach_Controller_User extends Zikula_AbstractController
     
     public function view()
     {
-    	$aid = FormUtil::getPassedValue('aid',0,'GET');
+    	$aid = FormUtil::getPassedValue('id',0,'GET');
     	
     	if($aid <= 0)
     		return $this->__("No valid calendar!");
@@ -36,44 +36,29 @@ class Almanach_Controller_User extends Zikula_AbstractController
     	
     	$subscribedDates = array();
     	
+    	$subscibeDates = $this->entityManager->getRepository('Almanach_Entity_SubscribeDate')->findBy(array('uid' => $uid));
     	foreach($subscibeDates as $subscibeDate){
     		$subscribedDates[$this->arrayHasDate($subscibeDate->getDid(), $myDates)] = 1;
     	}
     	
-    	
-    	foreach($myDates as $key => $myDate){    		
-    		//set admin
-    		if($myDate->getUid() == $uid 
-    		|| SecurityUtil::checkPermission('Almanach::Group', '::'. $myDate->getGid() , ACCESS_EDIT)
-    		|| $myDate->getVisibility() == 0) {
-    			continue;
-    		}
-    		
-    		//get all almanachs of this date:
-    		$thisalmanachs = $this->entityManager->getRepository('Almanach_Entity_AlmanachElement')->findBy(array('did' => $myDate->getDid()));
-    		
-    		$tmp = 0;
-    		foreach($thisalmanachs as $thisalmanach){
-    			if(SecurityUtil::checkPermission('Almanach::Almanach', '::'. $thisalmanach->getAid() , ACCESS_MODERATE) && $myDate->getVisibility() == 1){
-    				$tmp = 1;
-    				break;
-				}		
-    		}
-    		
-    		if($tmp)
-    			continue;
-    		
-    		unset($myDates[$key]);
-    	}
-    		
     	$adminDates = array();
+    	
+    	foreach($myDates as $key => $myDate){
+    		$permission = ModUtil::apiFunc('Almanach', 'Date', 'getDatePermission', $myDate->getDid()); 
+    		if(! $permission){
+    			unset($myDates[$key]);
+    			continue;
+    		}
+    		
+    		if($permission == 2)
+    			//get key by arrayHasDate
+    			$adminDates[$this->arrayHasDate($myDate->getDid(), $myDates)] = 1;
+    	}
+    	
     	$oldKey = -1;
     	
     	$now = new DateTime();
-    	/*
-    	* can edit this date, if date has uid, or user is member of the group
-    	* or user is calendar administrator
-    	*/
+    	
     	foreach($myDates as $myDate){
     		//set groupcolor if this date has no color:
     		if(strlen($myDate->getColor()) < 7 &&  $myDate->getGid() > 0){
@@ -83,23 +68,6 @@ class Almanach_Controller_User extends Zikula_AbstractController
     		
     		if($myDate->getEnddate() < $now)
     			$oldKey ++;
-    		
-    		//set admin
-    		if($myDate->getUid() == $uid ||
-    		SecurityUtil::checkPermission('Almanach::Group', '::'. $myDate->getGid() , ACCESS_EDIT)) {
-    			$adminDates[$this->arrayHasDate($myDate->getDid(), $myDates)] = 1;
-    			continue;
-    		}
-    		
-    		//get all almanachs of this date:
-    		$thisalmanachs = $this->entityManager->getRepository('Almanach_Entity_AlmanachElement')->findBy(array('did' => $myDate->getDid()));
-    		
-    		foreach($thisalmanachs as $thisalmanach){
-    			if(SecurityUtil::checkPermission('Almanach::Almanach', '::'. $thisalmanach->getAid() , ACCESS_ADD)){
-    				$adminDates[$this->arrayHasDate($myDate->getDid(), $myDates)] = 1;
-    				break;
-				}		
-    		}
     	}
     	
     	$isSubscribe = $this->entityManager->getRepository('Almanach_Entity_SubscribeAlmanach')->findBy(array('aid' => $aid, 'uid' => $uid));
@@ -108,16 +76,30 @@ class Almanach_Controller_User extends Zikula_AbstractController
     		$calendarSubscribtion = 0;
     	else
     		$calendarSubscribtion = 1;
+    		
+		$subalmanachs = ModUtil::apiFunc('Almanach', 'Heredity', 'getSubCalendar', $aid);
+		$groupreturn = ModUtil::apiFunc('Almanach', 'Heredity', 'getGroupsOfDates', $myDates);
     	
+    			
     	//get all keys, which dates are subscribed
-    	return $this->view
+    	$this->view
     		->assign('almanach', $almanach)
+    		->assign('subalmanachs', $subalmanachs)
+    		->assign('groups', $groupreturn['groups'])
+    		->assign('noGroup', $groupreturn['noGroup'])
     		->assign('calendarSubscribtion', $calendarSubscribtion)
     		->assign('myDates', $myDates)
     		->assign('subscribedDates', $subscribedDates)
     		->assign('adminDates', $adminDates)
-    		->assign('oldKey', $oldKey)
-    		->fetch('Admin/Main.tpl');
+    		->assign('oldKey', $oldKey);
+    		
+    	if($almanach->getTemplate() != '')
+			$tpl = file_exists(__DIR__."/../../../templates/".$almanach->getTemplate()) ? $almanach->getTemplate() : 'User/View.tpl';
+		else
+			$tpl = 'User/View.tpl';
+    		 
+    	return $this->view
+    		->fetch($tpl);
     }
     
     /*
@@ -130,5 +112,26 @@ class Almanach_Controller_User extends Zikula_AbstractController
     			return $key;
 		}
 		return false;
+    }
+    
+    public function showDate(){
+    	$did = FormUtil::getPassedValue('id',0,'GET');
+    	
+    	if($did <= 0)
+    		return $this->__("No valid date!");
+    		
+    	$date = $this->entityManager->find('Almanach_Entity_Date', $did);
+    	
+    	if(empty($date))
+    		return $this->__("No valid date!");
+    	
+    	$permission = ModUtil::apiFunc('Almanach', 'Date', 'getDatePermission', $did);
+    	if(! $permission)
+    		$this->throwForbiddenUnless(false);
+    		
+    	return $this->view
+    		->assign('date', $date)
+    		->assign('permission', $permission)
+    		->fetch("User/ShowDate.tpl");
     }
 }

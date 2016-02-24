@@ -89,7 +89,7 @@
 				{/if}
 			</div>
 			<div>
-				<a style="font-size:20px;">{$almanach->getName()}</a>
+				<a href="{modurl modname=Almanach type=user func=view id=$almanach->getAid()}" style="font-size:20px;">{$almanach->getName()}</a>
 			</div>
 			<div style="clear:both;"></div>
 		</div>
@@ -153,7 +153,7 @@
 			</div>
 			<div style="clear:both;"></div>
 			<div>
-				<a class="dateTitle">{$myDate->getTitle()} </a> <br/>
+				<a href="{modurl modname=Almanach type=user func=showDate id=$myDate->getDid()}" class="dateTitle">{$myDate->getTitle()} </a> <br/>
 				<a class="dateDescription">{$myDate->getDescription()} </a>
 			</div>
 		</div>

@@ -237,6 +237,16 @@ class Almanach_Entity_Date extends Zikula_EntityAccess
         return $this->gid;
     }
     
+    public function getGroupName()
+    {
+        return ModUtil::apiFunc('Almanach', 'Admin', 'getGroupName', array('gid' => $this->gid));
+    }
+    
+    public function getGroupColor()
+    {
+        return ModUtil::apiFunc('Almanach', 'Admin', 'getGroupColor', array('gid' => $this->gid));
+    }
+    
     public function setGid($gid)
     {
         $this->gid = $gid;

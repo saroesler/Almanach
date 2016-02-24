@@ -32,19 +32,12 @@ class Almanach_Handler_DateEdit extends Zikula_Form_AbstractHandler
             $date = $this->entityManager->find('Almanach_Entity_Date', $did);
 
             if (!$date) {
-                return LogUtil::registerError($this->__f('Date with id %s not found', $did));
+                return LogUtil::registerError($this->__f('Date with id %s not found', array($did)));
             }
             
-            if($date->getGid() > 0){
-		        if(!(SecurityUtil::checkPermission('Almanach::Group', '::'. $date->getGid() , ACCESS_EDIT) || $date->getUid() == SessionUtil::getVar('uid') )) {
-		        	LogUtil::RegisterError($this->__("You cant edit this date."));
+            if(ModUtil::apiFunc('Almanach', 'Date', 'getDatePermission', $date->getDid()) < 2 ){
+		        LogUtil::RegisterError($this->__("You cant edit this date."));
 		        	return false;
-		        }
-	        }
-	        
-	        if(!($date->getUid() == SessionUtil::getVar('uid') )) {
-	        	LogUtil::RegisterError($this->__("You cant edit this date."));
-	        	return false;
 	        }
             
 			$connections = $this->entityManager->getRepository('Almanach_Entity_AlmanachElement')->findBy(array('did'=>$did));
@@ -182,7 +175,7 @@ class Almanach_Handler_DateEdit extends Zikula_Form_AbstractHandler
         $connections = $this->entityManager->getRepository('Almanach_Entity_AlmanachElement')->findBy(array('did'=>$did));
         foreach($connections as $key => $item){
         	if (!SecurityUtil::checkPermission('Almanach::Almanach', '::'. $item->getAid() , ACCESS_EDIT)) {
-        		LogUtil::RegisterError($this->__("You dont have the permission to edit the connection to the calendar %s." , array($item->getAlmanachName())));
+        		LogUtil::RegisterError($this->__f("You dont have the permission to edit the connection to the calendar %s." , array($item->getAlmanachName())));
         		continue;
         	}
         	
@@ -191,13 +184,15 @@ class Almanach_Handler_DateEdit extends Zikula_Form_AbstractHandler
         	if($deleted){
         		$this->entityManager->remove($item);
 				$this->entityManager->flush();
-				LogUtil::RegisterStatus($this->__("Date sucessfully deleted of calendar %s." , array($item->getAlmanachName())));
+				LogUtil::RegisterStatus($this->__f("Date sucessfully deleted of calendar %s." , array($item->getAlmanachName())));
         	} elseif($myColor != $item->getColor()){
         		if($this->getVar('AllowDateColloring') || SecurityUtil::checkPermission('Almanach::', '::' , ACCESS_ADMIN))
 		    		$item->setColor($myColor);
 		    	$this->entityManager->persist($item);
 				$this->entityManager->flush();
-				LogUtil::RegisterStatus($this->__("Date sucessfully edited in calendar %s.", array($item->getAlmanachName())));
+				LogUtil::RegisterStatus($this->__f("Date sucessfully edited in calendar %s.", array($item->getAlmanachName())));
+				echo $item->getAlmanachName();
+				//die();
 			}
         }
         

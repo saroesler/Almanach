@@ -117,4 +117,62 @@ class Almanach_Api_Heredity extends Zikula_AbstractApi
 		
 		return $almanachs;
 	}
+	
+	/*
+	* This function returns an array of all subalmanachs
+	* @param: aid: id of the almanach witch is searched
+	* @return: array of all almanachs
+	*/
+	public function getSubCalendar($aid){
+		$almanachs = array();
+		
+		$heredities = $this->entityManager->getRepository('Almanach_Entity_Heredity')->findBy(array('paid'=>$aid));
+		foreach($heredities as $heredity){
+			
+			$almanachs[] = $this->entityManager->find('Almanach_Entity_Almanach', $heredity->getCaid());
+		}
+		
+		return $almanachs;
+	}
+	
+	/*
+	* This function returns an array of all groups which has dates in the array
+	* @param: dates: array of datse
+	* @return: array of all groups
+	*/
+	public function getGroupsOfDates($dates){
+		$groups = array();
+		$noGroup = false;
+		
+		
+		foreach($dates as $date){
+		
+			if($date->getGid() > 0){
+				if($this->arrayHasGroup($date->getGid(), $groups) == 0)
+					$groups[] = $this->entityManager->find('Almanach_Entity_Group', $date->getGid());
+			} else
+				$noGroup = true;
+		}
+		
+		usort($groups, array("Almanach_Api_Heredity", "groupCmp"));
+		
+		return array('groups' => $groups, 'noGroup' => $noGroup);
+	}
+	
+	/*
+    * This function searches an array, if there is a date
+    *  with a given did.
+    */
+    protected function arrayHasGroup($gid, $groups){
+    	foreach($groups as $key => $group){
+    		if($group->getGid() == $gid)
+    			return $key;
+		}
+		return false;
+    }
+    
+    public function groupCmp($a, $b)
+	{
+		return ($a->getName() < $b->getName()) ? -1: 1;
+	}
 }

@@ -63,40 +63,25 @@ class Almanach_Controller_Admin extends Zikula_AbstractController
     		$subscribedDates[$this->arrayHasDate($subscibeDate->getDid(), $myDates)] = 1;
     	}
     	
+    	$adminDates = array();
     	
-    	foreach($myDates as $key => $myDate){    		
-    		//set admin
-    		if($myDate->getUid() == $uid 
-    		|| SecurityUtil::checkPermission('Almanach::Group', '::'. $myDate->getGid() , ACCESS_EDIT)
-    		|| $myDate->getVisibility() == 0) {
+    	foreach($myDates as $key => $myDate){
+    		$permission = ModUtil::apiFunc('Almanach', 'Date', 'getDatePermission', $myDate->getDid()); 
+    		if(! $permission){
+    			unset($myDates[$key]);
     			continue;
     		}
     		
-    		//get all almanachs of this date:
-    		$thisalmanachs = $this->entityManager->getRepository('Almanach_Entity_AlmanachElement')->findBy(array('did' => $myDate->getDid()));
-    		
-    		$tmp = 0;
-    		foreach($thisalmanachs as $thisalmanach){
-    			if(SecurityUtil::checkPermission('Almanach::Almanach', '::'. $thisalmanach->getAid() , ACCESS_MODERATE) && $myDate->getVisibility() == 1){
-    				$tmp = 1;
-    				break;
-				}		
-    		}
-    		
-    		if($tmp)
-    			continue;
-    		
-    		unset($myDates[$key]);
+    		if($permission == 2)
+    			//get key by arrayHasDate
+    			$adminDates[$this->arrayHasDate($myDate->getDid(), $myDates)] = 1;
     	}
     		
-    	$adminDates = array();
+    	
     	$oldKey = -1;
     	
     	$now = new DateTime();
-    	/*
-    	* can edit this date, if date has uid, or user is member of the group
-    	* or user is calendar administrator
-    	*/
+    	
     	foreach($myDates as $myDate){
     		//set groupcolor if this date has no color:
     		if(strlen($myDate->getColor()) < 7 &&  $myDate->getGid() > 0){
@@ -106,23 +91,6 @@ class Almanach_Controller_Admin extends Zikula_AbstractController
     		
     		if($myDate->getEnddate() < $now)
     			$oldKey ++;
-    		
-    		//set admin
-    		if($myDate->getUid() == $uid ||
-    		SecurityUtil::checkPermission('Almanach::Group', '::'. $myDate->getGid() , ACCESS_EDIT)) {
-    			$adminDates[$this->arrayHasDate($myDate->getDid(), $myDates)] = 1;
-    			continue;
-    		}
-    		
-    		//get all almanachs of this date:
-    		$thisalmanachs = $this->entityManager->getRepository('Almanach_Entity_AlmanachElement')->findBy(array('did' => $myDate->getDid()));
-    		
-    		foreach($thisalmanachs as $thisalmanach){
-    			if(SecurityUtil::checkPermission('Almanach::Almanach', '::'. $thisalmanach->getAid() , ACCESS_ADD)){
-    				$adminDates[$this->arrayHasDate($myDate->getDid(), $myDates)] = 1;
-    				break;
-				}		
-    		}
     	}
     	
     	//get all keys, which dates are subscribed

@@ -88,12 +88,12 @@ function deleteDate(did)
 }
 
 function showOldDates(){
-	var elements = document.getElementsByClassName('oldDate');
-	while(elements.length > 0) {
+	var elements = Array.prototype.slice.call(document.getElementsByClassName('oldDate'));
+	//while(elements.length > 0) {
 		for(var i = 0; i < elements.length; i ++){
 			elements[i].className = elements[i].className.replace('oldDate', "shownOldDate");
 		}
-	}
+	//}
 	document.getElementById("showOld").style.display = 'none';
 	document.getElementById("hideOld").style.display = 'block';
 }

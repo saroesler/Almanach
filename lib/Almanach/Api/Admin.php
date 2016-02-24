@@ -76,6 +76,12 @@ class Almanach_Api_Admin extends Zikula_AbstractApi
 		return $group->getName();
 	}
 	
+	public function getGroupColor($args)
+	{
+		$group = $this->entityManager->find('Almanach_Entity_Group', $args['gid']);
+		return $group->getColor();
+	}
+	
 	/*
 	* This function tests, if there is a overlapping of this date to an other one
 	* which entered in one calendar witch herits. It tested the given calendar, too.
