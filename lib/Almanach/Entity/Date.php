@@ -99,6 +99,9 @@ class Almanach_Entity_Date extends Zikula_EntityAccess
      */
     private $creationdate;
     
+    //no database field:
+    private $nextAlmanach;
+    
     public function getDid()
     {
         return $this->did;
@@ -387,6 +390,16 @@ class Almanach_Entity_Date extends Zikula_EntityAccess
 	    else{
 	    	return null;
 	    }
+    }
+    
+    public function getNextAlmanach()
+    {
+        return $this->nextAlmanach;
+    }
+
+    public function setNextAlmanach($nextAlmanach)
+    {
+   		$this->nextAlmanach = $nextAlmanach;
     }
     
     public function __clone(){}

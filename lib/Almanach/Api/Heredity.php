@@ -57,7 +57,12 @@ class Almanach_Api_Heredity extends Zikula_AbstractApi
 			foreach($dateList as $dateElement){
 				if($this->arrayHasDate($dateElement->getDid(), $myDates))
 					continue;
-				$thisdate =  clone $this->entityManager->find('Almanach_Entity_Date', $dateElement->getDid());				
+				$thisdate =  clone $this->entityManager->find('Almanach_Entity_Date', $dateElement->getDid());
+				
+				if($almanach->getAid() != $aid)
+					$thisdate->setNextAlmanach($almanach->getAid());
+				else
+					$thisdate->setNextAlmanach(0);
 				
 				//set groupcolor of this almanach
 				if($thisdate->getGid() > 0){

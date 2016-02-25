@@ -212,7 +212,13 @@
 			</div>
 			<div style="clear:both;"></div>
 			<div>
-				<a href="{modurl modname=Almanach type=user func=showDate id=$myDate->getDid()}" class="dateTitle">{$myDate->getTitle()} </a> <br/>
+				<a 
+					{if $myDate->getNextAlmanach() > 0}
+						href="{modurl modname=Almanach type=user func=view id=$myDate->getNextAlmanach()}"}
+					{else}
+						href="{modurl modname=Almanach type=user func=showDate id=$myDate->getDid()}"
+					{/if} 
+					class="dateTitle">{$myDate->getTitle()} </a> <br/>
 				<a class="dateDescription">{$myDate->getDescription()} </a>
 			</div>
 		</div>
