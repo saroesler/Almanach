@@ -37,18 +37,103 @@ function groupSave()
 				if(returns['text']!="")
 					alert(returns['text']);
 				if(returns['ok']==1)
-				{
-					table = document.getElementById('grouplist').innerHTML;
+				{				
+					var table = document.getElementById("grouplist");
 					
-					document.getElementById('grouplist').innerHTML = "";
-					str = table.substr(0, table.lastIndexOf("<tr>"));
-					document.getElementById('grouplist').innerHTML = str.concat(returns['newGroup'], table.substr(table.lastIndexOf("<tr>"), table.length));
+					var newRow = table.insertRow(table.rows.length -1);
+					newRow.id = "Group" + returns['gid'];
+					
+					// Insert new cells (<td> elements) at the 1st and 2nd position of the "new" <tr> element:
+					var cell1 = newRow.insertCell(0);
+					cell1.innerHTML = returns['gid'];
+					
+					var cell2 = newRow.insertCell(1);
+					var groupNames = document.createElement("span");
+					groupNames.id = "nameview" + returns['gid'];
+					groupNames.innerHTML = returns['name'];
+					
+					var nameInput = document.createElement("input");
+					nameInput.type = "text";
+					nameInput.id = "name" + returns['gid'];
+					nameInput.setAttribute("name", "name" + returns['gid']);
+					nameInput.maxLength = 200;
+					nameInput.style.display = 'none';
+					
+					cell2.appendChild(nameInput);	
+					cell2.appendChild(groupNames);
+					
+					var cell3 = newRow.insertCell(2);
+					
+					//third cell chooses the color
+					var div = document.createElement("div");
+					div.className = "z-formrow";
+					
+					var subdiv = document.createElement("div");
+					subdiv.id = "colorview" + returns['gid'];
+					subdiv.style.backgroundColor = returns['color'];
+					subdiv.style.padding = '5px';
+					
+					var colortext = document.createElement("p");
+					colortext.innerHTML = returns['color'];
+					
+					subdiv.appendChild(colortext);
+					div.appendChild(subdiv);
+					
+					var colorinput = document.createElement("input");
+					colorinput.type = "text";
+					colorinput.id = "GroupColorinput" + returns['gid'];
+					colorinput.setAttribute("name", "GroupColorinput" + returns['gid']);
+					colorinput.className = "colorpicker";
+					colorinput.size = 7;
+					colorinput.maxLength = 7;
+					colorinput.style.display = 'none';
+					
+					div.appendChild(colorinput);
+					
+					cell3.appendChild(div);
+
 					colorpickerPicky[returns['gid']] = new PickyColor({
 								field: 'GroupColorinput' + returns['gid'],
 								color: returns['color'],
 								colorWell: 'GroupColorinput'  + returns['gid'],
 								closeText: "Schließen",
 							});
+					
+					var cell4 = newRow.insertCell(3);
+					
+					//third cell chooses the color
+					var editButton = document.createElement("a");
+					editButton.id = "editStart" +  returns['gid'];
+					editButton.className = "z-button";
+					editButton.innerHTML = document.getElementById('editImg').innerHTML;
+					editButton.onclick = function() { groupEditStart( returns['gid']); }
+					
+					var editSaveButton = document.createElement("a");
+					editSaveButton.id = "editSave" +  returns['gid'];
+					editSaveButton.className = "z-button";
+					editSaveButton.style.display = 'none';
+					editSaveButton.innerHTML = document.getElementById('saveImg').innerHTML;
+					editSaveButton.onclick = function() { groupEditSave( returns['gid']); }
+					
+					var editCancelButton = document.createElement("a");
+					editCancelButton.id = "editCancel" +  returns['gid'];
+					editCancelButton.className = "z-button";
+					editCancelButton.style.display = 'none';
+					editCancelButton.innerHTML = document.getElementById('cancelImg').innerHTML;
+					editCancelButton.onclick = function() { groupEditCancel( returns['gid']); }
+					
+					var editDeleteButton = document.createElement("a");
+					editDeleteButton.id = "delete" +  returns['gid'];
+					editDeleteButton.className = "z-button";
+					editDeleteButton.innerHTML = document.getElementById('deleteImg').innerHTML;
+					editDeleteButton.onclick = function() { groupDelete( returns['gid']); }
+					
+					
+					cell4.appendChild(editButton);
+					cell4.appendChild(editSaveButton);
+					cell4.appendChild(editCancelButton);
+					cell4.appendChild(editDeleteButton);
+					
 					groupClear();
 				}
 			}
@@ -60,7 +145,7 @@ function groupClear()
 {
 	document.getElementById('name').value = "";
 	document.getElementById('newGroupColor').value = "#";
-	newGroupColorPicky.updateHex('FFFFFF');
+	newGroupColorPicky.updateHex('000000');
 }
 
 function groupEditStart(id){

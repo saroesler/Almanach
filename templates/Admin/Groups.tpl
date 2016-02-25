@@ -81,4 +81,9 @@
 	</table>
 </div>
 	
+<p id="editImg" style="display:none;">{img src='xedit.png' modname='core' set='icons/extrasmall'}</p>
+<p id="saveImg" style="display:none;">{img src='button_ok.png' modname='core' set='icons/extrasmall'}</p>
+<p id="cancelImg" style="display:none;">{img src='button_cancel.png' modname='core' set='icons/extrasmall'}</p>
+<p id="deleteImg" style="display:none;">{img src='14_layer_deletelayer.png' modname='core' set='icons/extrasmall'}</p>
+
 {include file='Admin/Footer.tpl'}

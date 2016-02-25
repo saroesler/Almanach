@@ -38,11 +38,8 @@ class Almanach_Controller_Ajax extends Zikula_AbstractController
 		$result['ok'] = $ok;
 		$result['text'] = $text;
 		$result['gid'] = $group->getGid();
+		$result['name'] = $group->getName();
 		$result['color'] = $group->getColor();
-
-    	$result["newGroup"] = $this->view
-    		->assign('group', $group)
-    		->fetch('Ajax/newGroupEntity.tpl');
     	
 		return new Zikula_Response_Ajax($result);
 	}
