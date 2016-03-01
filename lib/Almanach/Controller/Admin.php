@@ -17,6 +17,41 @@ class Almanach_Controller_Admin extends Zikula_AbstractController
     	$uid = SessionUtil::getVar('uid');
     	$this->throwForbiddenUnless(SecurityUtil::checkPermission('Almanach::', '::', ACCESS_COMMENT));
     	
+    	
+    	/*
+    	* Delete old Dates
+    	*/
+    	$cutdate = new \Datetime();
+    	$cutdate->sub(new DateInterval('P' . ($this->getVar('Savetime')) . 'D'));
+    	
+    	$em = $this->getService('doctrine.entitymanager');
+		$qb = $em->createQueryBuilder();
+		$qb->select('p')
+		   ->from('Almanach_Entity_Date', 'p')
+		   ->where('p.enddate <= :date')
+		   ->setParameter('date', $cutdate->format('Y-m-d H:i'));
+		$dates = $qb->getQuery()->getArrayResult();
+		
+		foreach($dates as $tmpdate){
+			$did = $tmpdate['did'];
+			$thisalmanachs = $this->entityManager->getRepository('Almanach_Entity_AlmanachElement')->findBy(array('did' => $did));
+			//delete this date from all almanachs:
+			foreach($thisalmanachs as $thisalmanach){
+				$this->entityManager->remove($thisalmanach);
+				$this->entityManager->flush();
+			}
+		
+			//delete this date from all subscribtions:
+			$subscribtions = $this->entityManager->getRepository('Almanach_Entity_SubscribeDate')->findBy(array('did' => $did));
+			foreach($subscribtions as $subscribtion){
+				$this->entityManager->remove($subscribtion);
+				$this->entityManager->flush();
+			}
+			$date = $this->entityManager->find('Almanach_Entity_Date', $did);
+			$this->entityManager->remove($date);
+			$this->entityManager->flush();
+		}
+    	
     	/**
     	* This creates the mainpage, witch shows:
     	* - personal dates
