@@ -4,9 +4,9 @@
 {pageaddvar name="stylesheet" value="javascript/picky_color/picky_color.css"}
 {pageaddvar name="javascript" value="jquery-ui"}
 {pageaddvar name="javascript" value="javascript/jquery-ui/i18n/jquery.ui.datepicker-de.js"}
-{pageaddvar name="javascript" value="javascript/jquery-plugins/jQuery-Timepicker-Addon/jquery-ui-timepicker-addon.js"}
-{pageaddvar name="stylesheet" value="javascript/jquery-plugins/jQuery-Timepicker-Addon/jquery-ui-timepicker-addon.css"}
-{pageaddvar name="javascript" value="javascript/jquery-plugins/jQuery-Timepicker-Addon/localization/jquery-ui-timepicker-de.js"}
+{pageaddvar name="javascript" value="modules/Almanach/javascript/datetimepicker/jquery-ui-timepicker-addon.js"}
+{pageaddvar name="stylesheet" value="modules/Almanach/javascript/datetimepicker/jquery-ui-timepicker-addon.css"}
+{pageaddvar name="javascript" value="modules/Almanach/javascript/datetimepicker/jquery-ui-timepicker-de.js"}
 {pageaddvar name="stylesheet" value="javascript/jquery-ui/themes/base/jquery-ui.css"}
 
 <script language="javaScript">
