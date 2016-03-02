@@ -10,23 +10,83 @@
 {pageaddvar name="stylesheet" value="javascript/jquery-ui/themes/base/jquery-ui.css"}
 
 <script language="javaScript">
-function id_datepicker(id)
-{
-	jQuery( "#"+id ).datetimepicker();
-	jQuery( "#"+id ).datetimepicker({
-                dateFormat: "dd.mm.yy",
-                timeFormat: 'HH:mm',
-                altFormat: "dd/mm/yy",
-                altTimeFormat: "HH:mm",
-                showButtonPanel: true,
-            });
-	
-	var value= (document.getElementById(id).value);
-	jQuery( "#"+id ).datetimepicker('setDate', parseDate(value));
+/*
+* (C) by Eventmanager
+*/
+function setMinDate($start, $end) {
+    var date = $start.datetimepicker('getDate');
+    if (date === null) {
+        return;
+    }
+    $end.datetimepicker( "option", "minDateTime", date);
+    $end.datetimepicker( "option", "minDate", date);
 }
+
+function setMaxDate($start, $end) {
+    var date = $end.datetimepicker('getDate');
+    if (date === null) {
+        return;
+    }
+    $start.datetimepicker( "option", "maxDateTime", date);
+    $start.datetimepicker( "option", "maxDate", date);
+}
+        
 jQuery(function() {
-	id_datepicker("startdate");
-	id_datepicker("enddate");
+	var parseDate = function (date) {
+        var tmp = date.split(' ');
+        date = tmp[0].split('.');
+        var time = tmp[1].split(':');
+        return new Date(date[2], date[1]-1, date[0], time[0], time[1]);
+    };
+            
+    var $start = jQuery( "#startdate");
+    var $end = jQuery( "#enddate");
+	var valuestart = (document.getElementById('startdate').value);
+	$start.datetimepicker({
+        dateFormat: "dd.mm.yy",
+        timeFormat: 'HH:mm',
+        showButtonPanel: true,
+        onClose: function(dateText, inst) {
+            setMinDate($start, $end);
+            if ($start.val() != '') {
+                var testStartDate = $start.datetimepicker('getDate');
+                var testEndDate = $end.datetimepicker('getDate');
+                if (testEndDate !== null && testStartDate > testEndDate)
+                    $start.datetimepicker('setDate', testEndDate);
+            } 
+        },
+        onSelect: function( selectedDate ) {
+            setMinDate($start, $end);
+        }
+    });
+    
+    if(valuestart != "")
+		jQuery( "#startdate" ).datetimepicker('setDate', parseDate(valuestart));
+	
+	var valueEnd = (document.getElementById('enddate').value);
+	$end.datetimepicker({
+        dateFormat: "dd.mm.yy",
+        timeFormat: 'HH:mm',
+        showButtonPanel: true,
+        onClose: function(dateText, inst) {
+            setMaxDate($start, $end);
+            if ($start.val() != '') {
+                var testStartDate = $start.datetimepicker('getDate');
+                var testEndDate = $end.datetimepicker('getDate');
+                if (testEndDate !== null && testStartDate > testEndDate)
+                    $start.datetimepicker('setDate', testEndDate);
+            }
+        },
+        onSelect: function( selectedDate ) {
+            setMaxDate($start, $end);
+        }
+    });
+    
+	if(valueEnd != "")
+		jQuery( "#enddate" ).datetimepicker('setDate', parseDate(valueEnd));
+	
+	setMinDate($start, $end);
+	setMaxDate($start, $end);
 });
 </script>
 <input id="did" style="display:none" value="{$date->getDid()}">
