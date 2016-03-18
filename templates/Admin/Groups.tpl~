@@ -8,7 +8,7 @@
 </script>
 
 <div class="z-informationmsg">
-	<p>{gt text="Groups are the smalest entity. You can connect every date with a group. In the calendar you can filter the dates by its groups. Each group get a color. All dates of this group is shown by this color, if neigther there is no special color for this date nor a color of the calendar. You can set a new color of the group by every calendar. User can get the permission to create dates of a group. This musst be set by Zikula- permissionrules. You can use groups to categorisize the dates."}</p>
+	<p>{gt text="Groups are the smalest entity. You can connect every date with a group. In the calendar you can filter the dates by its groups. Each group get a color. All dates of this group is shown by this color, if neigther there is no special color for this date nor a color of the calendar. You can set a new color of the group by every calendar. User can get the permission to create dates of a group. This musst be set by Zikula- permissionrules."}</p>
 </div>
 <div id="grouplistcontainer">
 	<table class="z-datatable" id="grouplist">

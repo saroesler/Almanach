@@ -156,9 +156,6 @@ jQuery(function() {
    <br/><br/>
    This Date is inputed in following calendars.<br/><br/>
    
-	<div class="z-informationmsg">
-		<p>{gt text="You get a warning, if there is an other date on the same time in one of this calendars. If this is an calendar dont allowing overlapping you cant insert the date into it. You will get an error- message."}</p>
-	</div>
    <input type="text" style="display:none;" value="0" id="newCalendarsNum" name="newCalendarsNum"/>
    <a onclick="calendarInput()">{gt text="Input this Date into "}</a>
    <select name="calendarSelection" id="calendarSelection"> 

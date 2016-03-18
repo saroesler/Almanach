@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: Almanach\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-02-24 20:32+0000\n"
-"PO-Revision-Date: 2016-02-24 22:02+0100\n"
-"Last-Translator: \n"
+"PO-Revision-Date: 2016-03-18 11:48+0100\n"
+"Last-Translator: Sascha Rösler <i-loko@t-online.de>\n"
 "Language-Team: Sascha Rösler <i-loko@t-online.de>\n"
 "Language: Deutsch (DE)\n"
 "MIME-Version: 1.0\n"
@@ -28,7 +28,7 @@ msgstr "Sie können diesen Termin nicht bearbeiten."
 
 #: lib/Almanach/Handler/DateEdit.php:75
 msgid "No Group"
-msgstr "Keine  Gruppe"
+msgstr "Keine Gruppe"
 
 #: lib/Almanach/Handler/DateEdit.php:91
 msgid "public: This Date can be seen by everyone."
