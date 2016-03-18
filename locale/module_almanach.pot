@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Zikula 1.x\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-24 20:32+0000\n"
+"POT-Creation-Date: 2016-03-18 11:13+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -142,8 +142,8 @@ msgid "show the groups"
 msgstr ""
 
 #: lib/Almanach/Api/Admin.php:41 lib/Almanach/Api/Account.php:33
-#: templates/Admin/Calendar.tpl:1 templates/Admin/DateEdit.tpl:118
-#: templates/Admin/CalendarEdit.tpl:1 templates/Admin/CalendarEdit.tpl:52
+#: templates/Admin/Calendar.tpl:1 templates/Admin/DateEdit.tpl:173
+#: templates/Admin/CalendarEdit.tpl:1 templates/Admin/CalendarEdit.tpl:61
 msgid "Calendar"
 msgstr ""
 
@@ -176,7 +176,7 @@ msgstr ""
 msgid "No valid date!"
 msgstr ""
 
-#: lib/Almanach/Controller/Ajax.php:24 lib/Almanach/Controller/Ajax.php:97
+#: lib/Almanach/Controller/Ajax.php:24 lib/Almanach/Controller/Ajax.php:94
 msgid "There is no valid name!"
 msgstr ""
 
@@ -184,25 +184,25 @@ msgstr ""
 msgid "Group has been added successfully."
 msgstr ""
 
-#: lib/Almanach/Controller/Ajax.php:58 lib/Almanach/Controller/Ajax.php:125
-#: lib/Almanach/Controller/Ajax.php:272
+#: lib/Almanach/Controller/Ajax.php:55 lib/Almanach/Controller/Ajax.php:122
+#: lib/Almanach/Controller/Ajax.php:269
 msgid "missing $id"
 msgstr ""
 
-#: lib/Almanach/Controller/Ajax.php:77
+#: lib/Almanach/Controller/Ajax.php:74
 msgid "Group has been removed successfully."
 msgstr ""
 
-#: lib/Almanach/Controller/Ajax.php:99 lib/Almanach/Controller/Ajax.php:180
-#: lib/Almanach/Controller/Ajax.php:212 lib/Almanach/Controller/Ajax.php:245
+#: lib/Almanach/Controller/Ajax.php:96 lib/Almanach/Controller/Ajax.php:177
+#: lib/Almanach/Controller/Ajax.php:209 lib/Almanach/Controller/Ajax.php:242
 msgid "There is no valid id!"
 msgstr ""
 
-#: lib/Almanach/Controller/Ajax.php:162
+#: lib/Almanach/Controller/Ajax.php:159
 msgid "Almanach has been removed successfully."
 msgstr ""
 
-#: lib/Almanach/Controller/Ajax.php:310
+#: lib/Almanach/Controller/Ajax.php:307
 msgid "Date has been removed successfully."
 msgstr ""
 
@@ -270,32 +270,56 @@ msgid "Location"
 msgstr ""
 
 #: templates/Admin/Main.tpl:155 templates/Admin/Main.tpl:158
-#: templates/User/View.tpl:212 templates/User/View.tpl:215
+#: templates/User/View.tpl:218 templates/User/View.tpl:221
 msgid "There are no dates!"
 msgstr ""
 
-#: templates/Admin/Groups.tpl:13 templates/Admin/Calendar.tpl:11
-#: templates/Admin/DateEdit.tpl:117 templates/Admin/CalendarEdit.tpl:51
-#: templates/Admin/CalendarEdit.tpl:113
+#: templates/Admin/Groups.tpl:11
+msgid ""
+"Groups are the smalest entity. You can connect every date with a group. In "
+"the calendar you can filter the dates by its groups. Each group get a color. "
+"All dates of this group is shown by this color, if neigther there is no "
+"special color for this date nor a color of the calendar. You can set a new "
+"color of the group by every calendar. User can get the permission to create "
+"dates of a group. This musst be set by Zikula- permissionrules. You can use "
+"groups to categorisize the dates."
+msgstr ""
+
+#: templates/Admin/Groups.tpl:17 templates/Admin/Calendar.tpl:16
+#: templates/Admin/DateEdit.tpl:172 templates/Admin/CalendarEdit.tpl:60
+#: templates/Admin/CalendarEdit.tpl:122
 msgid "Id"
 msgstr ""
 
-#: templates/Admin/Groups.tpl:14 templates/Admin/Calendar.tpl:12
+#: templates/Admin/Groups.tpl:18 templates/Admin/Calendar.tpl:17
 msgid "Name"
 msgstr ""
 
-#: templates/Admin/Groups.tpl:15 templates/Admin/DateEdit.tpl:121
-#: templates/Admin/CalendarEdit.tpl:53 templates/Admin/CalendarEdit.tpl:115
+#: templates/Admin/Groups.tpl:19 templates/Admin/DateEdit.tpl:176
+#: templates/Admin/CalendarEdit.tpl:62 templates/Admin/CalendarEdit.tpl:124
 msgid "Color"
 msgstr ""
 
-#: templates/Admin/Groups.tpl:40 templates/Admin/Groups.tpl:68
-#: templates/Admin/DateEdit.tpl:74 templates/Admin/DateEdit.tpl:143
-#: templates/Admin/CalendarEdit.tpl:72 templates/Admin/CalendarEdit.tpl:134
+#: templates/Admin/Groups.tpl:44 templates/Admin/Groups.tpl:72
+#: templates/Admin/DateEdit.tpl:126 templates/Admin/DateEdit.tpl:198
+#: templates/Admin/CalendarEdit.tpl:81 templates/Admin/CalendarEdit.tpl:143
 msgid "Close"
 msgstr ""
 
-#: templates/Admin/Calendar.tpl:4
+#: templates/Admin/Calendar.tpl:5
+msgid ""
+"The dates are shown by calendars. Each date can be entered into multiple "
+"calendars. You can set special colors for each roup. If there is no special "
+"color of the date it is shown by this color. If no color is selected for a "
+"group they get the color given to the group generaly. Registrated user can "
+"subscribe calendars and its dates. User can get the permission to enter "
+"dates into a calendar. You can set user to administrate a calendar, too. "
+"This musst be set by Zikula- permissionrules. A calendar can input other "
+"calendars, if it is not already part of them. The dates of this calendar can "
+"be shown by an extra color."
+msgstr ""
+
+#: templates/Admin/Calendar.tpl:9
 msgid "create new Calendar"
 msgstr ""
 
@@ -303,61 +327,68 @@ msgstr ""
 msgid "Date"
 msgstr ""
 
-#: templates/Admin/DateEdit.tpl:39
+#: templates/Admin/DateEdit.tpl:91
 msgid "Begin:"
 msgstr ""
 
-#: templates/Admin/DateEdit.tpl:43
+#: templates/Admin/DateEdit.tpl:95
 msgid "End:"
 msgstr ""
 
-#: templates/Admin/DateEdit.tpl:47
+#: templates/Admin/DateEdit.tpl:99
 msgid "Title:"
 msgstr ""
 
-#: templates/Admin/DateEdit.tpl:51 templates/User/ShowDate.tpl:28
+#: templates/Admin/DateEdit.tpl:103 templates/User/ShowDate.tpl:28
 msgid "Location:"
 msgstr ""
 
-#: templates/Admin/DateEdit.tpl:55
+#: templates/Admin/DateEdit.tpl:107
 msgid "Description:"
 msgstr ""
 
-#: templates/Admin/DateEdit.tpl:59
+#: templates/Admin/DateEdit.tpl:111
 msgid "Group:"
 msgstr ""
 
-#: templates/Admin/DateEdit.tpl:64
+#: templates/Admin/DateEdit.tpl:116
 msgid "Color:"
 msgstr ""
 
-#: templates/Admin/DateEdit.tpl:81
+#: templates/Admin/DateEdit.tpl:133
 msgid "Visibility:"
 msgstr ""
 
-#: templates/Admin/DateEdit.tpl:85
+#: templates/Admin/DateEdit.tpl:137
 msgid "Guests are welcome:"
 msgstr ""
 
-#: templates/Admin/DateEdit.tpl:90
+#: templates/Admin/DateEdit.tpl:142
 #, php-format
 msgid "This date was created by user %s at %s"
 msgstr ""
 
-#: templates/Admin/DateEdit.tpl:100
+#: templates/Admin/DateEdit.tpl:152
+msgid ""
+"You get a warning, if there is an other date on the same time in one of this "
+"calendars. If this is an calendar dont allowing overlapping you cant insert "
+"the date into it. You will get an error- message."
+msgstr ""
+
+#: templates/Admin/DateEdit.tpl:155
 msgid "Input this Date into "
 msgstr ""
 
-#: templates/Admin/DateEdit.tpl:102 templates/Admin/CalendarEdit.tpl:36
+#: templates/Admin/DateEdit.tpl:157 templates/Admin/CalendarEdit.tpl:45
 msgid "no calendar selected"
 msgstr ""
 
-#: templates/Admin/DateEdit.tpl:163 templates/Admin/CalendarEdit.tpl:154
+#: templates/Admin/DateEdit.tpl:218 templates/Admin/CalendarEdit.tpl:163
 #: templates/Admin/GeneralSettings.tpl:35
 msgid "Save"
 msgstr ""
 
-#: templates/Admin/DateEdit.tpl:164 templates/Admin/CalendarEdit.tpl:155
+#: templates/Admin/DateEdit.tpl:219 templates/Admin/CalendarEdit.tpl:164
 #: templates/Admin/GeneralSettings.tpl:36
 msgid "Cancel"
 msgstr ""
@@ -367,41 +398,63 @@ msgid "Name:"
 msgstr ""
 
 #: templates/Admin/CalendarEdit.tpl:16
+msgid ""
+"You can descide that more dates can happen on the same time. They can "
+"overlap. If you dont want, that there are more dates on the same time, you "
+"should remove the hook. This is useful if you want to create calendars for "
+"rooms. This workes for dates inputed via other calendars this calendar "
+"input, too. User get an error, if they want input a date to a time, there is "
+"another one."
+msgstr ""
+
+#: templates/Admin/CalendarEdit.tpl:19
 msgid "Overlapping:"
 msgstr ""
 
-#: templates/Admin/CalendarEdit.tpl:20
+#: templates/Admin/CalendarEdit.tpl:23
+msgid ""
+"You can create calendars only including other ones. Users cant insert dates "
+"directly into this calendar."
+msgstr ""
+
+#: templates/Admin/CalendarEdit.tpl:26
 msgid "Allow Date input:"
 msgstr ""
 
-#: templates/Admin/CalendarEdit.tpl:24
+#: templates/Admin/CalendarEdit.tpl:30
+msgid "To set a special design to this calendar please use templates."
+msgstr ""
+
+#: templates/Admin/CalendarEdit.tpl:33
 msgid "Template:"
 msgstr ""
 
-#: templates/Admin/CalendarEdit.tpl:32
+#: templates/Admin/CalendarEdit.tpl:41
 msgid ""
 "This Calendar inherits the dates of the following calendars. All dates of "
 "this calendar has the selected color. If no color is selected, the date "
 "keeps the former color."
 msgstr ""
 
-#: templates/Admin/CalendarEdit.tpl:34
+#: templates/Admin/CalendarEdit.tpl:43
 msgid "create new Heredity to"
 msgstr ""
 
-#: templates/Admin/CalendarEdit.tpl:93
-msgid "Every date is show by a color. This color can selected for every group."
+#: templates/Admin/CalendarEdit.tpl:102
+msgid ""
+"Every date is show by a color. This color can selected for every group. This "
+"overwrides the normal group color for all dates of this calendar."
 msgstr ""
 
-#: templates/Admin/CalendarEdit.tpl:96
+#: templates/Admin/CalendarEdit.tpl:105
 msgid "create color for group"
 msgstr ""
 
-#: templates/Admin/CalendarEdit.tpl:98
+#: templates/Admin/CalendarEdit.tpl:107
 msgid "no group selected"
 msgstr ""
 
-#: templates/Admin/CalendarEdit.tpl:114
+#: templates/Admin/CalendarEdit.tpl:123
 msgid "Group"
 msgstr ""
 
