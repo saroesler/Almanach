@@ -157,13 +157,16 @@ class Almanach_Handler_DateEdit extends Zikula_Form_AbstractHandler
         
         if($did > 0){
         	$date = $this->entityManager->find('Almanach_Entity_Date', $did);
+        	//reset group, if user dont have the permission of the group
+    		if(!SecurityUtil::checkPermission('Almanach::Group', '::'. $date->getGid() , ACCESS_EDIT))
+    			$d['gid'] = $date->getGid();
         }
         else{
         	$date = new Almanach_Entity_Date();
         	$date->setUid(SessionUtil::getVar('uid'));
         	$date->setCreationdate('');
         }
-        	
+    	
         // merge user and save everything
         $date->merge($d);
         $this->entityManager->persist($date);
@@ -174,18 +177,37 @@ class Almanach_Handler_DateEdit extends Zikula_Form_AbstractHandler
         //work connections
         $connections = $this->entityManager->getRepository('Almanach_Entity_AlmanachElement')->findBy(array('did'=>$did));
         foreach($connections as $key => $item){
-        	if (!SecurityUtil::checkPermission('Almanach::Almanach', '::'. $item->getAid() , ACCESS_EDIT)) {
+        	$myColor = FormUtil::getPassedValue('CalendarColorinput' . $item->getEid() ,'#','POST');
+        	$deleted = FormUtil::getPassedValue('connectionDeleted' . $item->getEid() ,null,'POST');
+
+        	if ((!SecurityUtil::checkPermission('Almanach::Almanach', '::'. $item->getAid() , ACCESS_EDIT)) && ($deleted || $myColor != $item->getColor()) ) {
         		LogUtil::RegisterError($this->__f("You dont have the permission to edit the connection to the calendar %s." , array($item->getAlmanachName())));
         		continue;
         	}
         	
-        	$myColor = FormUtil::getPassedValue('CalendarColorinput' . $item->getEid() ,null,'POST');
-        	$deleted = FormUtil::getPassedValue('connectionDeleted' . $item->getEid() ,null,'POST');
+        	$almanachName = ModUtil::apiFunc('Almanach', 'Admin', 'getAlmanachName', array('aid' => $item->getAid()));
+        	$overlapping = ModUtil::apiFunc('Almanach', 'Overlapping', 'getOverlappingState', array('aid' => $item->getAid(), 'did' => $did));
+
+			if($overlapping['state'] < 2){
+				
+				$overlapAlmanachName = ModUtil::apiFunc('Almanach', 'Admin', 'getAlmanachName', array('aid' => $overlapping['aid']));
+				$overlapDate = $this->entityManager->find('Almanach_Entity_Date', $overlapping['did']);
+			}
+			
+			if($overlapping['state'] == 0){
+				LogUtil::RegisterError($this->__f("This date overlaps with an other date in calendar %s. So the date cant be entered into calendar %s. Please contact %s.", array($olverlapAlmanachName, $almanachName, $overlapDate->getUserName())));
+				$deleted = true;
+			}
+			if($overlapping['state'] == 1){
+				LogUtil::RegisterStatus($this->__f("Please notice that this date overlaps with an other date in calendar %s. Please contact %s.", array($overlapAlmanachName, $overlapDate->getUserName())));
+			}
+		    	
         	if($deleted){
         		$this->entityManager->remove($item);
 				$this->entityManager->flush();
 				LogUtil::RegisterStatus($this->__f("Date sucessfully deleted of calendar %s." , array($item->getAlmanachName())));
-        	} elseif($myColor != $item->getColor()){
+				continue;
+        	} elseif($myColor != $item->getColor()){        	
         		if($this->getVar('AllowDateColloring') || SecurityUtil::checkPermission('Almanach::', '::' , ACCESS_ADMIN))
 		    		$item->setColor($myColor);
 		    	$this->entityManager->persist($item);
@@ -194,6 +216,8 @@ class Almanach_Handler_DateEdit extends Zikula_Form_AbstractHandler
 				echo $item->getAlmanachName();
 				//die();
 			}
+			
+			echo 'u';
         }
         
         //create new color
@@ -211,7 +235,10 @@ class Almanach_Handler_DateEdit extends Zikula_Form_AbstractHandler
         	
         	$overlapping = ModUtil::apiFunc('Almanach', 'Overlapping', 'getOverlappingState', array('aid' => $aid, 'did' => $did));
         	$almanachName = ModUtil::apiFunc('Almanach', 'Admin', 'getAlmanachName', array('aid' => $aid));
+        	//print_r($overlapping);
+        	//die;
         	if($overlapping['state'] < 2){
+        		
         		$overlapAlmanachName = ModUtil::apiFunc('Almanach', 'Admin', 'getAlmanachName', array('aid' => $overlapping['aid']));
         		$overlapDate = $this->entityManager->find('Almanach_Entity_Date', $overlapping['did']);
         	}
@@ -221,8 +248,7 @@ class Almanach_Handler_DateEdit extends Zikula_Form_AbstractHandler
         		continue;
         	}
         	if($overlapping['state'] == 1){
-        		LogUtil::RegisterWarning($this->__f("Please notice that this date overlaps with an other date in calendar %s. Please contact %s.", array($overlapAlmanachName, $overlapDate->getUserName())));
-        		continue;
+        		LogUtil::RegisterStatus($this->__f("Please notice that this date overlaps with an other date in calendar %s. Please contact %s.", array($overlapAlmanachName, $overlapDate->getUserName())));
         	}
         	
     		$myColor = FormUtil::getPassedValue('CalendarColorinput' . $i ,null,'POST');

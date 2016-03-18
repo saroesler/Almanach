@@ -146,7 +146,7 @@ class Almanach_Controller_Admin extends Zikula_AbstractController
     protected function mergeDates($newDates, $myDates){
     	foreach($newDates as $newDate){
 			$did = $newDate->getDid();
-			if(!$this->arrayHasDate($did , $newDate)){
+			if($this->arrayHasDate($did , $myDates) > -1){
 				continue;
 			}
 			
@@ -165,7 +165,7 @@ class Almanach_Controller_Admin extends Zikula_AbstractController
     		if($myDate->getDid() == $did)
     			return $key;
 		}
-		return false;
+		return -1;
     }
 
 	public function dateCmp($a, $b)
@@ -233,7 +233,7 @@ class Almanach_Controller_Admin extends Zikula_AbstractController
      */
     public function editDate()
     {
-    	$this->throwForbiddenUnless(SecurityUtil::checkPermission('Almanach::', '::', ACCESS_MODERATE));
+    	$this->throwForbiddenUnless(SecurityUtil::checkPermission('Almanach::', '::', ACCESS_COMMENT));
     	
 		$did = FormUtil::getPassedValue('id',null,'GET');
 		

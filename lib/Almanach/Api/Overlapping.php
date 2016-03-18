@@ -51,7 +51,7 @@ class Almanach_Api_Overlapping extends Zikula_AbstractApi
 					return $myOverlap;
 				
 				//merge warnings and oks
-				if($myOverlap['state'] < $overlappingState['state']){
+				if($myOverlap['state'] < $overlappingState){
 					$overlappingState = $myOverlap['state'];
 					$overlappingAid = $myOverlap['aid'];
 					$overlappingDid = $myOverlap['did'];
@@ -159,16 +159,16 @@ class Almanach_Api_Overlapping extends Zikula_AbstractApi
 		* There is an overlapping, if the second date begins before the first date begins,
 		* but it ends, if the first date has already started
 		*/
-		if((strtotime($seconddate->getStartdate()) < strtotime($firstdate->getStartdate()))
-			&& (strtotime($seconddate->getEnddate()) > strtotime($firstdate->getStartdate())))
+		if(($seconddate->getStartdate() < $firstdate->getStartdate())
+			&& ($seconddate->getEnddate() > $firstdate->getStartdate()))
 			return true;
 		
 		/*
 		* There is an overlapping, too, if the second date begins after the first date begins,
 		* but it begins, before the first date has already endet
 		*/
-		if((strtotime($seconddate->getStartdate()) > strtotime($firstdate->getStartdate()))
-			&& (strtotime($seconddate->getStartdate()) < strtotime($firstdate->getEnddate())))
+		if(($seconddate->getStartdate() > $firstdate->getStartdate())
+			&& ($seconddate->getStartdate() < $firstdate->getEnddate()))
 			return true;
 		
 		return false;

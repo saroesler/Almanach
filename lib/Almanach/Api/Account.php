@@ -27,7 +27,7 @@ class Almanach_Api_Account extends Zikula_AbstractApi
         // collect items in an array
         $items = array();
         $permission=0;
-        if (SecurityUtil::checkPermission($this->name . '::', '::', ACCESS_ADMIN)) {
+        if (SecurityUtil::checkPermission($this->name . '::', '::', ACCESS_COMMENT)) {
             $items[] = array(
                 'url'   => ModUtil::url($this->name, 'admin', 'main'),
                 'title' => $this->__('Calendar'),
