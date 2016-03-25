@@ -40,7 +40,7 @@
 	.dateDiv{
 		padding: 10px;
 		margin: 10px;
-		border: 1px solid #aaa;
+		border: 3px solid #aaa;
 		border-radius: 10px;
 	}
 	
@@ -100,7 +100,7 @@
 </style>
 {checkpermission component="Almanach::" instance="::" level=ACCESS_COMMENT assign=hasMyDates}
 {if $hasMyDates}
-	<a href="{modurl modname='Almanach' type='admin' func='main'}" >{img src='configure.png' modname='core' set='icons/extrasmall'} {gt text='My Calendar'}</a>
+	<a href="{modurl modname='Almanach' type='admin' func='main'}" >{img src='configure.png' modname='core' set='icons/small'} {gt text='My Calendar'}</a>
 {/if}
 	
 <h1>{$almanach->getName()}</h1>
@@ -108,9 +108,13 @@
 {if $subalmanachs|@count gt 0}
 	<p>{gt text="This calendar has this subcalendars:"}
 		{foreach from=$subalmanachs key=i item='subalmanach'}
-			<a href="{modurl modname=Almanach type=user func=view id=$subalmanach->getAid()}">
+			{assign var="color" value=$heredities.$i}
+			<a href="{modurl modname=Almanach type=user func=view id=$subalmanach->getAid()}" style="color:{$color->getColor()}">
 				{$subalmanach->getName()}
 			</a>
+			{if $i<>(($subalmanachs|@count)-1)}
+			<a>, </a>
+			{/if}
 		{/foreach}
 	</p>
 {/if}
@@ -162,8 +166,8 @@
 
 <div>
 	<div style="float:right;">
-		<a id="hideOld" onclick="hideOldDates()" style="display:none;">{img src='14_layer_visible.png' modname='core' set='icons/extrasmall' __title="hide old dates"}</a>
-		<a id="showOld" onclick="showOldDates()">{img src='14_layer_novisible.png' modname='core' set='icons/extrasmall' __title="show old dates"}</a>
+		<a id="hideOld" onclick="hideOldDates()" style="display:none;">{img src='forward.png' modname='core' set='icons/small' __title="hide old dates"}</a>
+		<a id="showOld" onclick="showOldDates()">{img src='previous.png' modname='core' set='icons/small' __title="show old dates"}</a>
 	</div>
 	<div>
 	</div>
@@ -188,13 +192,13 @@
 					<a id="unsubscibe{$myDate->getDid()}" onclick="unsubscribeDate({$myDate->getDid()})">{img src='favorites.png' modname='Almanach' set="favorites" __title="unsubscribe date"}</a>
 				{/if}
 				{if $adminDates.$i == 1}
-					<a href="{modurl modname=Almanach type=admin func=editDate id=$myDate->getDid()}">{img src='xedit.png' modname='core' set="icons/extrasmall" __title="edit date"}</a>
-					<a onclick="deleteDate({$myDate->getDid()})">{img src='14_layer_deletelayer.png' modname='core' set="icons/extrasmall" __title="delete date"}</a>
+					<a href="{modurl modname=Almanach type=admin func=editDate id=$myDate->getDid()}">{img src='xedit.png' modname='core' set="icons/small" __title="edit date"}</a>
+					<a onclick="deleteDate({$myDate->getDid()})">{img src='14_layer_deletelayer.png' modname='core' set="icons/small" __title="delete date"}</a>
 				{/if}
 			</div>
 			<div>
 				{if $myDate->getGuests()}
-					<div style="float:left;">{img src='package_favorite.png' modname='core' set='icons/extrasmall' __title="guests are welcome"}</div>
+					<div style="float:left;">{img src='package_favorite.png' modname='core' set='icons/small' __title="guests are welcome"}</div>
 					<div style=" margin-left: 26px;">
 				{else}
 					<div style="margin-left: 26px;">

@@ -133,11 +133,12 @@ class Almanach_Api_Heredity extends Zikula_AbstractApi
 		
 		$heredities = $this->entityManager->getRepository('Almanach_Entity_Heredity')->findBy(array('paid'=>$aid));
 		foreach($heredities as $heredity){
-			
+			if($heredity->getColor() == '' || $heredity->getColor() == '#')
+				$heredity->setColor('#000000');
 			$almanachs[] = $this->entityManager->find('Almanach_Entity_Almanach', $heredity->getCaid());
 		}
 		
-		return $almanachs;
+		return array('almanach' => $almanachs, 'heredities' => $heredities);
 	}
 	
 	/*

@@ -84,7 +84,8 @@ class Almanach_Controller_User extends Zikula_AbstractController
     	//get all keys, which dates are subscribed
     	$this->view
     		->assign('almanach', $almanach)
-    		->assign('subalmanachs', $subalmanachs)
+    		->assign('subalmanachs', $subalmanachs['almanach'])
+    		->assign('heredities', $subalmanachs['heredities'])
     		->assign('groups', $groupreturn['groups'])
     		->assign('noGroup', $groupreturn['noGroup'])
     		->assign('calendarSubscribtion', $calendarSubscribtion)

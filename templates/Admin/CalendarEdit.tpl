@@ -7,7 +7,7 @@
 <a id="deleteImage" style="display:none">{img src='14_layer_deletelayer.png' modname='core' set='icons/extrasmall'}</a>
 {form cssClass="z-form"}
 	<fieldset>
-	<legend>General</legend>
+	<legend>{gt text="General"}</legend>
 	<div class="z-formrow">
         {formlabel for='name' __text='Name:'}
 		{formtextinput id="name" maxLength=200 mandatory=true text=$almanach->getName()}
@@ -36,7 +36,7 @@
    </fieldset>
    
    <fieldset>
-   <legend>Heredity</legend>
+   <legend>{gt text="Heredity"}</legend>
    <br/><br/>
    {gt text="This Calendar inherits the dates of the following calendars. All dates of this calendar has the selected color. If no color is selected, the date keeps the former color."}<br/><br/>
    <input type="text" style="display:none;" value="0" id="newHereditiesNum" name="newHereditiesNum"/>
@@ -98,7 +98,7 @@
    </fieldset>
    
    <fieldset>
-   <legend>Groups</legend>
+   <legend>{gt text="Groups"}</legend>
    <br/><br/>
    {gt text="Every date is show by a color. This color can selected for every group. This overwrides the normal group color for all dates of this calendar."}<br/><br/>
    

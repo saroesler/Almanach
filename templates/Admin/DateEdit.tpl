@@ -94,7 +94,7 @@ jQuery(function() {
 <a id="deleteImage" style="display:none">{img src='14_layer_deletelayer.png' modname='core' set='icons/extrasmall'}</a>
 {form cssClass="z-form"}
 	<fieldset>
-	<legend>General</legend>
+	<legend>{gt text="General"}</legend>
 	<div class="z-formrow">
         {formlabel for='startdate' __text='Begin:'}
 		{formtextinput id="startdate" maxLength=200 mandatory=true text=$date->getStartdateFormatted()}
@@ -120,6 +120,9 @@ jQuery(function() {
 		{formdropdownlist id="gid" size="1" mandatory=false items=$groupSelection selectedValue=$date->getGid()"}
 	</div>
 	{if $allowDateColoring <> 0}
+		<div class="z-informationmsg">
+			<p>{gt text="You can overwrite the color of the group and the color of the calendar for this date by the following field."}</p>
+		</div>
 		<div class="z-formrow">
 		    {formlabel for='color' __text='Color:'}
 			{formtextinput id="color" maxLength=7 mandatory=false text=$date->getColor()}
@@ -152,9 +155,10 @@ jQuery(function() {
    </fieldset>
    
    <fieldset>
-   <legend>Calendar</legend>
+   <legend>{gt text="Calendar"}</legend>
    <br/><br/>
-   This Date is inputed in following calendars.<br/><br/>
+   <p>{gt text="This Date is inputed in following calendars."}:</p>
+   <br/><br/>
    
 	<div class="z-informationmsg">
 		<p>{gt text="You get a warning, if there is an other date on the same time in one of this calendars. If this is an calendar dont allowing overlapping you cant insert the date into it. You will get an error- message."}</p>

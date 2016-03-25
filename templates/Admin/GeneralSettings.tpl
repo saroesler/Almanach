@@ -2,7 +2,7 @@
 
 {form cssClass="z-form"}
 	<fieldset>
-	<legend>Settings</legend>
+	<legend>{gt text="Settings"}</legend>
 	<div class="z-formrow">
         {formlabel for='savetime' __text='Save Time (in days):'}
 		{formtextinput id="savetime" maxLength=4 mandatory=true text=$savetime}
@@ -14,7 +14,7 @@
 	</div>
 	</fieldset>
 	<fieldset>
-	<legend>Profile Settings</legend>
+	<legend>{gt text="Profile Settings"}</legend>
 	<div class="z-informationmsg"><p>{gt text="Please insert in the following fields the name of the Profile- fields."}</p></div>
 	<div class="z-formrow">
 		{formlabel for='formofaddress' __text='Form of address:'}
