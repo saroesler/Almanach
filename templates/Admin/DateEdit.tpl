@@ -111,9 +111,19 @@ jQuery(function() {
         {formlabel for='location' __text='Location:'}
 		{formtextinput id="location" maxLength=1000 mandatory=false text=$date->getLocation()}
 	</div>
+	<div class="z-informationmsg">
+		<p>{gt text="The short description is shown by the calendar. You can input more than 200 signs."}</p>
+	</div>
+	<div class="z-formrow">
+        {formlabel for='shortDescription' __text='short Description:'}
+		{formtextinput id="shortDescription" maxLength=200 mandatory=false text=$date->getShortDescription() rows='2' textMode='multiline'}
+	</div>
+	<div class="z-informationmsg">
+		<p>{gt text="The description is shown by the date view only. You can input detailed information here."}</p>
+	</div>
 	<div class="z-formrow">
         {formlabel for='description' __text='Description:'}
-		{formtextinput id="description" maxLength=2000 mandatory=false text=$date->getDescription() rows='15' textMode='multiline'}
+		{formtextinput id="description" maxLength=4000 mandatory=false text=$date->getDescription() rows='15' textMode='multiline'}
 	</div>
 	<div class="z-formrow">
         {formlabel for='gid' __text='Group:'}

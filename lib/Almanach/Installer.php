@@ -25,7 +25,8 @@ class Almanach_Installer extends Zikula_AbstractInstaller
 			'AllowDateColoring' => 1,
 			'FormOfAddressField' => 'sex',
 			'SurnameField' => 'surname',
-			'FirstNameField' => 'first_name'
+			'FirstNameField' => 'first_name',
+			'googleApiAddress' => ''
 			);
 		else
 			return array(
@@ -33,7 +34,8 @@ class Almanach_Installer extends Zikula_AbstractInstaller
 			'AllowDateColoring' => 1,
 			'FormOfAddressField' => '',
 			'SurnameField' => '',
-			'FirstNameField' => ''
+			'FirstNameField' => '',
+			'googleApiAddress' => ''
 			);
 	}
 	
@@ -220,6 +222,16 @@ class Almanach_Installer extends Zikula_AbstractInstaller
 			case "0.0.3":
 				$this->setVars($this->getDefaultModVars());
 				$this->addProfileProperties();
+			case "0.0.4":
+				try {
+					DoctrineHelper::updateSchema($this->entityManager, array('Almanach_Entity_AlmanachElement'));
+					DoctrineHelper::updateSchema($this->entityManager, array('Almanach_Entity_Almanach'));
+					DoctrineHelper::updateSchema($this->entityManager, array('Almanach_Entity_Date'));
+				} catch (Exception $e) {
+					return LogUtil::registerError($e);
+				}
+			case '0.0.5':
+				$this->setVars(array('googleApiAddress' => ''));
 		}
 		return true;
 	}
@@ -235,14 +247,70 @@ class Almanach_Installer extends Zikula_AbstractInstaller
 	 */
 	public function uninstall()
 	{
-		// Drop database tables
-		DoctrineHelper::dropSchema($this->entityManager, array(
-			'Almanach_Entity_Data'
-		));
+		// Create database tables.
+		try {
+			DoctrineHelper::dropSchema($this->entityManager, array(
+				'Almanach_Entity_Almanach'
+			));
+		} catch (Exception $e) {
+			return LogUtil::registerError($e);
+		}
 		
-		DoctrineHelper::dropSchema($this->entityManager, array(
-			'Almanach_Entity_General'
-		));
+		try {
+			DoctrineHelper::dropSchema($this->entityManager, array(
+				'Almanach_Entity_AlmanachElement'
+			));
+		} catch (Exception $e) {
+			return LogUtil::registerError($e);
+		}
+		
+		try {
+			DoctrineHelper::dropSchema($this->entityManager, array(
+				'Almanach_Entity_Color'
+			));
+		} catch (Exception $e) {
+			return LogUtil::registerError($e);
+		}
+		
+		try {
+			DoctrineHelper::dropSchema($this->entityManager, array(
+				'Almanach_Entity_Date'
+			));
+		} catch (Exception $e) {
+			return LogUtil::registerError($e);
+		}
+		
+		try {
+			DoctrineHelper::dropSchema($this->entityManager, array(
+				'Almanach_Entity_Group'
+			));
+		} catch (Exception $e) {
+			return LogUtil::registerError($e);
+		}
+		
+		try {
+			DoctrineHelper::dropSchema($this->entityManager, array(
+				'Almanach_Entity_Heredity'
+			));
+		} catch (Exception $e) {
+			return LogUtil::registerError($e);
+		}
+		
+		try {
+			DoctrineHelper::dropSchema($this->entityManager, array(
+				'Almanach_Entity_SubscribeAlmanach'
+			));
+		} catch (Exception $e) {
+			return LogUtil::registerError($e);
+		}
+		
+		try {
+			DoctrineHelper::dropSchema($this->entityManager, array(
+				'Almanach_Entity_SubscribeDate'
+			));
+		} catch (Exception $e) {
+			return LogUtil::registerError($e);
+		}
 		
 		$this->delVars();
 		

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Almanach\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-02-24 20:32+0000\n"
-"PO-Revision-Date: 2016-02-24 22:02+0100\n"
+"PO-Revision-Date: 2016-02-24 21:35+0100\n"
 "Last-Translator: \n"
 "Language-Team: Sascha Rösler <i-loko@t-online.de>\n"
 "Language: Deutsch (DE)\n"
@@ -356,7 +356,7 @@ msgstr "Gäste sind willkommen:"
 #: templates/Admin/DateEdit.tpl:90
 #, php-format
 msgid "This date was created by user %s at %s"
-msgstr "Dieser Termin wurde von Benutzer %s am %s erstellt"
+msgstr "Dieser Termin wurde von %s am %s erstellt"
 
 #: templates/Admin/DateEdit.tpl:100
 msgid "Input this Date into "
@@ -398,9 +398,9 @@ msgid ""
 "this calendar has the selected color. If no color is selected, the date "
 "keeps the former color."
 msgstr ""
-"Dieser Kalender beinhaltet Termine aus den folgenden Kalendern. Alle Termine "
-"dieser Kalender werden mit den neuen Farben übernommen. Wenn keine Farbe "
-"ausgewählt wurde behalten die Termine ihre ursprünglichen Farben."
+"Dieser Kalender übernimmt alle Termine aus den folgenden Kalendern. DIe "
+"Termine bekommen dann die unten ausgewälte Farbe. Wenn keine Farbe "
+"eingestellt wurde, behält der Termin die Farbe, die er bisher hatte."
 
 #: templates/Admin/CalendarEdit.tpl:34
 msgid "create new Heredity to"
@@ -409,8 +409,8 @@ msgstr "neuen Kalender mit übernehmen"
 #: templates/Admin/CalendarEdit.tpl:93
 msgid "Every date is show by a color. This color can selected for every group."
 msgstr ""
-"Jeder Termin wird mit einer Farbe angezeigt. Jede Gruppe kann für ihre "
-"Termine in diesem Kalender eine gesonderte Farbe bekommen."
+"Jeder Termin wird zusammen mit seiner Farbe angezeigt. Die Farbe kann für "
+"jede Gruppe neu gewählt werde."
 
 #: templates/Admin/CalendarEdit.tpl:96
 msgid "create color for group"

@@ -2,15 +2,18 @@
 /**
  * This is the User controller class providing navigation and interaction functionality.
  */
-class Almanach_Api_Heredity extends Zikula_AbstractApi
+class Almanach_Api_GoogleCalendarApi extends Zikula_AbstractApi
 {
 	/*
-	* This function tests, if an almanach inherits the given one
+	* This function tests, there is a valid googleCalendarApi and all settings are inputed
 	* @return: true, if it inherits, false, if there is no heritage
 	*/
-	public function isHeredity($args)
+	public function apiExist()
 	{
-		return $this->isHeredityRekrusiv($args['aid'], $args['paid']);
+		if(!file_exists(getcwd().'/modules/Almanach/lib/Almanach/google/almanach.p12'))
+			return 1;
+		if($this->getVar('googleApiAddress') == '')
+			return 2; 
 	}
 	
 	/*
@@ -154,7 +157,7 @@ class Almanach_Api_Heredity extends Zikula_AbstractApi
 		foreach($dates as $date){
 		
 			if($date->getGid() > 0){
-				if($this->arrayHasGroup($date->getGid(), $groups) == -1)
+				if($this->arrayHasGroup($date->getGid(), $groups) == 0)
 					$groups[] = $this->entityManager->find('Almanach_Entity_Group', $date->getGid());
 			} else
 				$noGroup = true;
@@ -170,12 +173,11 @@ class Almanach_Api_Heredity extends Zikula_AbstractApi
     *  with a given did.
     */
     protected function arrayHasGroup($gid, $groups){
-    
     	foreach($groups as $key => $group){
     		if($group->getGid() == $gid)
     			return $key;
 		}
-		return -1;
+		return false;
     }
     
     public function groupCmp($a, $b)

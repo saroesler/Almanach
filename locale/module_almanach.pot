@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Zikula 1.x\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-25 17:27+0000\n"
+"POT-Creation-Date: 2016-03-27 10:59+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,6 +16,10 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: lib/Almanach/Handler/GeneralSettings.php:31
+msgid "Google Calendar Api is not installed!"
+msgstr ""
 
 #: lib/Almanach/Handler/DateEdit.php:35
 #, php-format
@@ -97,27 +101,31 @@ msgstr ""
 msgid "Almanach with id %s not found"
 msgstr ""
 
-#: lib/Almanach/Handler/AlmanachEdit.php:139
+#: lib/Almanach/Handler/AlmanachEdit.php:84
+msgid "Google Calendar Api is not installed or configured!"
+msgstr ""
+
+#: lib/Almanach/Handler/AlmanachEdit.php:145
 msgid "Heredity has been removed successfully."
 msgstr ""
 
-#: lib/Almanach/Handler/AlmanachEdit.php:144
+#: lib/Almanach/Handler/AlmanachEdit.php:150
 msgid "Color of Heredity has been updated successfully."
 msgstr ""
 
-#: lib/Almanach/Handler/AlmanachEdit.php:162
+#: lib/Almanach/Handler/AlmanachEdit.php:168
 msgid "Heredity has been added successfully."
 msgstr ""
 
-#: lib/Almanach/Handler/AlmanachEdit.php:174
+#: lib/Almanach/Handler/AlmanachEdit.php:180
 msgid "Color has been removed successfully."
 msgstr ""
 
-#: lib/Almanach/Handler/AlmanachEdit.php:179
+#: lib/Almanach/Handler/AlmanachEdit.php:185
 msgid "Color of a Group has been updated successfully."
 msgstr ""
 
-#: lib/Almanach/Handler/AlmanachEdit.php:197
+#: lib/Almanach/Handler/AlmanachEdit.php:203
 msgid "A color of a group has been added successfully."
 msgstr ""
 
@@ -134,7 +142,7 @@ msgid "Main"
 msgstr ""
 
 #: lib/Almanach/Api/Admin.php:32 templates/Admin/Groups.tpl:1
-#: templates/Admin/CalendarEdit.tpl:100
+#: templates/Admin/CalendarEdit.tpl:116
 msgid "Groups"
 msgstr ""
 
@@ -143,9 +151,9 @@ msgid "show the groups"
 msgstr ""
 
 #: lib/Almanach/Api/Admin.php:41 lib/Almanach/Api/Account.php:33
-#: templates/Admin/Calendar.tpl:1 templates/Admin/DateEdit.tpl:150
-#: templates/Admin/DateEdit.tpl:177 templates/Admin/CalendarEdit.tpl:1
-#: templates/Admin/CalendarEdit.tpl:61
+#: templates/Admin/Calendar.tpl:1 templates/Admin/DateEdit.tpl:160
+#: templates/Admin/DateEdit.tpl:187 templates/Admin/CalendarEdit.tpl:1
+#: templates/Admin/CalendarEdit.tpl:77
 msgid "Calendar"
 msgstr ""
 
@@ -174,7 +182,7 @@ msgstr ""
 msgid "No valid calendar!"
 msgstr ""
 
-#: lib/Almanach/Controller/User.php:121 lib/Almanach/Controller/User.php:126
+#: lib/Almanach/Controller/User.php:139 lib/Almanach/Controller/User.php:144
 msgid "No valid date!"
 msgstr ""
 
@@ -224,12 +232,12 @@ msgid "My Calendars"
 msgstr ""
 
 #: templates/Admin/Main.tpl:78 templates/Admin/Main.tpl:81
-#: templates/User/View.tpl:113 templates/User/View.tpl:116
+#: templates/User/View.tpl:133 templates/User/View.tpl:136
 msgid "Subscribe"
 msgstr ""
 
 #: templates/Admin/Main.tpl:79 templates/Admin/Main.tpl:82
-#: templates/User/View.tpl:114 templates/User/View.tpl:117
+#: templates/User/View.tpl:134 templates/User/View.tpl:137
 msgid "Unsubscribe"
 msgstr ""
 
@@ -241,38 +249,38 @@ msgstr ""
 msgid "My Dates"
 msgstr ""
 
-#: templates/Admin/Main.tpl:99 templates/User/View.tpl:157
+#: templates/Admin/Main.tpl:99 templates/User/View.tpl:182
 msgid "hide old dates"
 msgstr ""
 
-#: templates/Admin/Main.tpl:100 templates/User/View.tpl:158
+#: templates/Admin/Main.tpl:100 templates/User/View.tpl:183
 msgid "show old dates"
 msgstr ""
 
-#: templates/Admin/Main.tpl:123 templates/User/View.tpl:180
+#: templates/Admin/Main.tpl:123 templates/User/View.tpl:221
 msgid "unsubscribe date"
 msgstr ""
 
 #: templates/Admin/Main.tpl:126 templates/User/ShowDate.tpl:18
-#: templates/User/View.tpl:183
+#: templates/User/View.tpl:224
 msgid "edit date"
 msgstr ""
 
-#: templates/Admin/Main.tpl:127 templates/User/View.tpl:184
+#: templates/Admin/Main.tpl:127 templates/User/View.tpl:225
 msgid "delete date"
 msgstr ""
 
 #: templates/Admin/Main.tpl:132 templates/User/ShowDate.tpl:23
-#: templates/User/View.tpl:189
+#: templates/User/View.tpl:230
 msgid "guests are welcome"
 msgstr ""
 
-#: templates/Admin/Main.tpl:143 templates/User/View.tpl:200
+#: templates/Admin/Main.tpl:143 templates/User/View.tpl:241
 msgid "Location"
 msgstr ""
 
 #: templates/Admin/Main.tpl:155 templates/Admin/Main.tpl:158
-#: templates/User/View.tpl:218 templates/User/View.tpl:221
+#: templates/User/View.tpl:259 templates/User/View.tpl:262
 msgid "There are no dates!"
 msgstr ""
 
@@ -288,8 +296,8 @@ msgid ""
 msgstr ""
 
 #: templates/Admin/Groups.tpl:17 templates/Admin/Calendar.tpl:16
-#: templates/Admin/DateEdit.tpl:176 templates/Admin/CalendarEdit.tpl:60
-#: templates/Admin/CalendarEdit.tpl:122
+#: templates/Admin/DateEdit.tpl:186 templates/Admin/CalendarEdit.tpl:76
+#: templates/Admin/CalendarEdit.tpl:138
 msgid "Id"
 msgstr ""
 
@@ -297,14 +305,14 @@ msgstr ""
 msgid "Name"
 msgstr ""
 
-#: templates/Admin/Groups.tpl:19 templates/Admin/DateEdit.tpl:180
-#: templates/Admin/CalendarEdit.tpl:62 templates/Admin/CalendarEdit.tpl:124
+#: templates/Admin/Groups.tpl:19 templates/Admin/DateEdit.tpl:190
+#: templates/Admin/CalendarEdit.tpl:78 templates/Admin/CalendarEdit.tpl:140
 msgid "Color"
 msgstr ""
 
 #: templates/Admin/Groups.tpl:44 templates/Admin/Groups.tpl:72
-#: templates/Admin/DateEdit.tpl:129 templates/Admin/DateEdit.tpl:202
-#: templates/Admin/CalendarEdit.tpl:81 templates/Admin/CalendarEdit.tpl:143
+#: templates/Admin/DateEdit.tpl:139 templates/Admin/DateEdit.tpl:212
+#: templates/Admin/CalendarEdit.tpl:97 templates/Admin/CalendarEdit.tpl:159
 msgid "Close"
 msgstr ""
 
@@ -350,62 +358,78 @@ msgid "Location:"
 msgstr ""
 
 #: templates/Admin/DateEdit.tpl:107
+msgid ""
+"The short description is shown by the calendar. You can input more than 200 "
+"signs."
+msgstr ""
+
+#: templates/Admin/DateEdit.tpl:110
+msgid "short Description:"
+msgstr ""
+
+#: templates/Admin/DateEdit.tpl:114
+msgid ""
+"The description is shown by the date view only. You can input detailed "
+"information here."
+msgstr ""
+
+#: templates/Admin/DateEdit.tpl:117
 msgid "Description:"
 msgstr ""
 
-#: templates/Admin/DateEdit.tpl:111
+#: templates/Admin/DateEdit.tpl:121
 msgid "Group:"
 msgstr ""
 
-#: templates/Admin/DateEdit.tpl:116
+#: templates/Admin/DateEdit.tpl:126
 msgid ""
 "You can overwrite the color of the group and the color of the calendar for "
 "this date by the following field."
 msgstr ""
 
-#: templates/Admin/DateEdit.tpl:119
+#: templates/Admin/DateEdit.tpl:129
 msgid "Color:"
 msgstr ""
 
-#: templates/Admin/DateEdit.tpl:136
+#: templates/Admin/DateEdit.tpl:146
 msgid "Visibility:"
 msgstr ""
 
-#: templates/Admin/DateEdit.tpl:140
+#: templates/Admin/DateEdit.tpl:150
 msgid "Guests are welcome:"
 msgstr ""
 
-#: templates/Admin/DateEdit.tpl:145
+#: templates/Admin/DateEdit.tpl:155
 #, php-format
 msgid "This date was created by user %s at %s"
 msgstr ""
 
-#: templates/Admin/DateEdit.tpl:152
+#: templates/Admin/DateEdit.tpl:162
 msgid "This Date is inputed in following calendars."
 msgstr ""
 
-#: templates/Admin/DateEdit.tpl:156
+#: templates/Admin/DateEdit.tpl:166
 msgid ""
 "You get a warning, if there is an other date on the same time in one of this "
 "calendars. If this is an calendar dont allowing overlapping you cant insert "
 "the date into it. You will get an error- message."
 msgstr ""
 
-#: templates/Admin/DateEdit.tpl:159
+#: templates/Admin/DateEdit.tpl:169
 msgid "Input this Date into "
 msgstr ""
 
-#: templates/Admin/DateEdit.tpl:161 templates/Admin/CalendarEdit.tpl:45
+#: templates/Admin/DateEdit.tpl:171 templates/Admin/CalendarEdit.tpl:61
 msgid "no calendar selected"
 msgstr ""
 
-#: templates/Admin/DateEdit.tpl:222 templates/Admin/CalendarEdit.tpl:163
-#: templates/Admin/GeneralSettings.tpl:35
+#: templates/Admin/DateEdit.tpl:232 templates/Admin/CalendarEdit.tpl:179
+#: templates/Admin/GeneralSettings.tpl:45
 msgid "Save"
 msgstr ""
 
-#: templates/Admin/DateEdit.tpl:223 templates/Admin/CalendarEdit.tpl:164
-#: templates/Admin/GeneralSettings.tpl:36
+#: templates/Admin/DateEdit.tpl:233 templates/Admin/CalendarEdit.tpl:180
+#: templates/Admin/GeneralSettings.tpl:46
 msgid "Cancel"
 msgstr ""
 
@@ -445,36 +469,62 @@ msgstr ""
 msgid "Template:"
 msgstr ""
 
-#: templates/Admin/CalendarEdit.tpl:39
-msgid "Heredity"
+#: templates/Admin/CalendarEdit.tpl:38
+msgid ""
+"You can connect this calendar with a google calendar. Therefor you has to "
+"share the google calendar with "
+msgstr ""
+
+#: templates/Admin/CalendarEdit.tpl:38
+msgid ""
+"Please insert the google calendar id in the field below. You find the id in "
+"the settings of the google calendar. It has the form "
+"\\'ok430k5bire7huqihlqf18jaao@group.calendar.google.com\\'. You have to set "
+"\\'Add and edit events\\' in google permission rules."
 msgstr ""
 
 #: templates/Admin/CalendarEdit.tpl:41
+msgid "Google Calendar ID:"
+msgstr ""
+
+#: templates/Admin/CalendarEdit.tpl:47
+msgid "No"
+msgstr ""
+
+#: templates/Admin/CalendarEdit.tpl:48
+msgid "Yes"
+msgstr ""
+
+#: templates/Admin/CalendarEdit.tpl:55
+msgid "Heredity"
+msgstr ""
+
+#: templates/Admin/CalendarEdit.tpl:57
 msgid ""
 "This Calendar inherits the dates of the following calendars. All dates of "
 "this calendar has the selected color. If no color is selected, the date "
 "keeps the former color."
 msgstr ""
 
-#: templates/Admin/CalendarEdit.tpl:43
+#: templates/Admin/CalendarEdit.tpl:59
 msgid "create new Heredity to"
 msgstr ""
 
-#: templates/Admin/CalendarEdit.tpl:102
+#: templates/Admin/CalendarEdit.tpl:118
 msgid ""
 "Every date is show by a color. This color can selected for every group. This "
 "overwrides the normal group color for all dates of this calendar."
 msgstr ""
 
-#: templates/Admin/CalendarEdit.tpl:105
+#: templates/Admin/CalendarEdit.tpl:121
 msgid "create color for group"
 msgstr ""
 
-#: templates/Admin/CalendarEdit.tpl:107
+#: templates/Admin/CalendarEdit.tpl:123
 msgid "no group selected"
 msgstr ""
 
-#: templates/Admin/CalendarEdit.tpl:123
+#: templates/Admin/CalendarEdit.tpl:139
 msgid "Group"
 msgstr ""
 
@@ -516,6 +566,14 @@ msgstr ""
 msgid "Frist name:"
 msgstr ""
 
+#: templates/Admin/GeneralSettings.tpl:35
+msgid "Google Calendar Api"
+msgstr ""
+
+#: templates/Admin/GeneralSettings.tpl:37
+msgid "Google Api e-Mail address:"
+msgstr ""
+
 #: templates/User/ShowDate.tpl:18
 msgid "Edit this date"
 msgstr ""
@@ -536,34 +594,54 @@ msgstr ""
 msgid "Created on"
 msgstr ""
 
-#: templates/User/View.tpl:95
+#: templates/User/View.tpl:111
 msgid "My Calendar"
 msgstr ""
 
-#: templates/User/View.tpl:101
+#: templates/User/View.tpl:117
 msgid "This calendar has this subcalendars:"
 msgstr ""
 
-#: templates/User/View.tpl:121
+#: templates/User/View.tpl:141
 msgid "Filter"
 msgstr ""
 
-#: templates/User/View.tpl:122
+#: templates/User/View.tpl:142
 msgid "You can filter the dates below by groups."
 msgstr ""
 
-#: templates/User/View.tpl:126
+#: templates/User/View.tpl:146
 msgid "select all"
 msgstr ""
 
-#: templates/User/View.tpl:126
+#: templates/User/View.tpl:146
 msgid "select none"
 msgstr ""
 
-#: templates/User/View.tpl:130
+#: templates/User/View.tpl:150
 msgid "show Date belong to no group"
 msgstr ""
 
-#: templates/User/View.tpl:147
+#: templates/User/View.tpl:167
 msgid "Apply"
+msgstr ""
+
+#: templates/User/View.tpl:177
+msgid "today"
+msgstr ""
+
+#: templates/User/View.tpl:177
+msgid "this week"
+msgstr ""
+
+#: templates/User/View.tpl:177
+msgid "this month"
+msgstr ""
+
+#: templates/User/View.tpl:177
+msgid "this year"
+msgstr ""
+
+#: templates/User/View.tpl:177
+msgid "all"
 msgstr ""

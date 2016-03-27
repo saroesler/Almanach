@@ -53,9 +53,16 @@ class Almanach_Entity_Date extends Zikula_EntityAccess
     /**
      * The following are annotations which define the description field.
      *
-     * @ORM\Column(type="string", length="2000", nullable=true)
+     * @ORM\Column(type="string", length="4000", nullable=true)
      */
     private $description;
+    
+    /**
+     * The following are annotations which define the description field.
+     *
+     * @ORM\Column(type="string", length="200", nullable=true)
+     */
+    private $shortDescription;
 
     /**
      * The following are annotations which define the location field.
@@ -273,6 +280,16 @@ class Almanach_Entity_Date extends Zikula_EntityAccess
     public function setDescription($description)
     {
         $this->description = $description;
+    }
+    
+    public function getShortDescription()
+    {
+        return $this->shortDescription;
+    }
+
+    public function setShortDescription($description)
+    {
+        $this->shortDescription = $description;
     }
     
     public function getLocation()

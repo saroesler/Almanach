@@ -26,11 +26,16 @@ class Almanach_Handler_GeneralSettings extends Zikula_Form_AbstractHandler
      */
     public function initialize(Zikula_Form_View $view)
     {        
+    	$googleApiExist = ModUtil::apiFunc('Almanach', 'GoogleCalendarApi', 'apiExist');
+    	if($googleApiExist == 1)
+    		LogUtil::RegisterStatus($this->__("Google Calendar Api is not installed!"));
 		$view->assign('savetime',$this->getVar('Savetime'));
         $view->assign('datecolor',$this->getVar('AllowDateColoring'));
         $view->assign('formofaddress',$this->getVar('FormOfAddressField'));
         $view->assign('surname',$this->getVar('SurnameField'));
         $view->assign('firstname',$this->getVar('FirstNameField'));
+        $view->assign('googleApiAddress',$this->getVar('googleApiAddress'));
+        $view->assign('googleApiExist',$googleApiExist);
 
         // assign current values to form fields
         return true;
@@ -66,6 +71,7 @@ class Almanach_Handler_GeneralSettings extends Zikula_Form_AbstractHandler
         $this->setVar('FormOfAddressField', $d['formofaddress']);
         $this->setVar('SurnameField', $d['surname']);
         $this->setVar('FirstNameField', $d['firstname']);
+        $this->setVar('googleApiAddress', $d['googleApiAddress']);
 
         return $view->redirect($url);
     }

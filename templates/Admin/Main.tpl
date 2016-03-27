@@ -154,7 +154,7 @@
 			<div style="clear:both;"></div>
 			<div>
 				<a href="{modurl modname=Almanach type=user func=showDate id=$myDate->getDid()}" class="dateTitle">{$myDate->getTitle()} </a> <br/>
-				<a class="dateDescription">{$myDate->getDescription()} </a>
+				<a class="dateDescription">{$myDate->getShortDescription()} </a>
 			</div>
 		</div>
 	{foreachelse}

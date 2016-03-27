@@ -30,6 +30,16 @@
 	</div>
    </fieldset>
    
+   {if $googleApiExist <> 1}
+	   <fieldset>
+		<legend>{gt text="Google Calendar Api"}</legend>
+		<div class="z-formrow">
+		    {formlabel for='googleApiAddress' __text='Google Api e-Mail address:'}
+			{formtextinput id="googleApiAddress" maxLength=4 mandatory=true text=$googleApiAddress}
+		</div>
+		</fieldset>
+	{/if}
+	
    <fieldset>
 	   <div class="z-formbuttons z-buttons">
 		   {formbutton class="z-bt-ok" commandName="save" __text="Save"}

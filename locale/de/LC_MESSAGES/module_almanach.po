@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Almanach\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-25 17:27+0000\n"
-"PO-Revision-Date: 2016-03-25 18:30+0100\n"
+"POT-Creation-Date: 2016-03-27 10:59+0000\n"
+"PO-Revision-Date: 2016-03-27 13:00+0100\n"
 "Last-Translator: Sascha Rösler <i-loko@t-online.de>\n"
 "Language-Team: Sascha Rösler <i-loko@t-online.de>\n"
 "Language: Deutsch (DE)\n"
@@ -16,6 +16,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.5.4\n"
+
+#: lib/Almanach/Handler/GeneralSettings.php:31
+msgid "Google Calendar Api is not installed!"
+msgstr "Die Google Kalender Api ist nicht installiert!"
 
 #: lib/Almanach/Handler/DateEdit.php:35
 #, php-format
@@ -111,27 +115,31 @@ msgstr "Der Termin wurde erfolgreich in den Kalender %s eingetragen."
 msgid "Almanach with id %s not found"
 msgstr "Der Kalender mit der Id %s konnte nicht gefunden werden."
 
-#: lib/Almanach/Handler/AlmanachEdit.php:139
+#: lib/Almanach/Handler/AlmanachEdit.php:84
+msgid "Google Calendar Api is not installed or configured!"
+msgstr "Die Google Kalender Api ist nicht installiert oder konfiguriert!"
+
+#: lib/Almanach/Handler/AlmanachEdit.php:145
 msgid "Heredity has been removed successfully."
 msgstr "Die Vererbung wurde erfolgreich gelöscht."
 
-#: lib/Almanach/Handler/AlmanachEdit.php:144
+#: lib/Almanach/Handler/AlmanachEdit.php:150
 msgid "Color of Heredity has been updated successfully."
 msgstr "Die Farbe der Vererbung wurde erfolgreich geändert."
 
-#: lib/Almanach/Handler/AlmanachEdit.php:162
+#: lib/Almanach/Handler/AlmanachEdit.php:168
 msgid "Heredity has been added successfully."
 msgstr "Eine Vererbung wurde erstellt."
 
-#: lib/Almanach/Handler/AlmanachEdit.php:174
+#: lib/Almanach/Handler/AlmanachEdit.php:180
 msgid "Color has been removed successfully."
 msgstr "EIne Farbe wurde erfolgreich entfernt."
 
-#: lib/Almanach/Handler/AlmanachEdit.php:179
+#: lib/Almanach/Handler/AlmanachEdit.php:185
 msgid "Color of a Group has been updated successfully."
 msgstr "Die Farbe einer Gruppe wurde erfolgreich geändert."
 
-#: lib/Almanach/Handler/AlmanachEdit.php:197
+#: lib/Almanach/Handler/AlmanachEdit.php:203
 msgid "A color of a group has been added successfully."
 msgstr "Die Farbe für eine Gruppe wurde erfolgreich hinzugefügt."
 
@@ -148,7 +156,7 @@ msgid "Main"
 msgstr "Startseite"
 
 #: lib/Almanach/Api/Admin.php:32 templates/Admin/Groups.tpl:1
-#: templates/Admin/CalendarEdit.tpl:100
+#: templates/Admin/CalendarEdit.tpl:116
 msgid "Groups"
 msgstr "Gruppen"
 
@@ -157,9 +165,9 @@ msgid "show the groups"
 msgstr "zeigt die Gruppen an"
 
 #: lib/Almanach/Api/Admin.php:41 lib/Almanach/Api/Account.php:33
-#: templates/Admin/Calendar.tpl:1 templates/Admin/DateEdit.tpl:150
-#: templates/Admin/DateEdit.tpl:177 templates/Admin/CalendarEdit.tpl:1
-#: templates/Admin/CalendarEdit.tpl:61
+#: templates/Admin/Calendar.tpl:1 templates/Admin/DateEdit.tpl:160
+#: templates/Admin/DateEdit.tpl:187 templates/Admin/CalendarEdit.tpl:1
+#: templates/Admin/CalendarEdit.tpl:77
 msgid "Calendar"
 msgstr "Kalender"
 
@@ -188,7 +196,7 @@ msgstr "Fr."
 msgid "No valid calendar!"
 msgstr "Kein existierender Kalender"
 
-#: lib/Almanach/Controller/User.php:121 lib/Almanach/Controller/User.php:126
+#: lib/Almanach/Controller/User.php:139 lib/Almanach/Controller/User.php:144
 msgid "No valid date!"
 msgstr "Kein existierender Kalender"
 
@@ -238,12 +246,12 @@ msgid "My Calendars"
 msgstr "Mein Kalender"
 
 #: templates/Admin/Main.tpl:78 templates/Admin/Main.tpl:81
-#: templates/User/View.tpl:113 templates/User/View.tpl:116
+#: templates/User/View.tpl:133 templates/User/View.tpl:136
 msgid "Subscribe"
 msgstr "In meine Kalender Übernehmen"
 
 #: templates/Admin/Main.tpl:79 templates/Admin/Main.tpl:82
-#: templates/User/View.tpl:114 templates/User/View.tpl:117
+#: templates/User/View.tpl:134 templates/User/View.tpl:137
 msgid "Unsubscribe"
 msgstr "Aus meinem Kalender entfernen"
 
@@ -255,38 +263,38 @@ msgstr "Es gibt keine Kalender"
 msgid "My Dates"
 msgstr "Meine Termine"
 
-#: templates/Admin/Main.tpl:99 templates/User/View.tpl:157
+#: templates/Admin/Main.tpl:99 templates/User/View.tpl:182
 msgid "hide old dates"
 msgstr "alte Termine verbergen"
 
-#: templates/Admin/Main.tpl:100 templates/User/View.tpl:158
+#: templates/Admin/Main.tpl:100 templates/User/View.tpl:183
 msgid "show old dates"
 msgstr "alte Termine anzeigen"
 
-#: templates/Admin/Main.tpl:123 templates/User/View.tpl:180
+#: templates/Admin/Main.tpl:123 templates/User/View.tpl:221
 msgid "unsubscribe date"
 msgstr "Termin aus meien Kalender entfernen"
 
 #: templates/Admin/Main.tpl:126 templates/User/ShowDate.tpl:18
-#: templates/User/View.tpl:183
+#: templates/User/View.tpl:224
 msgid "edit date"
 msgstr "Termin bearbeiten"
 
-#: templates/Admin/Main.tpl:127 templates/User/View.tpl:184
+#: templates/Admin/Main.tpl:127 templates/User/View.tpl:225
 msgid "delete date"
 msgstr "Termin löschen"
 
 #: templates/Admin/Main.tpl:132 templates/User/ShowDate.tpl:23
-#: templates/User/View.tpl:189
+#: templates/User/View.tpl:230
 msgid "guests are welcome"
 msgstr "Gäste sind willkommen"
 
-#: templates/Admin/Main.tpl:143 templates/User/View.tpl:200
+#: templates/Admin/Main.tpl:143 templates/User/View.tpl:241
 msgid "Location"
 msgstr "Ort"
 
 #: templates/Admin/Main.tpl:155 templates/Admin/Main.tpl:158
-#: templates/User/View.tpl:218 templates/User/View.tpl:221
+#: templates/User/View.tpl:259 templates/User/View.tpl:262
 msgid "There are no dates!"
 msgstr "Es gibt keine Termine"
 
@@ -311,8 +319,8 @@ msgstr ""
 "werden."
 
 #: templates/Admin/Groups.tpl:17 templates/Admin/Calendar.tpl:16
-#: templates/Admin/DateEdit.tpl:176 templates/Admin/CalendarEdit.tpl:60
-#: templates/Admin/CalendarEdit.tpl:122
+#: templates/Admin/DateEdit.tpl:186 templates/Admin/CalendarEdit.tpl:76
+#: templates/Admin/CalendarEdit.tpl:138
 msgid "Id"
 msgstr "ID"
 
@@ -320,14 +328,14 @@ msgstr "ID"
 msgid "Name"
 msgstr "Name"
 
-#: templates/Admin/Groups.tpl:19 templates/Admin/DateEdit.tpl:180
-#: templates/Admin/CalendarEdit.tpl:62 templates/Admin/CalendarEdit.tpl:124
+#: templates/Admin/Groups.tpl:19 templates/Admin/DateEdit.tpl:190
+#: templates/Admin/CalendarEdit.tpl:78 templates/Admin/CalendarEdit.tpl:140
 msgid "Color"
 msgstr "Farbe"
 
 #: templates/Admin/Groups.tpl:44 templates/Admin/Groups.tpl:72
-#: templates/Admin/DateEdit.tpl:129 templates/Admin/DateEdit.tpl:202
-#: templates/Admin/CalendarEdit.tpl:81 templates/Admin/CalendarEdit.tpl:143
+#: templates/Admin/DateEdit.tpl:139 templates/Admin/DateEdit.tpl:212
+#: templates/Admin/CalendarEdit.tpl:97 templates/Admin/CalendarEdit.tpl:159
 msgid "Close"
 msgstr "Schließen"
 
@@ -385,14 +393,34 @@ msgid "Location:"
 msgstr "Ort:"
 
 #: templates/Admin/DateEdit.tpl:107
+msgid ""
+"The short description is shown by the calendar. You can input more than 200 "
+"signs."
+msgstr ""
+"Die kurze Beschreibung wird in den Kalendern angezeigt. Sie können nicht "
+"mehr als 200 Zeichen eingeben."
+
+#: templates/Admin/DateEdit.tpl:110
+msgid "short Description:"
+msgstr "kurze Beschreibung:"
+
+#: templates/Admin/DateEdit.tpl:114
+msgid ""
+"The description is shown by the date view only. You can input detailed "
+"information here."
+msgstr ""
+"Die längere Beschreibung wird nur in der detaillierteren Ansicht des Termins "
+"angezeigt. Hier können Sie genauere Informationen eintragen."
+
+#: templates/Admin/DateEdit.tpl:117
 msgid "Description:"
 msgstr "Beschreibung:"
 
-#: templates/Admin/DateEdit.tpl:111
+#: templates/Admin/DateEdit.tpl:121
 msgid "Group:"
 msgstr "Gruppe:"
 
-#: templates/Admin/DateEdit.tpl:116
+#: templates/Admin/DateEdit.tpl:126
 msgid ""
 "You can overwrite the color of the group and the color of the calendar for "
 "this date by the following field."
@@ -400,28 +428,28 @@ msgstr ""
 "Sie können die Gruppen- und die Kalenderfarbe überschreiben, indem Sie hier "
 "eine neue Farbe einstellen."
 
-#: templates/Admin/DateEdit.tpl:119
+#: templates/Admin/DateEdit.tpl:129
 msgid "Color:"
 msgstr "Farbe:"
 
-#: templates/Admin/DateEdit.tpl:136
+#: templates/Admin/DateEdit.tpl:146
 msgid "Visibility:"
 msgstr "Sichtbarkeit:"
 
-#: templates/Admin/DateEdit.tpl:140
+#: templates/Admin/DateEdit.tpl:150
 msgid "Guests are welcome:"
 msgstr "Gäste sind willkommen:"
 
-#: templates/Admin/DateEdit.tpl:145
+#: templates/Admin/DateEdit.tpl:155
 #, php-format
 msgid "This date was created by user %s at %s"
 msgstr "Dieser Termin wurde von Benutzer %s am %s erstellt"
 
-#: templates/Admin/DateEdit.tpl:152
+#: templates/Admin/DateEdit.tpl:162
 msgid "This Date is inputed in following calendars."
 msgstr "Dieser Termin ist in folgende Kalender eingetragen"
 
-#: templates/Admin/DateEdit.tpl:156
+#: templates/Admin/DateEdit.tpl:166
 msgid ""
 "You get a warning, if there is an other date on the same time in one of this "
 "calendars. If this is an calendar dont allowing overlapping you cant insert "
@@ -432,21 +460,21 @@ msgstr ""
 "wurde, können sie ihn nicht dort eintragen. In diesem Fall bekommen Sie eine "
 "Fehlermeldung."
 
-#: templates/Admin/DateEdit.tpl:159
+#: templates/Admin/DateEdit.tpl:169
 msgid "Input this Date into "
 msgstr "Diesen Termin in folgenden Kalener eintragen"
 
-#: templates/Admin/DateEdit.tpl:161 templates/Admin/CalendarEdit.tpl:45
+#: templates/Admin/DateEdit.tpl:171 templates/Admin/CalendarEdit.tpl:61
 msgid "no calendar selected"
 msgstr "Kein Kalender ausgewählt"
 
-#: templates/Admin/DateEdit.tpl:222 templates/Admin/CalendarEdit.tpl:163
-#: templates/Admin/GeneralSettings.tpl:35
+#: templates/Admin/DateEdit.tpl:232 templates/Admin/CalendarEdit.tpl:179
+#: templates/Admin/GeneralSettings.tpl:45
 msgid "Save"
 msgstr "Speichern"
 
-#: templates/Admin/DateEdit.tpl:223 templates/Admin/CalendarEdit.tpl:164
-#: templates/Admin/GeneralSettings.tpl:36
+#: templates/Admin/DateEdit.tpl:233 templates/Admin/CalendarEdit.tpl:180
+#: templates/Admin/GeneralSettings.tpl:46
 msgid "Cancel"
 msgstr "Abbrechen"
 
@@ -496,11 +524,43 @@ msgstr ""
 msgid "Template:"
 msgstr "Vorlage:"
 
-#: templates/Admin/CalendarEdit.tpl:39
+#: templates/Admin/CalendarEdit.tpl:38
+msgid ""
+"You can connect this calendar with a google calendar. Therefor you has to "
+"share the google calendar with "
+msgstr ""
+"Sie können diesen Kalender mit einem Google- Kalender verknüpfen. Hierfür "
+"teilen Sie den Google- Kalender mit"
+
+#: templates/Admin/CalendarEdit.tpl:38
+msgid ""
+"Please insert the google calendar id in the field below. You find the id in "
+"the settings of the google calendar. It has the form "
+"\\'ok430k5bire7huqihlqf18jaao@group.calendar.google.com\\'. You have to set "
+"\\'Add and edit events\\' in google permission rules."
+msgstr ""
+"Bitte geben Sie die Kalender- Adresse des Google- Kalenders in das nächste "
+"Feld ein. Sie finden diese in den Einstellungen des Google- Kalenders. Sie "
+"hat die Form \\'ok430k5bire7huqihlqf18jaao@group.calendar.google.com\\'.  "
+"Sie müssen die Berechtigung \\'Termin ändern\\' bei Google auswählen. "
+
+#: templates/Admin/CalendarEdit.tpl:41
+msgid "Google Calendar ID:"
+msgstr "Google- Kalenderadresse"
+
+#: templates/Admin/CalendarEdit.tpl:47
+msgid "No"
+msgstr "Nein"
+
+#: templates/Admin/CalendarEdit.tpl:48
+msgid "Yes"
+msgstr "Ja"
+
+#: templates/Admin/CalendarEdit.tpl:55
 msgid "Heredity"
 msgstr "Übernehmen"
 
-#: templates/Admin/CalendarEdit.tpl:41
+#: templates/Admin/CalendarEdit.tpl:57
 msgid ""
 "This Calendar inherits the dates of the following calendars. All dates of "
 "this calendar has the selected color. If no color is selected, the date "
@@ -510,11 +570,11 @@ msgstr ""
 "dieser Kalender werden mit den neuen Farben übernommen. Wenn keine Farbe "
 "ausgewählt wurde behalten die Termine ihre ursprünglichen Farben."
 
-#: templates/Admin/CalendarEdit.tpl:43
+#: templates/Admin/CalendarEdit.tpl:59
 msgid "create new Heredity to"
 msgstr "neuen Kalender mit übernehmen"
 
-#: templates/Admin/CalendarEdit.tpl:102
+#: templates/Admin/CalendarEdit.tpl:118
 msgid ""
 "Every date is show by a color. This color can selected for every group. This "
 "overwrides the normal group color for all dates of this calendar."
@@ -523,15 +583,15 @@ msgstr ""
 "Termine in diesem Kalender eine gesonderte Farbe bekommen. Dies überschreibt "
 "die Gruppenfarbe für alle Termine der Gruppe in diesem Kalender."
 
-#: templates/Admin/CalendarEdit.tpl:105
+#: templates/Admin/CalendarEdit.tpl:121
 msgid "create color for group"
 msgstr "erstelle Farbe für Gruppe"
 
-#: templates/Admin/CalendarEdit.tpl:107
+#: templates/Admin/CalendarEdit.tpl:123
 msgid "no group selected"
 msgstr "keine Gruppe ausgewählt"
 
-#: templates/Admin/CalendarEdit.tpl:123
+#: templates/Admin/CalendarEdit.tpl:139
 msgid "Group"
 msgstr "Gruppe"
 
@@ -576,6 +636,14 @@ msgstr "Nachname:"
 msgid "Frist name:"
 msgstr "Vorname:"
 
+#: templates/Admin/GeneralSettings.tpl:35
+msgid "Google Calendar Api"
+msgstr "Google Kalender Api"
+
+#: templates/Admin/GeneralSettings.tpl:37
+msgid "Google Api e-Mail address:"
+msgstr "Google- Api- eMailadresse"
+
 #: templates/User/ShowDate.tpl:18
 msgid "Edit this date"
 msgstr "Diesen Termin bearbeiten"
@@ -596,34 +664,54 @@ msgstr "Dies ist ein Termin der Gruppe"
 msgid "Created on"
 msgstr "Erstellt am"
 
-#: templates/User/View.tpl:95
+#: templates/User/View.tpl:111
 msgid "My Calendar"
 msgstr "Mein Kalender"
 
-#: templates/User/View.tpl:101
+#: templates/User/View.tpl:117
 msgid "This calendar has this subcalendars:"
 msgstr "Dieser Kalender beinhaltet die folgenden Kalender:"
 
-#: templates/User/View.tpl:121
+#: templates/User/View.tpl:141
 msgid "Filter"
 msgstr "Filter"
 
-#: templates/User/View.tpl:122
+#: templates/User/View.tpl:142
 msgid "You can filter the dates below by groups."
 msgstr "Sie können sich nur Termine bestimmter Gruppen anzeigen lassen."
 
-#: templates/User/View.tpl:126
+#: templates/User/View.tpl:146
 msgid "select all"
 msgstr "Alle auswählen"
 
-#: templates/User/View.tpl:126
+#: templates/User/View.tpl:146
 msgid "select none"
 msgstr "Auswahl löschen"
 
-#: templates/User/View.tpl:130
+#: templates/User/View.tpl:150
 msgid "show Date belong to no group"
 msgstr "zeigt Termine, die keiner Gruppe zugeordnet sind"
 
-#: templates/User/View.tpl:147
+#: templates/User/View.tpl:167
 msgid "Apply"
 msgstr "Anwenden"
+
+#: templates/User/View.tpl:177
+msgid "today"
+msgstr "Heute"
+
+#: templates/User/View.tpl:177
+msgid "this week"
+msgstr "Diese Woche"
+
+#: templates/User/View.tpl:177
+msgid "this month"
+msgstr "Diesen Monat"
+
+#: templates/User/View.tpl:177
+msgid "this year"
+msgstr "Dieses Jahr"
+
+#: templates/User/View.tpl:177
+msgid "all"
+msgstr "Alles"

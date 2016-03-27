@@ -64,3 +64,70 @@ function filterRun(){
 		}
 	}
 }
+
+function selectTime(param){
+	document.getElementById('selectTime0').className="z-button";
+	document.getElementById('selectTime1').className="z-button";
+	document.getElementById('selectTime2').className="z-button";
+	document.getElementById('selectTime3').className="z-button";
+	
+	document.getElementById('selectTime' + param).className="z-button selectedTime";
+	
+	switch(param){
+		case 0:
+			var dates = document.getElementsByClassName('notToday');
+			
+			for(var j = 0; j < dates.length; j ++){
+				dates[j].style.display = 'none';
+			}
+			break;
+		case 1:
+			var dates = document.getElementsByClassName('notToday');
+			
+			for(var j = 0; j < dates.length; j ++){
+				dates[j].style.display = '';
+			}
+			
+			var dates = document.getElementsByClassName('notThisWeek');
+			
+			for(var j = 0; j < dates.length; j ++){
+				dates[j].style.display = 'none';
+			}
+			break;
+			
+		case 2:
+			var dates = document.getElementsByClassName('notToday');
+			
+			for(var j = 0; j < dates.length; j ++){
+				dates[j].style.display = '';
+			}
+			
+			var dates = document.getElementsByClassName('notThisMonth');
+			
+			for(var j = 0; j < dates.length; j ++){
+				dates[j].style.display = 'none';
+			}
+			break;
+		case 3:
+			var dates = document.getElementsByClassName('notToday');
+			
+			for(var j = 0; j < dates.length; j ++){
+				dates[j].style.display = '';
+			}
+			
+			var dates = document.getElementsByClassName('notThisYear');
+			
+			for(var j = 0; j < dates.length; j ++){
+				dates[j].style.display = 'none';
+			}
+			break;
+		case 4:
+			var dates = document.getElementsByClassName('notToday');
+			
+			for(var j = 0; j < dates.length; j ++){
+				dates[j].style.display = '';
+			}
+			break;
+		
+	}
+}

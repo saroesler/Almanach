@@ -33,6 +33,22 @@
 		{formlabel for='template' __text='Template:'}
 		{formtextinput id="template" maxLength=2000 mandatory=false text=$almanach->getTemplate()}
 	</div>
+	{if $googleApiExist == 0}
+		<div class="z-informationmsg">
+			<p>{gt text="You can connect this calendar with a google calendar. Therefor you has to share the google calendar with "}{$googleApiAddress}.{gt text="Please insert the google calendar id in the field below. You find the id in the settings of the google calendar. It has the form \'ok430k5bire7huqihlqf18jaao@group.calendar.google.com\'. You have to set \'Add and edit events\' in google permission rules."}</p>
+		</div>
+		<div class="z-formrow">
+			{formlabel for='googleCalendarId' __text='Google Calendar ID:'}
+			{formtextinput id="googleCalendarId" maxLength=2000 mandatory=false text=$almanach->getGoogleCalendarId() onchange="setGoogleRequest()"}
+		</div>
+		<div class="z-informationmsg" id="googleTransfer" style="display:none;">
+			<p>You changes the google Calendar. Do you want the transfer all dates of this calendar to the google calendar?</p>
+			<div>
+				{formlabel __text='No' for='noButton' mandatory=true}{formradiobutton id='noButton' dataField='ok'} <br/>
+				{formlabel __text='Yes' for='yesButton' mandatory=true} {formradiobutton id='yesButton' dataField='ok'}	
+			</div>
+		</div>
+	{/if}
    </fieldset>
    
    <fieldset>

@@ -50,6 +50,14 @@ class Almanach_Entity_Almanach extends Zikula_EntityAccess
      */
     private $template;
     
+    /**
+     * The following are annotations which define the template field.
+     *
+     * @ORM\Column(type="string", length="2000", nullable=true)
+     */
+    private $googleCalendarId;
+    
+    
     //no database field
     private $color;
     
@@ -106,5 +114,15 @@ class Almanach_Entity_Almanach extends Zikula_EntityAccess
     public function setColor($color)
     {
         $this->color = $color;
+    }
+    
+    public function getGoogleCalendarId()
+    {
+        return $this->googleCalendarId;
+    }
+
+    public function setGoogleCalendarId($googleCalendarId)
+    {
+        $this->googleCalendarId = $googleCalendarId;
     }
 }

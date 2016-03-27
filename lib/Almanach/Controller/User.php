@@ -56,6 +56,10 @@ class Almanach_Controller_User extends Zikula_AbstractController
     	}
     	
     	$oldKey = -1;
+    	$today = -1;
+    	$week = -1;
+    	$month = -1;
+    	$year = -1;
     	
     	$now = new DateTime();
     	
@@ -68,6 +72,15 @@ class Almanach_Controller_User extends Zikula_AbstractController
     		
     		if($myDate->getEnddate() < $now)
     			$oldKey ++;
+			if($myDate->getStartdate()->format(' d. M Y') ==  $now->format(' d. M Y'))
+				$today ++;
+			if($myDate->getStartdate()->format(' W Y') ==  $now->format(' W Y'))
+				$week ++;
+			if($myDate->getStartdate()->format(' M Y') ==  $now->format(' M Y'))
+				$month ++;
+			if($myDate->getStartdate()->format('Y') ==  $now->format('Y'))
+				$year ++;
+    			
     	}
     	
     	$isSubscribe = $this->entityManager->getRepository('Almanach_Entity_SubscribeAlmanach')->findBy(array('aid' => $aid, 'uid' => $uid));
@@ -79,8 +92,7 @@ class Almanach_Controller_User extends Zikula_AbstractController
     		
 		$subalmanachs = ModUtil::apiFunc('Almanach', 'Heredity', 'getSubCalendar', $aid);
 		$groupreturn = ModUtil::apiFunc('Almanach', 'Heredity', 'getGroupsOfDates', $myDates);
-    	
-    			
+		
     	//get all keys, which dates are subscribed
     	$this->view
     		->assign('almanach', $almanach)
@@ -92,7 +104,11 @@ class Almanach_Controller_User extends Zikula_AbstractController
     		->assign('myDates', $myDates)
     		->assign('subscribedDates', $subscribedDates)
     		->assign('adminDates', $adminDates)
-    		->assign('oldKey', $oldKey);
+    		->assign('oldKey', $oldKey)
+    		->assign('today', $today)
+    		->assign('week', $week)
+    		->assign('month', $month)
+    		->assign('year', $year);
     		
     	if($almanach->getTemplate() != '')
 			$tpl = file_exists(__DIR__."/../../../templates/".$almanach->getTemplate()) ? $almanach->getTemplate() : 'User/View.tpl';

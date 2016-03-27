@@ -43,6 +43,13 @@ class Almanach_Entity_AlmanachElement extends Zikula_EntityAccess
      */
     private $color;
     
+    /**
+     * The following are annotations which define the color field.
+     *
+     * @ORM\Column(type="string", length="1024", nullable=true)
+     */
+    private $googleId;
+    
     public function getEid()
     {
         return $this->eid;
@@ -81,5 +88,15 @@ class Almanach_Entity_AlmanachElement extends Zikula_EntityAccess
     public function setColor($color)
     {
         $this->color = $color;
+    }
+    
+    public function getGoogleId()
+    {
+        return $this->googleId;
+    }
+
+    public function setGoogleId($googleId)
+    {
+        $this->googleId = $googleId;
     }
 }

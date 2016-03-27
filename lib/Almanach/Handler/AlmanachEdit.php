@@ -79,13 +79,19 @@ class Almanach_Handler_AlmanachEdit extends Zikula_Form_AbstractHandler
             $groupSelection = $this->entityManager->getRepository('Almanach_Entity_Group')->findBy(array());
         }
         
+        $googleApiExist = ModUtil::apiFunc('Almanach', 'GoogleCalendarApi', 'apiExist');
+    	if($googleApiExist != 0)
+    		LogUtil::RegisterStatus($this->__("Google Calendar Api is not installed or configured!"));
+    		
 		$view->assign('almanach',$almanach);
         $view->assign('colors',$colors);
+        $view->assign('googleApiAddress',$this->getVar('googleApiAddress'));
         $view->assign('heredities',$heredities);
         $view->assign('hereditySelection',$hereditySelection);
         $view->assign('heredityHide',$heredityHide);
         $view->assign('groupSelection',$groupSelection);
         $view->assign('groupHide',$groupHide);
+        $view->assign('googleApiExist',$googleApiExist);
 
         // assign current values to form fields
         return true;

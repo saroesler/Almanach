@@ -218,3 +218,7 @@ function colorSave()
 		closeText: "Schließen"
 	});
 }
+
+function setGoogleRequest(){
+	document.getElementById('googleTransfer').style.display = 'block';
+}

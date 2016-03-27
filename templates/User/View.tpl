@@ -7,7 +7,7 @@
 		border: 1px solid #aaa;
 		border-radius: 4px;
 		padding: 20px;
-		max-width: 400px;
+		max-width: 490px;
 		margin: 10px;
 	}
 	
@@ -97,6 +97,22 @@
 		border: 1px solid #aaa;
 		border-radius: 10px;
 	}
+	
+	.timeselection{
+		background-color: #ddd;
+		border: 1px solid #aaa;
+		border-radius: 4px;
+		padding: 5px;
+		padding-left: 20px;
+		max-width: 505px;
+		margin: 10px;
+	}
+	
+	.selectedTime{
+		background: rgba(0, 0, 0, 0) linear-gradient(#fafafa, #cfcfcf) repeat scroll 0 0;
+		color: #222;
+		text-decoration: none !important;
+	}
 </style>
 {checkpermission component="Almanach::" instance="::" level=ACCESS_COMMENT assign=hasMyDates}
 {if $hasMyDates}
@@ -164,12 +180,15 @@
 
 <div style="clear:both;"></div>
 
+
+<div class="timeselection">
+	<a class="z-button" id="selectTime0" style="margin:0px;" onclick="selectTime(0)">{gt text="today"}</a><a class="z-button selectedTime" style="margin:0px;" id="selectTime1" onclick="selectTime(1)">{gt text="this week"}</a><a class="z-button" style="margin:0px;" onclick="selectTime(2)" id="selectTime2" >{gt text="this month"}</a><a class="z-button" style="margin:0px;" onclick="selectTime(3)" id="selectTime3">{gt text="this year"}</a><a class="z-button" style="margin:0px;" onclick="selectTime(4)" id="selectTime4">{gt text="all"}</a>
+</div>
+
 <div>
 	<div style="float:right;">
 		<a id="hideOld" onclick="hideOldDates()" style="display:none;">{img src='forward.png' modname='core' set='icons/small' __title="hide old dates"}</a>
 		<a id="showOld" onclick="showOldDates()">{img src='previous.png' modname='core' set='icons/small' __title="show old dates"}</a>
-	</div>
-	<div>
 	</div>
 </div>
 
@@ -180,12 +199,30 @@
 		<div class="dateDiv
 			{if $i <= $oldKey}
 				oldDate
+			{else}
+				{if $i > $today}
+					notToday
+				{/if}
+				{if $i > $week}
+					notThisWeek
+				{/if}
+				{if $i > $month}
+					notThisMonth
+				{/if}
+				{if $i > $year}
+					notThisYear
+				{/if}
 			{/if}
 			group{$myDate->getGid()}
 			" id="date{$myDate->getDid()}"
+			style="
 			{if $myDate->getColor() <> '' and $myDate->getColor() <> '#'}
-				style="border-color:{$myDate->getColor()};"
+				border-color:{$myDate->getColor()};
 			{/if}
+			{if $i > $week AND $i > $oldKey}
+				display:none;
+			{/if}
+			"
 			>
 			<div class="dateAdmin" style="float:right;">
 				{if $subscribedDates.$i == 1}
@@ -223,7 +260,7 @@
 						href="{modurl modname=Almanach type=user func=showDate id=$myDate->getDid()}"
 					{/if} 
 					class="dateTitle">{$myDate->getTitle()} </a> <br/>
-				<a class="dateDescription">{$myDate->getDescription()} </a>
+				<p class="dateDescription" style="margin:0px;">{$myDate->getShortDescription()} </p>
 			</div>
 		</div>
 	{foreachelse}
