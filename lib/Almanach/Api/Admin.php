@@ -73,7 +73,10 @@ class Almanach_Api_Admin extends Zikula_AbstractApi
 	public function getGroupName($args)
 	{
 		$group = $this->entityManager->find('Almanach_Entity_Group', $args['gid']);
-		return $group->getName();
+		if(is_object($group))
+			return $group->getName();
+		else
+			return '';
 	}
 	
 	public function getGroupColor($args)

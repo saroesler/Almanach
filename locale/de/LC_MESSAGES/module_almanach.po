@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Almanach\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-27 10:59+0000\n"
-"PO-Revision-Date: 2016-03-27 13:00+0100\n"
+"POT-Creation-Date: 2016-04-13 08:00+0000\n"
+"PO-Revision-Date: 2016-04-13 10:05+0100\n"
 "Last-Translator: Sascha Rösler <i-loko@t-online.de>\n"
 "Language-Team: Sascha Rösler <i-loko@t-online.de>\n"
 "Language: Deutsch (DE)\n"
@@ -63,14 +63,14 @@ msgstr ""
 "Sie haben nicht die Berechtigung einen Termin für die ausgewählte Gruppe zu "
 "erstellen. Bitte wählen Sie eine andere."
 
-#: lib/Almanach/Handler/DateEdit.php:184
+#: lib/Almanach/Handler/DateEdit.php:186
 #, php-format
 msgid "You dont have the permission to edit the connection to the calendar %s."
 msgstr ""
 "Sie haben nicht die Berechtigung den Eintrag in den Kalender %s zu "
 "bearbeiten."
 
-#: lib/Almanach/Handler/DateEdit.php:198 lib/Almanach/Handler/DateEdit.php:247
+#: lib/Almanach/Handler/DateEdit.php:200 lib/Almanach/Handler/DateEdit.php:267
 #, php-format
 msgid ""
 "This date overlaps with an other date in calendar %s. So the date cant be "
@@ -80,7 +80,7 @@ msgstr ""
 "deshalb konnte er nicht in den Kalender %s eingetragen werden. Bitte "
 "kontaktieren Sie %s."
 
-#: lib/Almanach/Handler/DateEdit.php:202 lib/Almanach/Handler/DateEdit.php:251
+#: lib/Almanach/Handler/DateEdit.php:204 lib/Almanach/Handler/DateEdit.php:271
 #, php-format
 msgid ""
 "Please notice that this date overlaps with an other date in calendar %s. "
@@ -89,23 +89,23 @@ msgstr ""
 "Bitte beachten Sie, dass sich dieser Termin mit einem anderen im Kalender %s "
 "überschneidet. Bei Bedarf kontaktiere Sie bitte %s."
 
-#: lib/Almanach/Handler/DateEdit.php:208
+#: lib/Almanach/Handler/DateEdit.php:232
 #, php-format
 msgid "Date sucessfully deleted of calendar %s."
 msgstr "Der Termin wurde erfolgreich aus dem Kalender %s ausgetragen."
 
-#: lib/Almanach/Handler/DateEdit.php:215
+#: lib/Almanach/Handler/DateEdit.php:239
 #, php-format
 msgid "Date sucessfully edited in calendar %s."
 msgstr "Der Termin wurde erfolgreich im Kalender %s abgeändert."
 
-#: lib/Almanach/Handler/DateEdit.php:232
+#: lib/Almanach/Handler/DateEdit.php:252
 #, php-format
 msgid "You dont have the permission to input the date into the calendar %s."
 msgstr ""
 "Sie haben nicht die Rechte um den Termin in den Kalender %s einzutragen."
 
-#: lib/Almanach/Handler/DateEdit.php:262
+#: lib/Almanach/Handler/DateEdit.php:301
 #, php-format
 msgid "The date has been entered into calendar %s successfully."
 msgstr "Der Termin wurde erfolgreich in den Kalender %s eingetragen."
@@ -119,27 +119,27 @@ msgstr "Der Kalender mit der Id %s konnte nicht gefunden werden."
 msgid "Google Calendar Api is not installed or configured!"
 msgstr "Die Google Kalender Api ist nicht installiert oder konfiguriert!"
 
-#: lib/Almanach/Handler/AlmanachEdit.php:145
+#: lib/Almanach/Handler/AlmanachEdit.php:147
 msgid "Heredity has been removed successfully."
 msgstr "Die Vererbung wurde erfolgreich gelöscht."
 
-#: lib/Almanach/Handler/AlmanachEdit.php:150
+#: lib/Almanach/Handler/AlmanachEdit.php:152
 msgid "Color of Heredity has been updated successfully."
 msgstr "Die Farbe der Vererbung wurde erfolgreich geändert."
 
-#: lib/Almanach/Handler/AlmanachEdit.php:168
+#: lib/Almanach/Handler/AlmanachEdit.php:170
 msgid "Heredity has been added successfully."
 msgstr "Eine Vererbung wurde erstellt."
 
-#: lib/Almanach/Handler/AlmanachEdit.php:180
+#: lib/Almanach/Handler/AlmanachEdit.php:182
 msgid "Color has been removed successfully."
 msgstr "EIne Farbe wurde erfolgreich entfernt."
 
-#: lib/Almanach/Handler/AlmanachEdit.php:185
+#: lib/Almanach/Handler/AlmanachEdit.php:187
 msgid "Color of a Group has been updated successfully."
 msgstr "Die Farbe einer Gruppe wurde erfolgreich geändert."
 
-#: lib/Almanach/Handler/AlmanachEdit.php:203
+#: lib/Almanach/Handler/AlmanachEdit.php:205
 msgid "A color of a group has been added successfully."
 msgstr "Die Farbe für eine Gruppe wurde erfolgreich hinzugefügt."
 
@@ -184,11 +184,11 @@ msgstr "Ein neuen Termin erstellen"
 msgid "General Settings"
 msgstr "Einstellungen"
 
-#: lib/Almanach/Api/Admin.php:101
+#: lib/Almanach/Api/Admin.php:104
 msgid "Mr."
 msgstr "Hr."
 
-#: lib/Almanach/Api/Admin.php:103
+#: lib/Almanach/Api/Admin.php:106
 msgid "Mrs."
 msgstr "Fr."
 
@@ -196,7 +196,7 @@ msgstr "Fr."
 msgid "No valid calendar!"
 msgstr "Kein existierender Kalender"
 
-#: lib/Almanach/Controller/User.php:139 lib/Almanach/Controller/User.php:144
+#: lib/Almanach/Controller/User.php:138 lib/Almanach/Controller/User.php:143
 msgid "No valid date!"
 msgstr "Kein existierender Kalender"
 
@@ -226,7 +226,7 @@ msgstr "Es gibt keine gültige Id."
 msgid "Almanach has been removed successfully."
 msgstr "Der Kalender wurde erfolgreich gelöscht."
 
-#: lib/Almanach/Controller/Ajax.php:307
+#: lib/Almanach/Controller/Ajax.php:309
 msgid "Date has been removed successfully."
 msgstr "Der Termin wurde erfolgreich gelöscht."
 
@@ -263,38 +263,38 @@ msgstr "Es gibt keine Kalender"
 msgid "My Dates"
 msgstr "Meine Termine"
 
-#: templates/Admin/Main.tpl:99 templates/User/View.tpl:182
+#: templates/Admin/Main.tpl:99 templates/User/View.tpl:177
 msgid "hide old dates"
 msgstr "alte Termine verbergen"
 
-#: templates/Admin/Main.tpl:100 templates/User/View.tpl:183
+#: templates/Admin/Main.tpl:100 templates/User/View.tpl:178
 msgid "show old dates"
 msgstr "alte Termine anzeigen"
 
-#: templates/Admin/Main.tpl:123 templates/User/View.tpl:221
+#: templates/Admin/Main.tpl:123 templates/User/View.tpl:220
 msgid "unsubscribe date"
 msgstr "Termin aus meien Kalender entfernen"
 
 #: templates/Admin/Main.tpl:126 templates/User/ShowDate.tpl:18
-#: templates/User/View.tpl:224
+#: templates/User/View.tpl:223
 msgid "edit date"
 msgstr "Termin bearbeiten"
 
-#: templates/Admin/Main.tpl:127 templates/User/View.tpl:225
+#: templates/Admin/Main.tpl:127 templates/User/View.tpl:224
 msgid "delete date"
 msgstr "Termin löschen"
 
 #: templates/Admin/Main.tpl:132 templates/User/ShowDate.tpl:23
-#: templates/User/View.tpl:230
+#: templates/User/View.tpl:229
 msgid "guests are welcome"
 msgstr "Gäste sind willkommen"
 
-#: templates/Admin/Main.tpl:143 templates/User/View.tpl:241
+#: templates/Admin/Main.tpl:143 templates/User/View.tpl:240
 msgid "Location"
 msgstr "Ort"
 
 #: templates/Admin/Main.tpl:155 templates/Admin/Main.tpl:158
-#: templates/User/View.tpl:259 templates/User/View.tpl:262
+#: templates/User/View.tpl:258 templates/User/View.tpl:261
 msgid "There are no dates!"
 msgstr "Es gibt keine Termine"
 
@@ -676,6 +676,10 @@ msgstr "Dieser Kalender beinhaltet die folgenden Kalender:"
 msgid "Filter"
 msgstr "Filter"
 
+#: templates/User/View.tpl:141
+msgid "show"
+msgstr "anzeigen"
+
 #: templates/User/View.tpl:142
 msgid "You can filter the dates below by groups."
 msgstr "Sie können sich nur Termine bestimmter Gruppen anzeigen lassen."
@@ -696,22 +700,26 @@ msgstr "zeigt Termine, die keiner Gruppe zugeordnet sind"
 msgid "Apply"
 msgstr "Anwenden"
 
-#: templates/User/View.tpl:177
+#: templates/User/View.tpl:177 templates/User/View.tpl:178
+msgid "History"
+msgstr "Historie"
+
+#: templates/User/View.tpl:183
 msgid "today"
 msgstr "Heute"
 
-#: templates/User/View.tpl:177
+#: templates/User/View.tpl:183
 msgid "this week"
 msgstr "Diese Woche"
 
-#: templates/User/View.tpl:177
+#: templates/User/View.tpl:183
 msgid "this month"
 msgstr "Diesen Monat"
 
-#: templates/User/View.tpl:177
+#: templates/User/View.tpl:183
 msgid "this year"
 msgstr "Dieses Jahr"
 
-#: templates/User/View.tpl:177
+#: templates/User/View.tpl:183
 msgid "all"
 msgstr "Alles"

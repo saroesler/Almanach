@@ -146,7 +146,7 @@
 		{/if}
 	</div>
 	<div class="filter">
-		<p class="filterHeader"> <a onclick="showFilter()">{img src='filter.png' modname='core' set='icons/small'}</a>  {gt text="Filter"}</p>
+		<p class="filterHeader"> <a onclick="showFilter()" class="filterHeader" style="color: #333;">{img src='filter.png' modname='core' set='icons/small'}  {gt text="Filter"} <span style="margin-left:150px;font-size: 15px;">{gt text="show"}</span></a></p>
 		<p>{gt text="You can filter the dates below by groups."}</p>
 		
 		<div class="filterbody" id="filterbody" style="display:none;">
@@ -180,16 +180,15 @@
 
 <div style="clear:both;"></div>
 
+<div>
+	<div style="float:right; box-shadow: 5px 5px 2px grey; padding: 5px; border: 1px solid #000;">
+		<a id="hideOld" onclick="hideOldDates()" style="display:none;">{img src='forward.png' modname='core' set='icons/small' __title="hide old dates" style="box-shadow: 0px 0px 0px"} {gt text="History"}</a>
+		<a id="showOld" onclick="showOldDates()">{img src='previous.png' modname='core' set='icons/small' __title="show old dates"  style="box-shadow: 0px 0px 0px"} {gt text="History"}</a>
+	</div>
+</div>
 
 <div class="timeselection">
 	<a class="z-button" id="selectTime0" style="margin:0px;" onclick="selectTime(0)">{gt text="today"}</a><a class="z-button selectedTime" style="margin:0px;" id="selectTime1" onclick="selectTime(1)">{gt text="this week"}</a><a class="z-button" style="margin:0px;" onclick="selectTime(2)" id="selectTime2" >{gt text="this month"}</a><a class="z-button" style="margin:0px;" onclick="selectTime(3)" id="selectTime3">{gt text="this year"}</a><a class="z-button" style="margin:0px;" onclick="selectTime(4)" id="selectTime4">{gt text="all"}</a>
-</div>
-
-<div>
-	<div style="float:right;">
-		<a id="hideOld" onclick="hideOldDates()" style="display:none;">{img src='forward.png' modname='core' set='icons/small' __title="hide old dates"}</a>
-		<a id="showOld" onclick="showOldDates()">{img src='previous.png' modname='core' set='icons/small' __title="show old dates"}</a>
-	</div>
 </div>
 
 <div style="clear:both;"></div>

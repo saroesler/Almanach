@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Zikula 1.x\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-27 10:59+0000\n"
+"POT-Creation-Date: 2016-04-13 08:00+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -57,41 +57,41 @@ msgid ""
 "choose one you can create a date for."
 msgstr ""
 
-#: lib/Almanach/Handler/DateEdit.php:184
+#: lib/Almanach/Handler/DateEdit.php:186
 #, php-format
 msgid "You dont have the permission to edit the connection to the calendar %s."
 msgstr ""
 
-#: lib/Almanach/Handler/DateEdit.php:198 lib/Almanach/Handler/DateEdit.php:247
+#: lib/Almanach/Handler/DateEdit.php:200 lib/Almanach/Handler/DateEdit.php:267
 #, php-format
 msgid ""
 "This date overlaps with an other date in calendar %s. So the date cant be "
 "entered into calendar %s. Please contact %s."
 msgstr ""
 
-#: lib/Almanach/Handler/DateEdit.php:202 lib/Almanach/Handler/DateEdit.php:251
+#: lib/Almanach/Handler/DateEdit.php:204 lib/Almanach/Handler/DateEdit.php:271
 #, php-format
 msgid ""
 "Please notice that this date overlaps with an other date in calendar %s. "
 "Please contact %s."
 msgstr ""
 
-#: lib/Almanach/Handler/DateEdit.php:208
+#: lib/Almanach/Handler/DateEdit.php:232
 #, php-format
 msgid "Date sucessfully deleted of calendar %s."
 msgstr ""
 
-#: lib/Almanach/Handler/DateEdit.php:215
+#: lib/Almanach/Handler/DateEdit.php:239
 #, php-format
 msgid "Date sucessfully edited in calendar %s."
 msgstr ""
 
-#: lib/Almanach/Handler/DateEdit.php:232
+#: lib/Almanach/Handler/DateEdit.php:252
 #, php-format
 msgid "You dont have the permission to input the date into the calendar %s."
 msgstr ""
 
-#: lib/Almanach/Handler/DateEdit.php:262
+#: lib/Almanach/Handler/DateEdit.php:301
 #, php-format
 msgid "The date has been entered into calendar %s successfully."
 msgstr ""
@@ -105,27 +105,27 @@ msgstr ""
 msgid "Google Calendar Api is not installed or configured!"
 msgstr ""
 
-#: lib/Almanach/Handler/AlmanachEdit.php:145
+#: lib/Almanach/Handler/AlmanachEdit.php:147
 msgid "Heredity has been removed successfully."
 msgstr ""
 
-#: lib/Almanach/Handler/AlmanachEdit.php:150
+#: lib/Almanach/Handler/AlmanachEdit.php:152
 msgid "Color of Heredity has been updated successfully."
 msgstr ""
 
-#: lib/Almanach/Handler/AlmanachEdit.php:168
+#: lib/Almanach/Handler/AlmanachEdit.php:170
 msgid "Heredity has been added successfully."
 msgstr ""
 
-#: lib/Almanach/Handler/AlmanachEdit.php:180
+#: lib/Almanach/Handler/AlmanachEdit.php:182
 msgid "Color has been removed successfully."
 msgstr ""
 
-#: lib/Almanach/Handler/AlmanachEdit.php:185
+#: lib/Almanach/Handler/AlmanachEdit.php:187
 msgid "Color of a Group has been updated successfully."
 msgstr ""
 
-#: lib/Almanach/Handler/AlmanachEdit.php:203
+#: lib/Almanach/Handler/AlmanachEdit.php:205
 msgid "A color of a group has been added successfully."
 msgstr ""
 
@@ -170,11 +170,11 @@ msgstr ""
 msgid "General Settings"
 msgstr ""
 
-#: lib/Almanach/Api/Admin.php:101
+#: lib/Almanach/Api/Admin.php:104
 msgid "Mr."
 msgstr ""
 
-#: lib/Almanach/Api/Admin.php:103
+#: lib/Almanach/Api/Admin.php:106
 msgid "Mrs."
 msgstr ""
 
@@ -182,7 +182,7 @@ msgstr ""
 msgid "No valid calendar!"
 msgstr ""
 
-#: lib/Almanach/Controller/User.php:139 lib/Almanach/Controller/User.php:144
+#: lib/Almanach/Controller/User.php:138 lib/Almanach/Controller/User.php:143
 msgid "No valid date!"
 msgstr ""
 
@@ -212,7 +212,7 @@ msgstr ""
 msgid "Almanach has been removed successfully."
 msgstr ""
 
-#: lib/Almanach/Controller/Ajax.php:307
+#: lib/Almanach/Controller/Ajax.php:309
 msgid "Date has been removed successfully."
 msgstr ""
 
@@ -249,38 +249,38 @@ msgstr ""
 msgid "My Dates"
 msgstr ""
 
-#: templates/Admin/Main.tpl:99 templates/User/View.tpl:182
+#: templates/Admin/Main.tpl:99 templates/User/View.tpl:177
 msgid "hide old dates"
 msgstr ""
 
-#: templates/Admin/Main.tpl:100 templates/User/View.tpl:183
+#: templates/Admin/Main.tpl:100 templates/User/View.tpl:178
 msgid "show old dates"
 msgstr ""
 
-#: templates/Admin/Main.tpl:123 templates/User/View.tpl:221
+#: templates/Admin/Main.tpl:123 templates/User/View.tpl:220
 msgid "unsubscribe date"
 msgstr ""
 
 #: templates/Admin/Main.tpl:126 templates/User/ShowDate.tpl:18
-#: templates/User/View.tpl:224
+#: templates/User/View.tpl:223
 msgid "edit date"
 msgstr ""
 
-#: templates/Admin/Main.tpl:127 templates/User/View.tpl:225
+#: templates/Admin/Main.tpl:127 templates/User/View.tpl:224
 msgid "delete date"
 msgstr ""
 
 #: templates/Admin/Main.tpl:132 templates/User/ShowDate.tpl:23
-#: templates/User/View.tpl:230
+#: templates/User/View.tpl:229
 msgid "guests are welcome"
 msgstr ""
 
-#: templates/Admin/Main.tpl:143 templates/User/View.tpl:241
+#: templates/Admin/Main.tpl:143 templates/User/View.tpl:240
 msgid "Location"
 msgstr ""
 
 #: templates/Admin/Main.tpl:155 templates/Admin/Main.tpl:158
-#: templates/User/View.tpl:259 templates/User/View.tpl:262
+#: templates/User/View.tpl:258 templates/User/View.tpl:261
 msgid "There are no dates!"
 msgstr ""
 
@@ -606,6 +606,10 @@ msgstr ""
 msgid "Filter"
 msgstr ""
 
+#: templates/User/View.tpl:141
+msgid "show"
+msgstr ""
+
 #: templates/User/View.tpl:142
 msgid "You can filter the dates below by groups."
 msgstr ""
@@ -626,22 +630,26 @@ msgstr ""
 msgid "Apply"
 msgstr ""
 
-#: templates/User/View.tpl:177
+#: templates/User/View.tpl:177 templates/User/View.tpl:178
+msgid "History"
+msgstr ""
+
+#: templates/User/View.tpl:183
 msgid "today"
 msgstr ""
 
-#: templates/User/View.tpl:177
+#: templates/User/View.tpl:183
 msgid "this week"
 msgstr ""
 
-#: templates/User/View.tpl:177
+#: templates/User/View.tpl:183
 msgid "this month"
 msgstr ""
 
-#: templates/User/View.tpl:177
+#: templates/User/View.tpl:183
 msgid "this year"
 msgstr ""
 
-#: templates/User/View.tpl:177
+#: templates/User/View.tpl:183
 msgid "all"
 msgstr ""

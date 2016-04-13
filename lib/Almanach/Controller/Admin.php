@@ -253,5 +253,26 @@ class Almanach_Controller_Admin extends Zikula_AbstractController
 		$form = FormUtil::newForm('Almanach', $this);
 		return $form->execute('Admin/GeneralSettings.tpl', new Almanach_Handler_GeneralSettings());
     }
+    
+    public function googleTest()
+    {
+    	echo "u";
+    	$this->throwForbiddenUnless(SecurityUtil::checkPermission('Almanach::', '::', ACCESS_ADMIN));
+    	echo "u";
+		$googleApi = ModUtil::apiFunc('Almanach', 'GoogleCalendarApi', 'getApi');
+		echo "u";
+		$almanachs = $this->entityManager->getRepository('Almanach_Entity_Almanach')->findBy(array());
+		echo "u";
+		foreach($almanachs as $almanach){
+			if($almanach->getGoogleCalendarId() != ''){
+				echo "<br/>Für Kalender ".$almanach->getName()."(".$almanach->getGoogleCalendarId().")";
+				try{
+					print_r($googleApi->getEvents($almanach->getGoogleCalendarId(), 500, $this->getVar('Savetime')));
+				} catch(Exception $e){
+					$e->getMessage();
+				}
+			}
+		}
+    }
 }
 

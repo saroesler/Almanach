@@ -121,6 +121,8 @@ class Almanach_Handler_AlmanachEdit extends Zikula_Form_AbstractHandler
         // load form values
         $d = $view->getValues();
         print_r($d);
+        $pushCalendar = $d['ok'];
+        unset($d['ok']);
         
         if($aid > 0)
         	$almanach = $this->entityManager->find('Almanach_Entity_Almanach', $aid);
@@ -203,6 +205,8 @@ class Almanach_Handler_AlmanachEdit extends Zikula_Form_AbstractHandler
 			LogUtil::RegisterStatus($this->__("A color of a group has been added successfully."));
         }
 
+		if($pushCalendar == 'yesButton')
+			ModUtil::apiFunc('Almanach', 'GoogleCalendarApi', 'pushCalendar', $almanach->getAid());
         return $view->redirect($url);
     }
 }

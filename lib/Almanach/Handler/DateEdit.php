@@ -174,6 +174,8 @@ class Almanach_Handler_DateEdit extends Zikula_Form_AbstractHandler
         
         $did = $date->getDid();
         
+        $googleApi = ModUtil::apiFunc('Almanach', 'GoogleCalendarApi', 'getApi');
+        
         //work connections
         $connections = $this->entityManager->getRepository('Almanach_Entity_AlmanachElement')->findBy(array('did'=>$did));
         foreach($connections as $key => $item){
@@ -201,6 +203,28 @@ class Almanach_Handler_DateEdit extends Zikula_Form_AbstractHandler
 			if($overlapping['state'] == 1){
 				LogUtil::RegisterStatus($this->__f("Please notice that this date overlaps with an other date in calendar %s. Please contact %s.", array($overlapAlmanachName, $overlapDate->getUserName())));
 			}
+			
+			if($item->getGoogleId()){
+				if($deleted){
+					$googleApi->deleteEvent(ModUtil::apiFunc('Almanach', 'GoogleCalendarApi', 'getCalendarIdByAid', $item->getAid()), $item->getGoogleId());
+				} else {
+					echo 'Update';
+					$googleApi->updateEvent($item->getGoogleId(),
+						ModUtil::apiFunc('Almanach', 'GoogleCalendarApi', 'getCalendarIdByAid', $item->getAid()),
+						array('titel' => $date->getTitle(),
+						'location' => $date->getLocation(),
+						'description' => $date->getDescription(),
+						'start' => $date->getStartdate(),
+						'end' => $date->getEnddate(),
+						'user' => $date->getUserName(),
+						'userId'=> $date->getUid(),
+						'group' => $date->getGroupName(),
+						'groupId' => $date->getGid(),
+						'googlePlusId' => false,
+						'recur' => false,
+						'visibility' =>  $date->getVisibility()));
+				}
+			}
 		    	
         	if($deleted){
         		$this->entityManager->remove($item);
@@ -213,11 +237,7 @@ class Almanach_Handler_DateEdit extends Zikula_Form_AbstractHandler
 		    	$this->entityManager->persist($item);
 				$this->entityManager->flush();
 				LogUtil::RegisterStatus($this->__f("Date sucessfully edited in calendar %s.", array($item->getAlmanachName())));
-				echo $item->getAlmanachName();
-				//die();
 			}
-			
-			echo 'u';
         }
         
         //create new color
@@ -253,6 +273,25 @@ class Almanach_Handler_DateEdit extends Zikula_Form_AbstractHandler
         	
     		$myColor = FormUtil::getPassedValue('CalendarColorinput' . $i ,null,'POST');
         	$connection = new Almanach_Entity_AlmanachElement();
+        	
+        	if(ModUtil::apiFunc('Almanach', 'GoogleCalendarApi', 'getCalendarIdByAid', $aid) != ''){
+				$connection->setGoogleId(
+					$googleApi->createEvent(ModUtil::apiFunc('Almanach', 'GoogleCalendarApi', 'getCalendarIdByAid', $aid),
+						array('titel' => $date->getTitle(),
+						'location' => $date->getLocation(),
+						'description' => $date->getDescription(),
+						'start' => $date->getStartdate(),
+						'end' => $date->getEnddate(),
+						'user' => $date->getUserName(),
+						'userId'=> $date->getUid(),
+						'group' => $date->getGroupName(),
+						'groupId' => $date->getGid(),
+						'googlePlusId' => false,
+						'recur' => false,
+						'visibility' =>  $date->getVisibility()))
+					);
+			}
+			
 			$connection->setDid($did);
 			$connection->setAid($aid);
 			if($this->getVar('AllowDateColloring') || SecurityUtil::checkPermission('Almanach::', '::' , ACCESS_ADMIN))

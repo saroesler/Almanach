@@ -272,6 +272,7 @@ class Almanach_Controller_Ajax extends Zikula_AbstractController
 		{
 			$allowed = 0;
 			$date = $this->entityManager->find('Almanach_Entity_Date', $did);
+			$googleApi = ModUtil::apiFunc('Almanach', 'GoogleCalendarApi', 'getApi');
 			
 			//get all almanachs of this date:
     		$thisalmanachs = $this->entityManager->getRepository('Almanach_Entity_AlmanachElement')->findBy(array('did' => $did));
@@ -291,6 +292,7 @@ class Almanach_Controller_Ajax extends Zikula_AbstractController
     		if($allowed){
     			//delete this date from all almanachs:
     			foreach($thisalmanachs as $thisalmanach){
+    				$googleApi->deleteEvent(ModUtil::apiFunc('Almanach', 'GoogleCalendarApi', 'getCalendarIdByAid', $thisalmanach->getAid()), $thisalmanach->getGoogleId());
 					$this->entityManager->remove($thisalmanach);
 					$this->entityManager->flush();
 				}

@@ -35,7 +35,7 @@
 		<legend>{gt text="Google Calendar Api"}</legend>
 		<div class="z-formrow">
 		    {formlabel for='googleApiAddress' __text='Google Api e-Mail address:'}
-			{formtextinput id="googleApiAddress" maxLength=4 mandatory=true text=$googleApiAddress}
+			{formtextinput id="googleApiAddress" maxLength=200 mandatory=true text=$googleApiAddress}
 		</div>
 		</fieldset>
 	{/if}
