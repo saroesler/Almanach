@@ -207,7 +207,23 @@ class Almanach_Handler_DateEdit extends Zikula_Form_AbstractHandler
 			if($item->getGoogleId()){
 				if($deleted){
 					$googleApi->deleteEvent(ModUtil::apiFunc('Almanach', 'GoogleCalendarApi', 'getCalendarIdByAid', $item->getAid()), $item->getGoogleId());
+					LogUtil::RegisterStatus($this->__f("Date sucessfully deleted of google-calendar." , array()));
 				} else {
+					//calculate color 
+					if(($date->getColor() == '' || $date->getColor() == '#') && $date->getGid() > 0){
+						//group color of this calendar 
+						$groupColor = $this->entityManager->getRepository('Almanach_Entity_Color')->findBy(array('aid'=>$item->getAid(), 'gid' => $date->getGid()));
+						if(isset($groupColor[0]))
+							$color = $groupColor[0]->getColor();
+						else {
+							$group = $this->entityManager->find('Almanach_Entity_Group', $date->getGid());
+							$color = $group->getColor();
+						}
+					} else {
+						$color = $date->getColor();
+					}
+					
+					
 					echo 'Update';
 					$googleApi->updateEvent($item->getGoogleId(),
 						ModUtil::apiFunc('Almanach', 'GoogleCalendarApi', 'getCalendarIdByAid', $item->getAid()),
@@ -222,7 +238,8 @@ class Almanach_Handler_DateEdit extends Zikula_Form_AbstractHandler
 						'groupId' => $date->getGid(),
 						'googlePlusId' => false,
 						'recur' => false,
-						'visibility' =>  $date->getVisibility()));
+						'visibility' =>  $date->getVisibility(),
+						'color' => $color));
 				}
 			}
 		    	
@@ -275,6 +292,21 @@ class Almanach_Handler_DateEdit extends Zikula_Form_AbstractHandler
         	$connection = new Almanach_Entity_AlmanachElement();
         	
         	if(ModUtil::apiFunc('Almanach', 'GoogleCalendarApi', 'getCalendarIdByAid', $aid) != ''){
+        		//calculate color 
+				if(($date->getColor() == '' || $date->getColor() == '#') && $date->getGid() > 0){
+					//group color of this calendar 
+					$groupColor = $this->entityManager->getRepository('Almanach_Entity_Color')->findBy(array('aid'=>$aid, 'gid' => $date->getGid()));
+					if(isset($groupColor[0])){
+						print_r($groupColor);
+						$color = $groupColor[0]->getColor();
+					}else {
+						$group = $this->entityManager->find('Almanach_Entity_Group', $date->getGid());
+						$color = $group->getColor();
+					}
+				} else {
+					$color = $date->getColor();
+				}
+				
 				$connection->setGoogleId(
 					$googleApi->createEvent(ModUtil::apiFunc('Almanach', 'GoogleCalendarApi', 'getCalendarIdByAid', $aid),
 						array('titel' => $date->getTitle(),
@@ -288,7 +320,8 @@ class Almanach_Handler_DateEdit extends Zikula_Form_AbstractHandler
 						'groupId' => $date->getGid(),
 						'googlePlusId' => false,
 						'recur' => false,
-						'visibility' =>  $date->getVisibility()))
+						'visibility' =>  $date->getVisibility(),
+						'color' => $color))
 					);
 			}
 			

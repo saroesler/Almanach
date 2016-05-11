@@ -248,6 +248,12 @@
 							{gt text="Location"}: {$myDate->getLocation()}
 						</a>
 					{/if}
+					{if $myDate->getGroupName() <> ''}
+						<br/>
+						<a class="dateGroup" style="color:{$myDate->getGroupColor()};">
+							{gt text="Group"}: {$myDate->getGroupName()}
+						</a>
+					{/if}
 				</div>
 			</div>
 			<div style="clear:both;"></div>

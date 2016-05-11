@@ -107,4 +107,19 @@ class Almanach_Api_Admin extends Zikula_AbstractApi
         }
         return $sex . ' ' .  substr ( $vars['__ATTRIBUTES__'][$this->getVar('FirstNameField')] , 0, 1 ) . '. ' . $vars['__ATTRIBUTES__'][$this->getVar('SurnameField')];
 	}
+	
+	public function getUserList(){
+		$users = UserUtil::getUsers();
+		
+		$userlist = array();
+		
+		foreach($users as $user){
+			$userlist[] = array(
+				'text' => $user['uname'],
+				'value' => $user['uid']
+			);
+		}
+		
+		return $userlist;
+	}
 }

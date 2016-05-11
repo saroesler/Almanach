@@ -17,6 +17,7 @@ class Almanach_Controller_Admin extends Zikula_AbstractController
     	$uid = SessionUtil::getVar('uid');
     	$this->throwForbiddenUnless(SecurityUtil::checkPermission('Almanach::', '::', ACCESS_COMMENT));
     	
+    	ModUtil::apiFunc('Almanach', 'GoogleCalendarApi', 'pullCalendar');
     	
     	/*
     	* Delete old Dates

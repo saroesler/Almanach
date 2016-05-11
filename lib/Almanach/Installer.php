@@ -232,6 +232,18 @@ class Almanach_Installer extends Zikula_AbstractInstaller
 				}
 			case '0.0.5':
 				$this->setVars(array('googleApiAddress' => ''));
+			case '0.0.6':
+				try {
+					DoctrineHelper::updateSchema($this->entityManager, array('Almanach_Entity_Almanach'));
+				} catch (Exception $e) {
+					return LogUtil::registerError($e);
+				}
+			case '0.0.7':
+				try {
+					DoctrineHelper::updateSchema($this->entityManager, array('Almanach_Entity_Almanach'));
+				} catch (Exception $e) {
+					return LogUtil::registerError($e);
+				}
 		}
 		return true;
 	}

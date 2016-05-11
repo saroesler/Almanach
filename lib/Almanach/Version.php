@@ -15,7 +15,7 @@ class Almanach_Version extends Zikula_AbstractVersion
         $meta['displayname']    = $this->__('Almanach');
         $meta['description']    = $this->__("A calendar module to manage many calendars"); ///@todo description
         $meta['url']            = $this->__('Almanach');
-        $meta['version']        = '0.0.6';
+        $meta['version']        = '0.0.8';
         $meta['official']       = 0;
         $meta['author']         = 'Sascha Rösler';
         $meta['contact']        = 'sa-roelser@t-online.de';

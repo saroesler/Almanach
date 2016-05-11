@@ -57,6 +57,20 @@ class Almanach_Entity_Almanach extends Zikula_EntityAccess
      */
     private $googleCalendarId;
     
+    /**
+     * The following are annotations which define the template field.
+     *
+     * @ORM\Column(type="integer")
+     */
+    private $pullGid;
+    
+    /**
+     * The following are annotations which define the template field.
+     *
+     * @ORM\Column(type="integer")
+     */
+    private $pullUid;
+    
     
     //no database field
     private $color;
@@ -124,5 +138,25 @@ class Almanach_Entity_Almanach extends Zikula_EntityAccess
     public function setGoogleCalendarId($googleCalendarId)
     {
         $this->googleCalendarId = $googleCalendarId;
+    }
+    
+    public function getPullGid()
+    {
+        return $this->pullGid;
+    }
+
+    public function setPullGid($pullGid)
+    {
+        $this->pullGid = $pullGid;
+    }
+    
+    public function getPullUid()
+    {
+        return $this->pullUid;
+    }
+
+    public function setPullUid($pullUid)
+    {
+        $this->pullUid = $pullUid;
     }
 }

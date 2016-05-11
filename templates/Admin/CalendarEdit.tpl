@@ -7,53 +7,76 @@
 <a id="deleteImage" style="display:none">{img src='14_layer_deletelayer.png' modname='core' set='icons/extrasmall'}</a>
 {form cssClass="z-form"}
 	<fieldset>
-	<legend>{gt text="General"}</legend>
-	<div class="z-formrow">
-        {formlabel for='name' __text='Name:'}
-		{formtextinput id="name" maxLength=200 mandatory=true text=$almanach->getName()}
-	</div>
-	<div class="z-informationmsg">
-		<p>{gt text="You can descide that more dates can happen on the same time. They can overlap. If you dont want, that there are more dates on the same time, you should remove the hook. This is useful if you want to create calendars for rooms. This workes for dates inputed via other calendars this calendar input, too. User get an error, if they want input a date to a time, there is another one."}</p>
-	</div>
-	<div class="z-formrow">
-		{formlabel for='overlapping' __text='Overlapping:'}
-		{formcheckbox id="overlapping" checked=$almanach->getOverlapping()}
-	</div>
-	<div class="z-informationmsg">
-		<p>{gt text="You can create calendars only including other ones. Users cant insert dates directly into this calendar."}</p>
-	</div>
-	<div class="z-formrow">
-		{formlabel for='input' __text='Allow Date input:'}
-		{formcheckbox id="input" checked=$almanach->getInput()}
-	</div>
-	<div class="z-informationmsg">
-		<p>{gt text="To set a special design to this calendar please use templates."}</p>
-	</div>
-	<div class="z-formrow">
-		{formlabel for='template' __text='Template:'}
-		{formtextinput id="template" maxLength=2000 mandatory=false text=$almanach->getTemplate()}
-	</div>
-	{if $googleApiExist == 0}
+		<legend>{gt text="General"}</legend>
+		<div class="z-formrow">
+		    {formlabel for='name' __text='Name:'}
+			{formtextinput id="name" maxLength=200 mandatory=true text=$almanach->getName()}
+		</div>
 		<div class="z-informationmsg">
-			<p>{gt text="You can connect this calendar with a google calendar. Therefor you has to share the google calendar with "}{$googleApiAddress}.{gt text="Please insert the google calendar id in the field below. You find the id in the settings of the google calendar. It has the form \'ok430k5bire7huqihlqf18jaao@group.calendar.google.com\'. You have to set \'Add and edit events\' in google permission rules."}</p>
+			<p>{gt text="You can descide that more dates can happen on the same time. They can overlap. If you dont want, that there are more dates on the same time, you should remove the hook. This is useful if you want to create calendars for rooms. This workes for dates inputed via other calendars this calendar input, too. User get an error, if they want input a date to a time, there is another one."}</p>
+		</div>
+		<div class="z-formrow">
+			{formlabel for='overlapping' __text='Overlapping:'}
+			{formcheckbox id="overlapping" checked=$almanach->getOverlapping()}
+		</div>
+		<div class="z-informationmsg">
+			<p>{gt text="You can create calendars only including other ones. Users cant insert dates directly into this calendar."}</p>
+		</div>
+		<div class="z-formrow">
+			{formlabel for='input' __text='Allow Date input:'}
+			{formcheckbox id="input" checked=$almanach->getInput()}
+		</div>
+		<div class="z-informationmsg">
+			<p>{gt text="To set a special design to this calendar please use templates."}</p>
+		</div>
+		<div class="z-formrow">
+			{formlabel for='template' __text='Template:'}
+			{formtextinput id="template" maxLength=2000 mandatory=false text=$almanach->getTemplate()}
+		</div>
+	</fieldset>
+	{if $googleApiExist == 0}
+	<input type='hidden' id="googleApi" value='1'/>
+	<fieldset>
+		<legend>{gt text="Google Calendar"}</legend>
+		<div class="z-informationmsg">
+			<p>{gt text="You can connect this calendar with a google calendar. Therefor you has to share the google calendar with "} {$googleApiAddress}. {gt text="Please insert the google calendar id in the field below. You find the id in the settings of the google calendar. It has the form \'ok430k5bire7huqihlqf18jaao@group.calendar.google.com\'. You have to set \'Add and edit events\' in google permission rules."}</p>
 		</div>
 		<div class="z-formrow">
 			{formlabel for='googleCalendarId' __text='Google Calendar ID:'}
 			{formtextinput id="googleCalendarId" maxLength=2000 mandatory=false text=$almanach->getGoogleCalendarId() onchange="setGoogleRequest()"}
 		</div>
+		<div class="z-formrow">
+			{formlabel for='pullGid' __text='Group for dates get by Google Calendar:'}
+			{formdropdownlist id="pullGid" size="1" mandatory=false items=$pullGroupSelection selectedValue=$almanach->getPullGid()"}
+		</div>
+		
+		<div class="z-formrow">
+			{formlabel for='pullUid' __text='User for dates get by Google Calendar:'}
+			{formdropdownlist id="pullUid" size="1" mandatory=false items=$pullUserSelection selectedValue=$almanach->getPullUid()"}
+		</div>
 		<div class="z-informationmsg" id="googleTransfer" style="display:none;">
-			<p>You changes the google Calendar. Do you want the transfer all dates of this calendar to the google calendar?</p>
+			<p>{gt text="You changes the google Calendar. Do you want the transfer all dates of this calendar to the google calendar?"}</p>
 			<div>
 				{formlabel __text='No' for='noButton' mandatory=true}{formradiobutton id='noButton' dataField='ok'} <br/>
 				{formlabel __text='Yes' for='yesButton' mandatory=true} {formradiobutton id='yesButton' dataField='ok'}	
 			</div>
 		</div>
+	</fieldset>
+	{else}
+		<input type='hidden' id="googleApi" value='1'/>
 	{/if}
-   </fieldset>
    
    <fieldset>
    <legend>{gt text="Heredity"}</legend>
-   <br/><br/>
+   <br/>
+   <div class="z-warningmsg" id="googleHierarchy" 
+	{if !($heredities|@count)}
+		style="display:none;"
+	{/if}
+	>
+   		{gt text="Only dates direktly input in this calendar will be synchronisized with google calendar. Dates get by other calendars will not transfered."}
+   </div>
+   <br/>
    {gt text="This Calendar inherits the dates of the following calendars. All dates of this calendar has the selected color. If no color is selected, the date keeps the former color."}<br/><br/>
    <input type="text" style="display:none;" value="0" id="newHereditiesNum" name="newHereditiesNum"/>
    <a onclick="hereditySave()">{gt text="create new Heredity to"}</a> 

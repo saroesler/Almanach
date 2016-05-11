@@ -108,6 +108,12 @@ function hereditySave()
 		colorWell: name,
 		closeText: "Schließen"
 	});
+	
+	//set google warning, if there is a google calendar:
+	if(document.getElementById("googleApi").value){
+		if(document.getElementById('googleCalendarId').value != '')
+			document.getElementById('googleHierarchy').style.display = 'block';
+	}
 }
 			
 function colorDelete(id, newColor)

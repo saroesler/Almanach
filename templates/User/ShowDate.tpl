@@ -17,7 +17,10 @@
 		box-shadow: 0 0;
 	}
 </style>
-
+{checkpermission component="Almanach::" instance="::" level=ACCESS_COMMENT assign=hasMyDates}
+{if $hasMyDates}
+	<a href="{modurl modname='Almanach' type='admin' func='main'}" >{img src='configure.png' modname='core' set='icons/small'} {gt text='My Calendar'}</a>
+{/if}
 {if $permission == 2}
 	<a href="{modurl modname=Almanach type=admin func=editDate id=$date->getDid()}" class="z-button">{gt text="Edit this date"} {img src='xedit.png' modname='core' set="icons/extrasmall" __title="edit date"}</a>
 {/if}
@@ -30,7 +33,9 @@
 
 <p class="dateTimes">{$date->getStartdateFormattedout()} - {$date->getEnddateFormattedout()}</p>
 <p class="dateLocation">{gt text="Location:"}: {$date->getLocation()}</p>
-<p class="contactPerson">{gt text="Contact Person:"}: {$date->getUserName()}</p>
+{if $hasMyDates}
+	<p class="contactPerson">{gt text="Contact Person:"}: {$date->getUserName()}</p>
+{/if}
 <br/>
 {if $date->getGuests()}
 	<p class="guests">{gt text="Guests are welcome!"}</p>

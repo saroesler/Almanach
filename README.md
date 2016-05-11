@@ -58,3 +58,12 @@ This shows the ranking of the different colors. The higher color overwrites the 
 3. Color given to the date
 4. Color given to the group
 If there should no overwriting, the color field has to be empty.
+
+#Google Calendar
+You can connect your calendar with a google calendar. Dates input in a calendar will be input into the google calendar. At the beginning you can transfer your calendar to google. Dates input by google are automaticly transfered to the Almanch. You can select a group and a contact person for dates get by google calendar for each Almanach. Dates deletet by google will only pulled from the Almanach. It will continue to exist.
+
+##Installing Google Api
+To install the api you has to get it via google and copy the "vendor" folder including the google api get by composer in the Almanach root folder. To use the api, you have to get a key by google. Put the "p12" key into the "secret" folder in the Almanach root folder. Reneame the key to "google.p12". Now the google api is installed. Via google you get an email address for the api. Put this into the field in the settings mask.
+
+##Connect to a calendar
+Now edit your calendar. In the google calendar you has to input the address of the google calendar. Select a Group and a contact person for dates get by google. Now you has to set the permission of the google calendar for the api. Herefor give \'edit Event\' to the api email address.

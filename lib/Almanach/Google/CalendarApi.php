@@ -86,7 +86,6 @@ class Almanach_Google_CalendarApi //extends Zikula_AbstractController
 			$group->setDisplayName($param['group'].' ['.$param['groupId'].']');
 		if($param['googlePlusId'] != '')
 			$group->setId($param['googlePlusId']);
-		$event->setOrganizer($group);
 		
 		//Auswahl der Wiederholung
 		switch($param['recur'])
@@ -133,7 +132,8 @@ class Almanach_Google_CalendarApi //extends Zikula_AbstractController
 				break;
 		}
 
-		$event->setColorId(2);
+		if($param['color'] != '' && $param['color'] != '#')
+			$event->setColorId($this->calculateColor($param['color']));
 		
 		if($eventID == 0)
 			$createdEvent = $this->service->events->insert($calendarID, $event);
@@ -192,7 +192,7 @@ class Almanach_Google_CalendarApi //extends Zikula_AbstractController
 			
 			$groupIdStart = strpos($group->getDisplayName(), '[');
 			$groupIdEnd = strpos($group->getDisplayName(), ']');
-			print_r($group);
+			
 			// Beachten Sie die Verwendung von ===
 			if ($groupIdStart === false || $groupIdEnd === false) {
 				//throw new Exception('There is no valid group Id and user Id');
@@ -255,22 +255,46 @@ class Almanach_Google_CalendarApi //extends Zikula_AbstractController
 			{
 				// keine
 				case 'confidential':
-					$param['visibility'] = 2;
+					$thisData['visibility'] = 2;
 					break;
 
 				// wöchentlich
 				case 'private':
-					$param['visibility'] = 1;
+					$thisData['visibility'] = 1;
 					break;
 
 				// 14 Tage
 				case 'public':
-					$param['visibility'] = 0;
+					$thisData['visibility'] = 0;
 					break;
 			}
 			
 			$returnData[] = $thisData;
 		}
 		return $returnData;
+	}
+	
+	public function calculateColor($mycolor){
+		$colors = $this->service->colors->get();
+		$difference = array();
+	
+		// Print available event colors.
+		foreach ($colors->getEvent() as $key => $color) {
+		  $differenceR = hexdec(substr($color->getBackground(), 1,2)) - hexdec(substr($myColor, 1,2));
+		  $differenceG = hexdec(substr($color->getBackground(), 3,2)) - hexdec(substr($myColor, 3,2));
+		  $differenceB = hexdec(substr($color->getBackground(), 5,2)) - hexdec(substr($myColor, 5,2));
+		  $difference[] = array('difference' => $differenceR + $differenceG + $differenceB, 'key' => $key);
+		}
+
+		usort($difference, array("Almanach_Google_CalendarApi", "differenceCmp"));
+
+		return $difference[0]['key'];
+	}
+	
+	public function differenceCmp($a, $b)
+	{
+		if($a['difference'] == $b['difference'])
+			return 0;
+		return ($a['difference'] < $b['difference']) ? -1: 1;
 	}
 }

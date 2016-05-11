@@ -60,6 +60,17 @@ class Almanach_Handler_AlmanachEdit extends Zikula_Form_AbstractHandler
 				
 			}
 			
+			$pullGroups = $this->entityManager->getRepository('Almanach_Entity_Group')->findBy(array());
+			$pullGroupSelection = array();
+			foreach($pullGroups as $key => $item){
+				if (SecurityUtil::checkPermission('Almanach::Group', '::'. $item->getGid() , ACCESS_EDIT)) {
+					$pullGroupSelection[] = array(
+						'text' => $item->getName(),
+						'value' => $item->getGid(),
+					);
+				}
+			}
+			
 			$groupSelection = $this->entityManager->getRepository('Almanach_Entity_Group')->findBy(array());
 			$groupHide = array();
 			foreach($groupSelection as $key => $item){
@@ -90,6 +101,8 @@ class Almanach_Handler_AlmanachEdit extends Zikula_Form_AbstractHandler
         $view->assign('hereditySelection',$hereditySelection);
         $view->assign('heredityHide',$heredityHide);
         $view->assign('groupSelection',$groupSelection);
+        $view->assign('pullGroupSelection',$pullGroupSelection);
+        $view->assign('pullUserSelection', ModUtil::apiFunc('Almanach', 'Admin', 'getUserList'));
         $view->assign('groupHide',$groupHide);
         $view->assign('googleApiExist',$googleApiExist);
 

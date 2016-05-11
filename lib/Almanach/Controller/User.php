@@ -21,6 +21,8 @@ class Almanach_Controller_User extends Zikula_AbstractController
     	
     	if($aid <= 0)
     		return $this->__("No valid calendar!");
+		
+		ModUtil::apiFunc('Almanach', 'GoogleCalendarApi', 'pullCalendar');
     		
     	$almanach = $this->entityManager->find('Almanach_Entity_Almanach', $aid);
     	
