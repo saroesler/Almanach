@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Almanach\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-11 09:01+0000\n"
-"PO-Revision-Date: 2016-05-11 11:06+0100\n"
+"POT-Creation-Date: 2016-05-12 08:13+0000\n"
+"PO-Revision-Date: 2016-05-12 10:14+0100\n"
 "Last-Translator: Sascha Rösler <i-loko@t-online.de>\n"
 "Language-Team: Sascha Rösler <i-loko@t-online.de>\n"
 "Language: Deutsch (DE)\n"
@@ -275,30 +275,30 @@ msgstr "alte Termine verbergen"
 msgid "show old dates"
 msgstr "alte Termine anzeigen"
 
-#: templates/Admin/Main.tpl:123 templates/User/View.tpl:220
+#: templates/Admin/Main.tpl:123 templates/User/View.tpl:221
 msgid "unsubscribe date"
 msgstr "Termin aus meien Kalender entfernen"
 
 #: templates/Admin/Main.tpl:126 templates/User/ShowDate.tpl:21
-#: templates/User/View.tpl:223
+#: templates/User/View.tpl:224
 msgid "edit date"
 msgstr "Termin bearbeiten"
 
-#: templates/Admin/Main.tpl:127 templates/User/View.tpl:224
+#: templates/Admin/Main.tpl:127 templates/User/View.tpl:225
 msgid "delete date"
 msgstr "Termin löschen"
 
 #: templates/Admin/Main.tpl:132 templates/User/ShowDate.tpl:26
-#: templates/User/View.tpl:229
+#: templates/User/View.tpl:230
 msgid "guests are welcome"
 msgstr "Gäste sind willkommen"
 
-#: templates/Admin/Main.tpl:143 templates/User/View.tpl:240
+#: templates/Admin/Main.tpl:143 templates/User/View.tpl:241
 msgid "Location"
 msgstr "Ort"
 
 #: templates/Admin/Main.tpl:155 templates/Admin/Main.tpl:158
-#: templates/User/View.tpl:264 templates/User/View.tpl:267
+#: templates/User/View.tpl:265 templates/User/View.tpl:268
 msgid "There are no dates!"
 msgstr "Es gibt keine Termine"
 
@@ -312,13 +312,13 @@ msgid ""
 "dates of a group. This musst be set by Zikula- permissionrules. You can use "
 "groups to categorisize the dates."
 msgstr ""
-"Gruppen sind die unterste Einheit. Jeder Termin kann zu einer Gruppe "
-"zugeordnet werden. In der Kalenderansicht könnnen die Termine dann nach "
-"Gruppen gefiltert werden. Jede Gruppe erhält zudem eine Farbe. Alle Termine "
-"der Gruppe werden in dieser Farbe angezeigt, wenn der Termine keine eigene "
-"Farbe hat und der Kalender diese Farbe nicht ändert. Für jeden Kalender kann "
-"eine neue Farbe für die Gruppe gesetzt werden. Benutzer können das Recht "
-"bekommen, Termine für eine Gruppe anzulegen. Dies wird über die Zikula- "
+"Gruppen sind die unterste Einheit. Jeder Termin kann einer Gruppe zugeordnet "
+"werden. In der Kalenderansicht könnnen die Termine dann nach Gruppen "
+"gefiltert werden. Jede Gruppe erhält zudem eine Farbe. Alle Termine der "
+"Gruppe werden in dieser Farbe angezeigt, wenn der Termine keine eigene Farbe "
+"hat und der Kalender diese Farbe nicht ändert. Für jeden Kalender kann eine "
+"neue Farbe für jede Gruppe gesetzt werden. Benutzer können das Recht "
+"bekommen, Termine für eine Gruppe anzulegen. Dies wird über die Zikula-"
 "Zugriffsrechte eingestellt. Über Gruppen können die Termine kategorisiert "
 "werden."
 
@@ -363,10 +363,10 @@ msgstr ""
 "Benutzer können Kalender und Termine in ihren eigenen Kalender übernehmen. "
 "Einige Benutzer können das Recht bekommen, Termine in den Kalender "
 "einzutragen. Auch können Administratoren für jeden Kalender gesetzt werden. "
-"Dies geschieht über die Zikula- Zugriffsrechte. Ein Kalender kann zudem "
-"andere Kalender beinhalten, wenn er nicht selber Teil des Kalenders ist. Die "
-"Termine der Kalender, die in den Kalender integriert werden, können eine "
-"extra Farbe bekommen."
+"Dies geschieht über die Zikula-Zugriffsrechte. Ein Kalender kann zudem "
+"andere Kalender beinhalten, wenn er nicht selber bereits Teil des zu "
+"übernehmenden Kalenders ist. Die Termine der Kalender, die in den Kalender "
+"integriert werden, können eine extra Farbe bekommen."
 
 #: templates/Admin/Calendar.tpl:9
 msgid "create new Calendar"
@@ -460,9 +460,9 @@ msgid ""
 "the date into it. You will get an error- message."
 msgstr ""
 "Sie bekommmen eine Warnung, wenn sich ihr Termin mit einem anderen Termin in "
-"dem Kalender überschneidet. Wenn keine Terminüberschneidung in dem Kalender "
-"wurde, können sie ihn nicht dort eintragen. In diesem Fall bekommen Sie eine "
-"Fehlermeldung."
+"dem Kalender überschneidet. Wenn keine Terminüberschneidung für einen "
+"Kalender möglich ist, können sie ihn nicht dort eintragen. In diesem Fall "
+"bekommen Sie eine Fehlermeldung."
 
 #: templates/Admin/DateEdit.tpl:169
 msgid "Input this Date into "
@@ -495,13 +495,14 @@ msgid ""
 "input, too. User get an error, if they want input a date to a time, there is "
 "another one."
 msgstr ""
-"Sie können einstelle, dass mehrere Termine zur gleichen Zeit stattfinden "
+"Sie können einstellen, dass mehrere Termine zur gleichen Zeit stattfinden "
 "können. Die Termine können sich dann überschneiden. Wird der Haken entfernt, "
-"können sich überschneidene Termine nicht eingetragen werden. Dies kann z.B. "
-"zur Erstellung von Raumplänen genutzt werden. Termine, die über Kalender "
-"eingetragen werden, die Teil dieses Kalenders sind, dürfen sich ebenfalls "
-"nicht überschneiden. Benutzer, die einen Termin eintragen, der sich mit "
-"anderen überscheidet, bekommen eine Fehlermeldung."
+"so ist es nicht möglich, einen Termin einzutragen,  wenn zur gleichen Zeit "
+"bereits ein anderer stattfindet. Dies kann z.B. zur Erstellung von "
+"Raumplänen genutzt werden. Termine, die über Kalender eingetragen werden, "
+"die Teil dieses Kalenders sind, dürfen sich ebenfalls nicht überschneiden. "
+"Benutzer, die einen Termin eintragen, der sich mit anderen überscheidet, "
+"bekommen eine Fehlermeldung."
 
 #: templates/Admin/CalendarEdit.tpl:19
 msgid "Overlapping:"
@@ -537,20 +538,20 @@ msgid ""
 "You can connect this calendar with a google calendar. Therefor you has to "
 "share the google calendar with "
 msgstr ""
-"Sie können diesen Kalender mit einem Google- Kalender verknüpfen. Hierfür "
-"teilen Sie den Google- Kalender mit"
+"Sie können diesen Kalender mit einem Google-Kalender verknüpfen. Hierfür "
+"teilen Sie den Google-Kalender mit"
 
 #: templates/Admin/CalendarEdit.tpl:42
 msgid ""
 "Please insert the google calendar id in the field below. You find the id in "
 "the settings of the google calendar. It has the form "
-"\\'ok430k5bire7huqihlqf18jaao@group.calendar.google.com\\'. You have to set "
-"\\'Add and edit events\\' in google permission rules."
+"'ok430k5bire7huqihlqf18jaao@group.calendar.google.com'. You have to set 'Add "
+"and edit events' in google permission rules."
 msgstr ""
 "Bitte geben Sie die Kalender-Adresse des Google-Kalenders in das nächste "
 "Feld ein. Sie finden diese in den Einstellungen des Google-Kalenders. Sie "
-"hat die Form \\'ok430k5bire7huqihlqf18jaao@group.calendar.google.com\\'.  "
-"Sie müssen die Berechtigung \\'Termin ändern\\' bei Google auswählen. "
+"hat die Form 'ok430k5bire7huqihlqf18jaao@group.calendar.google.com'.  Sie "
+"müssen die Berechtigung 'Termin ändern' bei Google auswählen. "
 
 #: templates/Admin/CalendarEdit.tpl:45
 msgid "Google Calendar ID:"
@@ -563,6 +564,14 @@ msgstr "Gruppe für Termine vom Google Kalender "
 #: templates/Admin/CalendarEdit.tpl:54
 msgid "User for dates get by Google Calendar:"
 msgstr "Ansprechpartner für Termine vom Google Kalender "
+
+#: templates/Admin/CalendarEdit.tpl:58
+msgid ""
+"You changes the google Calendar. Do you want the transfer all dates of this "
+"calendar to the google calendar?"
+msgstr ""
+"Sie haben den Google-Kalender gewechselt. Möchten Sie alle Termine in den "
+"neuen Kalender übertragen?"
 
 #: templates/Admin/CalendarEdit.tpl:60
 msgid "No"
@@ -615,7 +624,7 @@ msgstr "erstelle Farbe für Gruppe"
 msgid "no group selected"
 msgstr "keine Gruppe ausgewählt"
 
-#: templates/Admin/CalendarEdit.tpl:162 templates/User/View.tpl:246
+#: templates/Admin/CalendarEdit.tpl:162 templates/User/View.tpl:247
 msgid "Group"
 msgstr "Gruppe"
 
@@ -646,7 +655,7 @@ msgstr "Profile- Einstellungen"
 #: templates/Admin/GeneralSettings.tpl:18
 msgid "Please insert in the following fields the name of the Profile- fields."
 msgstr ""
-"Bitte stellen SIe in den nächsten Feldern die Namen der Profile- Felder ein."
+"Bitte stellen SIe in den nächsten Feldern die Namen der Profile-Felder ein."
 
 #: templates/Admin/GeneralSettings.tpl:20
 msgid "Form of address:"
@@ -666,7 +675,7 @@ msgstr "Google Kalender Api"
 
 #: templates/Admin/GeneralSettings.tpl:37
 msgid "Google Api e-Mail address:"
-msgstr "Google- Api- eMailadresse"
+msgstr "Google-Api-eMailadresse"
 
 #: templates/User/ShowDate.tpl:18 templates/User/View.tpl:111
 msgid "My Calendar"
@@ -747,3 +756,7 @@ msgstr "Dieses Jahr"
 #: templates/User/View.tpl:183
 msgid "all"
 msgstr "Alles"
+
+#: templates/User/View.tpl:219
+msgid "Information"
+msgstr "Informationen"

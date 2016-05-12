@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Zikula 1.x\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-11 09:01+0000\n"
+"POT-Creation-Date: 2016-05-12 08:13+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -261,30 +261,30 @@ msgstr ""
 msgid "show old dates"
 msgstr ""
 
-#: templates/Admin/Main.tpl:123 templates/User/View.tpl:220
+#: templates/Admin/Main.tpl:123 templates/User/View.tpl:221
 msgid "unsubscribe date"
 msgstr ""
 
 #: templates/Admin/Main.tpl:126 templates/User/ShowDate.tpl:21
-#: templates/User/View.tpl:223
+#: templates/User/View.tpl:224
 msgid "edit date"
 msgstr ""
 
-#: templates/Admin/Main.tpl:127 templates/User/View.tpl:224
+#: templates/Admin/Main.tpl:127 templates/User/View.tpl:225
 msgid "delete date"
 msgstr ""
 
 #: templates/Admin/Main.tpl:132 templates/User/ShowDate.tpl:26
-#: templates/User/View.tpl:229
+#: templates/User/View.tpl:230
 msgid "guests are welcome"
 msgstr ""
 
-#: templates/Admin/Main.tpl:143 templates/User/View.tpl:240
+#: templates/Admin/Main.tpl:143 templates/User/View.tpl:241
 msgid "Location"
 msgstr ""
 
 #: templates/Admin/Main.tpl:155 templates/Admin/Main.tpl:158
-#: templates/User/View.tpl:264 templates/User/View.tpl:267
+#: templates/User/View.tpl:265 templates/User/View.tpl:268
 msgid "There are no dates!"
 msgstr ""
 
@@ -487,8 +487,8 @@ msgstr ""
 msgid ""
 "Please insert the google calendar id in the field below. You find the id in "
 "the settings of the google calendar. It has the form "
-"\\'ok430k5bire7huqihlqf18jaao@group.calendar.google.com\\'. You have to set "
-"\\'Add and edit events\\' in google permission rules."
+"'ok430k5bire7huqihlqf18jaao@group.calendar.google.com'. You have to set 'Add "
+"and edit events' in google permission rules."
 msgstr ""
 
 #: templates/Admin/CalendarEdit.tpl:45
@@ -501,6 +501,12 @@ msgstr ""
 
 #: templates/Admin/CalendarEdit.tpl:54
 msgid "User for dates get by Google Calendar:"
+msgstr ""
+
+#: templates/Admin/CalendarEdit.tpl:58
+msgid ""
+"You changes the google Calendar. Do you want the transfer all dates of this "
+"calendar to the google calendar?"
 msgstr ""
 
 #: templates/Admin/CalendarEdit.tpl:60
@@ -546,7 +552,7 @@ msgstr ""
 msgid "no group selected"
 msgstr ""
 
-#: templates/Admin/CalendarEdit.tpl:162 templates/User/View.tpl:246
+#: templates/Admin/CalendarEdit.tpl:162 templates/User/View.tpl:247
 msgid "Group"
 msgstr ""
 
@@ -674,4 +680,8 @@ msgstr ""
 
 #: templates/User/View.tpl:183
 msgid "all"
+msgstr ""
+
+#: templates/User/View.tpl:219
+msgid "Information"
 msgstr ""

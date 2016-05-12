@@ -39,7 +39,7 @@
 	<fieldset>
 		<legend>{gt text="Google Calendar"}</legend>
 		<div class="z-informationmsg">
-			<p>{gt text="You can connect this calendar with a google calendar. Therefor you has to share the google calendar with "} {$googleApiAddress}. {gt text="Please insert the google calendar id in the field below. You find the id in the settings of the google calendar. It has the form \'ok430k5bire7huqihlqf18jaao@group.calendar.google.com\'. You have to set \'Add and edit events\' in google permission rules."}</p>
+			<p>{gt text="You can connect this calendar with a google calendar. Therefor you has to share the google calendar with "} {$googleApiAddress}. {gt text="Please insert the google calendar id in the field below. You find the id in the settings of the google calendar. It has the form 'ok430k5bire7huqihlqf18jaao@group.calendar.google.com'. You have to set 'Add and edit events' in google permission rules."}</p>
 		</div>
 		<div class="z-formrow">
 			{formlabel for='googleCalendarId' __text='Google Calendar ID:'}

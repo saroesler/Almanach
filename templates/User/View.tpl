@@ -136,7 +136,7 @@
 {/if}
 
 <div>
-	<div class="calendarSubscribe" style="float:right;">
+	{*<div class="calendarSubscribe" style="float:right;">
 		{if $calendarSubscribtion <> 1}
 			<a id="subscibe{$almanach->getAid()}" onclick="subscribeAlmanach({$almanach->getAid()})">{img src='unfavorites.png' modname='Almanach' set="favorites"} {gt text="Subscribe"}</a>
 			<a id="unsubscibe{$almanach->getAid()}" style="display:none;" onclick="unsubscribeAlmanach({$almanach->getAid()})">{img src='favorites.png' modname='Almanach' set='favorites'} {gt text="Unsubscribe"}</a>
@@ -144,7 +144,7 @@
 			<a id="subscibe{$almanach->getAid()}" onclick="subscribeAlmanach({$almanach->getAid()})" style="display:none;">{img src='unfavorites.png' modname='Almanach' set='favorites'} {gt text="Subscribe"}</a>
 			<a id="unsubscibe{$almanach->getAid()}" onclick="unsubscribeAlmanach({$almanach->getAid()})">{img src='favorites.png' modname='Almanach' set='favorites'} {gt text="Unsubscribe"}</a>
 		{/if}
-	</div>
+	</div>*}
 	<div class="filter">
 		<p class="filterHeader"> <a onclick="showFilter()" class="filterHeader" style="color: #333;">{img src='filter.png' modname='core' set='icons/small'}  {gt text="Filter"} <span style="margin-left:150px;font-size: 15px;">{gt text="show"}</span></a></p>
 		<p>{gt text="You can filter the dates below by groups."}</p>
@@ -224,12 +224,13 @@
 			"
 			>
 			<div class="dateAdmin" style="float:right;">
+				<a href="{modurl modname=Almanach type=user func=showDate id=$myDate->getDid()}" style="font-size: 18px; color:{$myDate->getGroupColor()};">{gt text="Information"} </a> &nbsp;&nbsp; 
 				{if $subscribedDates.$i == 1}
 					<a id="unsubscibe{$myDate->getDid()}" onclick="unsubscribeDate({$myDate->getDid()})">{img src='favorites.png' modname='Almanach' set="favorites" __title="unsubscribe date"}</a>
 				{/if}
 				{if $adminDates.$i == 1}
 					<a href="{modurl modname=Almanach type=admin func=editDate id=$myDate->getDid()}">{img src='xedit.png' modname='core' set="icons/small" __title="edit date"}</a>
-					<a onclick="deleteDate({$myDate->getDid()})">{img src='14_layer_deletelayer.png' modname='core' set="icons/small" __title="delete date"}</a>
+					{*<a onclick="deleteDate({$myDate->getDid()})">{img src='14_layer_deletelayer.png' modname='core' set="icons/small" __title="delete date"}</a>*}
 				{/if}
 			</div>
 			<div>
