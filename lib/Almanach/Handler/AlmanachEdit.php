@@ -60,17 +60,6 @@ class Almanach_Handler_AlmanachEdit extends Zikula_Form_AbstractHandler
 				
 			}
 			
-			$pullGroups = $this->entityManager->getRepository('Almanach_Entity_Group')->findBy(array());
-			$pullGroupSelection = array();
-			foreach($pullGroups as $key => $item){
-				if (SecurityUtil::checkPermission('Almanach::Group', '::'. $item->getGid() , ACCESS_EDIT)) {
-					$pullGroupSelection[] = array(
-						'text' => $item->getName(),
-						'value' => $item->getGid(),
-					);
-				}
-			}
-			
 			$groupSelection = $this->entityManager->getRepository('Almanach_Entity_Group')->findBy(array());
 			$groupHide = array();
 			foreach($groupSelection as $key => $item){
@@ -90,6 +79,15 @@ class Almanach_Handler_AlmanachEdit extends Zikula_Form_AbstractHandler
             $groupSelection = $this->entityManager->getRepository('Almanach_Entity_Group')->findBy(array());
         }
         
+        $pullGroups = $this->entityManager->getRepository('Almanach_Entity_Group')->findBy(array());
+		$pullGroupSelection = array();
+		foreach($pullGroups as $key => $item){
+			$pullGroupSelection[] = array(
+				'text' => $item->getName(),
+				'value' => $item->getGid(),
+			);
+		}
+			
         $googleApiExist = ModUtil::apiFunc('Almanach', 'GoogleCalendarApi', 'apiExist');
     	if($googleApiExist != 0)
     		LogUtil::RegisterStatus($this->__("Google Calendar Api is not installed or configured!"));
