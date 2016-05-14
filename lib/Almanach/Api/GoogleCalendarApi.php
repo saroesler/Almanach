@@ -79,7 +79,7 @@ class Almanach_Api_GoogleCalendarApi extends Zikula_AbstractApi
 			$myEvents = $qb->getQuery()->getArrayResult();
 	    
 			//get list of all google events of this almanach
-			$events = $googleApi->getEvents($calendar['googleCalendarId'], 200, 0);
+			$events = $googleApi->getEvents($calendar['googleCalendarId'], 1000, $this->getVar('Savetime'));
 			
 			foreach($events as $event){
 				

@@ -146,7 +146,7 @@
 		{/if}
 	</div>*}
 	<div class="filter">
-		<p class="filterHeader"> <a onclick="showFilter()" class="filterHeader" style="color: #333;">{img src='filter.png' modname='core' set='icons/small'}  {gt text="Filter"} <span style="margin-left:150px;font-size: 15px;">{gt text="show"}</span></a></p>
+		<p class="filterHeader"> <a onclick="showFilter()" class="filterHeader" style="color: #333;">{img src='filter.png' modname='core' set='icons/small'}  {gt text="Filter"} </a><span style="margin-left:150px;font-size: 15px;"><a onclick="showFilter()" class="filterHeader z-button" style="color: #333; font-size: 15px;">{gt text="show"}</span></a></p><br/>
 		<p>{gt text="You can filter the dates below by groups."}</p>
 		
 		<div class="filterbody" id="filterbody" style="display:none;">

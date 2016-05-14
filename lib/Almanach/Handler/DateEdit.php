@@ -162,6 +162,7 @@ class Almanach_Handler_DateEdit extends Zikula_Form_AbstractHandler
     			$d['gid'] = $date->getGid();
         }
         else{
+        echo "new";
         	$date = new Almanach_Entity_Date();
         	$date->setUid(SessionUtil::getVar('uid'));
         	$date->setCreationdate('');
@@ -181,6 +182,8 @@ class Almanach_Handler_DateEdit extends Zikula_Form_AbstractHandler
         foreach($connections as $key => $item){
         	$myColor = FormUtil::getPassedValue('CalendarColorinput' . $item->getEid() ,'#','POST');
         	$deleted = FormUtil::getPassedValue('connectionDeleted' . $item->getEid() ,null,'POST');
+        	
+        	echo $deleted;
 
         	if ((!SecurityUtil::checkPermission('Almanach::Almanach', '::'. $item->getAid() , ACCESS_EDIT)) && ($deleted || $myColor != $item->getColor()) ) {
         		LogUtil::RegisterError($this->__f("You dont have the permission to edit the connection to the calendar %s." , array($item->getAlmanachName())));
@@ -198,17 +201,23 @@ class Almanach_Handler_DateEdit extends Zikula_Form_AbstractHandler
 			
 			if($overlapping['state'] == 0){
 				LogUtil::RegisterError($this->__f("This date overlaps with an other date in calendar %s. So the date cant be entered into calendar %s. Please contact %s.", array($olverlapAlmanachName, $almanachName, $overlapDate->getUserName())));
+				echo "overlapp";
 				$deleted = true;
 			}
 			if($overlapping['state'] == 1){
 				LogUtil::RegisterStatus($this->__f("Please notice that this date overlaps with an other date in calendar %s. Please contact %s.", array($overlapAlmanachName, $overlapDate->getUserName())));
 			}
 			
+			echo "<br/><br/>item<br/><br/>";
+			print_r($item);
+			
 			if($item->getGoogleId()){
 				if($deleted){
+					echo "deleted";
 					$googleApi->deleteEvent(ModUtil::apiFunc('Almanach', 'GoogleCalendarApi', 'getCalendarIdByAid', $item->getAid()), $item->getGoogleId());
 					LogUtil::RegisterStatus($this->__f("Date sucessfully deleted of google-calendar." , array()));
 				} else {
+					echo "newColor";
 					//calculate color 
 					if(($date->getColor() == '' || $date->getColor() == '#') && $date->getGid() > 0){
 						//group color of this calendar 
@@ -331,9 +340,12 @@ class Almanach_Handler_DateEdit extends Zikula_Form_AbstractHandler
 				$connection->setColor($myColor);
 			$this->entityManager->persist($connection);
 			$this->entityManager->flush();
+			
+			print_r($connection);
 			LogUtil::RegisterStatus($this->__f("The date has been entered into calendar %s successfully.", array($almanachName)));
         }
-
+		print_r($date);
+		//die();
         return $view->redirect($url);
     }
 }

@@ -154,8 +154,9 @@ class Almanach_Google_CalendarApi //extends Zikula_AbstractController
 		if(self::apiExist())
 			return false;
 		// Übergeben der Daten der Suchanfrage
-		$startDate = new DateTime();
+		$startDate = new DateTime(); 
 		$startDate->sub(new DateInterval('P'. $timeMin .'D'));
+
 		$optParams = array('singleEvents'     => True,
 				                 'timeMin'             => $startDate->format(DateTime::RFC3339),
 				                'orderBy'             => 'startTime',
