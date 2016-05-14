@@ -37,6 +37,13 @@ class Almanach_Entity_Date extends Zikula_EntityAccess
     private $enddate;
     
     /**
+     * The following are annotations which define the show field of the end date.
+     *
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $showenddate = 1;
+    
+    /**
      * The following are annotations which define the group id field.
      *
      * @ORM\Column(type="integer")
@@ -98,6 +105,13 @@ class Almanach_Entity_Date extends Zikula_EntityAccess
      * @ORM\Column(type="integer")
      */
     private $uid;
+    
+    /**
+     * The following are annotations which define the show field of the user id.
+     *
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $showuid = 1;
     
     /**
      * The following are annotations which define the creation date field.
@@ -242,6 +256,16 @@ class Almanach_Entity_Date extends Zikula_EntityAccess
         $this->enddate = new \Datetime($enddate);
     }
     
+    public function getShowEnddate()
+    {
+        return $this->showenddate;
+    }
+    
+    public function setShowEnddate($showenddate)
+    {
+        $this->showenddate = $showenddate;
+    }
+    
     public function getGid()
     {
         return $this->gid;
@@ -345,6 +369,16 @@ class Almanach_Entity_Date extends Zikula_EntityAccess
     public function setUid($uid)
     {
         $this->uid = $uid;
+    }
+    
+    public function getShowUid()
+    {
+        return $this->showuid;
+    }
+    
+    public function setShowUid($showuid)
+    {
+        $this->showuid = $showuid;
     }
     
     public function getCreationdate()

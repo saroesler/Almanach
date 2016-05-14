@@ -31,9 +31,13 @@
 {/if}
 </h1>
 
-<p class="dateTimes">{$date->getStartdateFormattedout()} - {$date->getEnddateFormattedout()}</p>
+<p class="dateTimes">{$date->getStartdateFormattedout()} 
+	{if $date->getShowEnddate() > 0}
+		- {$date->getEnddateFormattedout()}
+	{/if}
+</p>
 <p class="dateLocation">{gt text="Location:"}: {$date->getLocation()}</p>
-{if $hasMyDates}
+{if $hasMyDates && $date->getShowUid() > 0}
 	<p class="contactPerson">{gt text="Contact Person:"}: {$date->getUserName()}</p>
 {/if}
 <br/>

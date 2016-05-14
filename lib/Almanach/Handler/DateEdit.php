@@ -58,6 +58,8 @@ class Almanach_Handler_DateEdit extends Zikula_Form_AbstractHandler
 			}			
         } else {
             $date = new Almanach_Entity_Date(); 
+            $date->setShowEnddate(1);
+            $date->setShowUid(1);
             $connections = array();
             
             $almanachSelector = $this->entityManager->getRepository('Almanach_Entity_Almanach')->findBy(array('input'=>1));

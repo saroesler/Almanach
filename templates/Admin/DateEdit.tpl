@@ -104,6 +104,10 @@ jQuery(function() {
 		{formtextinput id="enddate" maxLength=200 mandatory=true text=$date->getEnddateFormatted()}
 	</div>
 	<div class="z-formrow">
+		{formlabel for='showenddate' __text='This is the real end:'}
+		{formcheckbox id="showenddate" checked=$date->getShowEnddate()}
+	</div>
+	<div class="z-formrow">
         {formlabel for='title' __text='Title:'}
 		{formtextinput id="title" maxLength=200 mandatory=true text=$date->getTitle()}
 	</div>
@@ -157,6 +161,14 @@ jQuery(function() {
 	<div class="z-formrow">
 		{formlabel for='guests' __text='Guests are welcome:'}
 		{formcheckbox id="guests" checked=$date->getGuests()}
+	</div>
+	
+	<div class="z-informationmsg">
+		<p>{gt text="Pease delete the check in the checkbox if you are not the contact person of this date. Please insert the real contact person into the description field if possible."}</p>
+	</div>
+	<div class="z-formrow">
+		{formlabel for='showuid' __text='I am the contact person:'}
+		{formcheckbox id="showuid" checked=$date->getShowUid()}
 	</div>
 	
 	{if $date->getUid() > 0}

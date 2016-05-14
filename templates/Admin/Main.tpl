@@ -141,7 +141,10 @@
 					<div style="margin-left: 26px;">
 				{/if}
 					<a class="dateTimes">
-						{$myDate->getStartdateFormattedout()} - {$myDate->getEnddateFormattedout()}
+						{$myDate->getStartdateFormattedout()}
+						{if $myDate->getShowEnddate() > 0} 
+							- {$myDate->getEnddateFormattedout()}
+						{/if}
 					</a>
 					{if $myDate->getLocation() <> ''}
 						<br/>
