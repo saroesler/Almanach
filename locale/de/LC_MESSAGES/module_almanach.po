@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Almanach\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-14 18:51+0000\n"
-"PO-Revision-Date: 2016-05-14 20:54+0100\n"
+"POT-Creation-Date: 2016-05-14 19:18+0000\n"
+"PO-Revision-Date: 2016-05-14 21:19+0100\n"
 "Last-Translator: Sascha Rösler <i-loko@t-online.de>\n"
 "Language-Team: Sascha Rösler <i-loko@t-online.de>\n"
 "Language: Deutsch (DE)\n"
@@ -70,7 +70,7 @@ msgstr ""
 "Sie haben nicht die Berechtigung den Eintrag in den Kalender %s zu "
 "bearbeiten."
 
-#: lib/Almanach/Handler/DateEdit.php:205 lib/Almanach/Handler/DateEdit.php:295
+#: lib/Almanach/Handler/DateEdit.php:206 lib/Almanach/Handler/DateEdit.php:303
 #, php-format
 msgid ""
 "This date overlaps with an other date in calendar %s. So the date cant be "
@@ -80,7 +80,16 @@ msgstr ""
 "deshalb konnte er nicht in den Kalender %s eingetragen werden. Bitte "
 "kontaktieren Sie %s."
 
-#: lib/Almanach/Handler/DateEdit.php:210 lib/Almanach/Handler/DateEdit.php:299
+#: lib/Almanach/Handler/DateEdit.php:208 lib/Almanach/Handler/DateEdit.php:305
+#, php-format
+msgid ""
+"This date overlaps with an other date in calendar %s. So the date cant be "
+"entered into calendar %s."
+msgstr ""
+"Dieser Termin überschneidet sich im Kalender %s mit einem anderen Termin, "
+"deshalb konnte er nicht in den Kalender %s eingetragen werden."
+
+#: lib/Almanach/Handler/DateEdit.php:214 lib/Almanach/Handler/DateEdit.php:310
 #, php-format
 msgid ""
 "Please notice that this date overlaps with an other date in calendar %s. "
@@ -89,27 +98,35 @@ msgstr ""
 "Bitte beachten Sie, dass sich dieser Termin mit einem anderen im Kalender %s "
 "überschneidet. Bei Bedarf kontaktiere Sie bitte %s."
 
-#: lib/Almanach/Handler/DateEdit.php:220
+#: lib/Almanach/Handler/DateEdit.php:216 lib/Almanach/Handler/DateEdit.php:312
+#, php-format
+msgid ""
+"Please notice that this date overlaps with an other date in calendar %s."
+msgstr ""
+"Bitte beachten Sie, dass sich dieser Termin mit einem anderen im Kalender %s "
+"überschneidet."
+
+#: lib/Almanach/Handler/DateEdit.php:227
 msgid "Date sucessfully deleted of google-calendar."
 msgstr "Der Termin wurde erfolgreich aus dem Google-Kalender gelöscht."
 
-#: lib/Almanach/Handler/DateEdit.php:260
+#: lib/Almanach/Handler/DateEdit.php:267
 #, php-format
 msgid "Date sucessfully deleted of calendar %s."
 msgstr "Der Termin wurde erfolgreich aus dem Kalender %s ausgetragen."
 
-#: lib/Almanach/Handler/DateEdit.php:267
+#: lib/Almanach/Handler/DateEdit.php:274
 #, php-format
 msgid "Date sucessfully edited in calendar %s."
 msgstr "Der Termin wurde erfolgreich im Kalender %s abgeändert."
 
-#: lib/Almanach/Handler/DateEdit.php:280
+#: lib/Almanach/Handler/DateEdit.php:287
 #, php-format
 msgid "You dont have the permission to input the date into the calendar %s."
 msgstr ""
 "Sie haben nicht die Rechte um den Termin in den Kalender %s einzutragen."
 
-#: lib/Almanach/Handler/DateEdit.php:347
+#: lib/Almanach/Handler/DateEdit.php:360
 #, php-format
 msgid "The date has been entered into calendar %s successfully."
 msgstr "Der Termin wurde erfolgreich in den Kalender %s eingetragen."

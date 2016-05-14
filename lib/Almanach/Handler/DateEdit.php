@@ -202,12 +202,19 @@ class Almanach_Handler_DateEdit extends Zikula_Form_AbstractHandler
 			}
 			
 			if($overlapping['state'] == 0){
-				LogUtil::RegisterError($this->__f("This date overlaps with an other date in calendar %s. So the date cant be entered into calendar %s. Please contact %s.", array($olverlapAlmanachName, $almanachName, $overlapDate->getUserName())));
+				if($overlapDate->getShowUid())
+					LogUtil::RegisterError($this->__f("This date overlaps with an other date in calendar %s. So the date cant be entered into calendar %s. Please contact %s.", array($olverlapAlmanachName, $almanachName, $overlapDate->getUserName())));
+				else
+					LogUtil::RegisterError($this->__f("This date overlaps with an other date in calendar %s. So the date cant be entered into calendar %s.", array($olverlapAlmanachName, $almanachName)));
 				echo "overlapp";
 				$deleted = true;
 			}
 			if($overlapping['state'] == 1){
-				LogUtil::RegisterStatus($this->__f("Please notice that this date overlaps with an other date in calendar %s. Please contact %s.", array($overlapAlmanachName, $overlapDate->getUserName())));
+				if($overlapDate->getShowUid())
+					LogUtil::RegisterStatus($this->__f("Please notice that this date overlaps with an other date in calendar %s. Please contact %s.", array($overlapAlmanachName, $overlapDate->getUserName())));
+				else
+					LogUtil::RegisterStatus($this->__f("Please notice that this date overlaps with an other date in calendar %s.", array($overlapAlmanachName)));
+				
 			}
 			
 			echo "<br/><br/>item<br/><br/>";
@@ -292,11 +299,17 @@ class Almanach_Handler_DateEdit extends Zikula_Form_AbstractHandler
         	}
         	
         	if($overlapping['state'] == 0){
-        		LogUtil::RegisterError($this->__f("This date overlaps with an other date in calendar %s. So the date cant be entered into calendar %s. Please contact %s.", array($olverlapAlmanachName, $almanachName, $overlapDate->getUserName())));
+        		if($overlapDate->getShowUid())
+					LogUtil::RegisterError($this->__f("This date overlaps with an other date in calendar %s. So the date cant be entered into calendar %s. Please contact %s.", array($olverlapAlmanachName, $almanachName, $overlapDate->getUserName())));
+				else
+					LogUtil::RegisterError($this->__f("This date overlaps with an other date in calendar %s. So the date cant be entered into calendar %s.", array($olverlapAlmanachName, $almanachName)));
         		continue;
         	}
         	if($overlapping['state'] == 1){
-        		LogUtil::RegisterStatus($this->__f("Please notice that this date overlaps with an other date in calendar %s. Please contact %s.", array($overlapAlmanachName, $overlapDate->getUserName())));
+        		if($overlapDate->getShowUid())
+					LogUtil::RegisterStatus($this->__f("Please notice that this date overlaps with an other date in calendar %s. Please contact %s.", array($overlapAlmanachName, $overlapDate->getUserName())));
+				else
+					LogUtil::RegisterStatus($this->__f("Please notice that this date overlaps with an other date in calendar %s.", array($overlapAlmanachName)));
         	}
         	
     		$myColor = FormUtil::getPassedValue('CalendarColorinput' . $i ,null,'POST');
