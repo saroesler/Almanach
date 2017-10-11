@@ -195,71 +195,71 @@ class Almanach_Handler_DateEdit extends Zikula_Form_AbstractHandler
         	$almanachName = ModUtil::apiFunc('Almanach', 'Admin', 'getAlmanachName', array('aid' => $item->getAid()));
         	$overlapping = ModUtil::apiFunc('Almanach', 'Overlapping', 'getOverlappingState', array('aid' => $item->getAid(), 'did' => $did));
 
-			if($overlapping['state'] < 2){
-				
-				$overlapAlmanachName = ModUtil::apiFunc('Almanach', 'Admin', 'getAlmanachName', array('aid' => $overlapping['aid']));
-				$overlapDate = $this->entityManager->find('Almanach_Entity_Date', $overlapping['did']);
-			}
+		if($overlapping['state'] < 2){
 			
-			if($overlapping['state'] == 0){
-				if($overlapDate->getShowUid())
-					LogUtil::RegisterError($this->__f("This date overlaps with an other date in calendar %s. So the date cant be entered into calendar %s. Please contact %s.", array($olverlapAlmanachName, $almanachName, $overlapDate->getUserName())));
-				else
-					LogUtil::RegisterError($this->__f("This date overlaps with an other date in calendar %s. So the date cant be entered into calendar %s.", array($olverlapAlmanachName, $almanachName)));
-				echo "overlapp";
-				$deleted = true;
-			}
-			if($overlapping['state'] == 1){
-				if($overlapDate->getShowUid())
-					LogUtil::RegisterStatus($this->__f("Please notice that this date overlaps with an other date in calendar %s. Please contact %s.", array($overlapAlmanachName, $overlapDate->getUserName())));
-				else
-					LogUtil::RegisterStatus($this->__f("Please notice that this date overlaps with an other date in calendar %s.", array($overlapAlmanachName)));
-				
-			}
+			$overlapAlmanachName = ModUtil::apiFunc('Almanach', 'Admin', 'getAlmanachName', array('aid' => $overlapping['aid']));
+			$overlapDate = $this->entityManager->find('Almanach_Entity_Date', $overlapping['did']);
+		}
+		
+		if($overlapping['state'] == 0){
+			if($overlapDate->getShowUid())
+				LogUtil::RegisterError($this->__f("This date overlaps with an other date in calendar %s. So the date cant be entered into calendar %s. Please contact %s.", array($olverlapAlmanachName, $almanachName, $overlapDate->getUserName())));
+			else
+				LogUtil::RegisterError($this->__f("This date overlaps with an other date in calendar %s. So the date cant be entered into calendar %s.", array($olverlapAlmanachName, $almanachName)));
+			echo "overlapp";
+			$deleted = true;
+		}
+		if($overlapping['state'] == 1){
+			if($overlapDate->getShowUid())
+				LogUtil::RegisterStatus($this->__f("Please notice that this date overlaps with an other date in calendar %s. Please contact %s.", array($overlapAlmanachName, $overlapDate->getUserName())));
+			else
+				LogUtil::RegisterStatus($this->__f("Please notice that this date overlaps with an other date in calendar %s.", array($overlapAlmanachName)));
 			
-			echo "<br/><br/>item<br/><br/>";
-			print_r($item);
-			
-			if($item->getGoogleId()){
-				if($deleted){
-					echo "deleted";
-					$googleApi->deleteEvent(ModUtil::apiFunc('Almanach', 'GoogleCalendarApi', 'getCalendarIdByAid', $item->getAid()), $item->getGoogleId());
-					LogUtil::RegisterStatus($this->__f("Date sucessfully deleted of google-calendar." , array()));
-				} else {
-					echo "newColor";
-					//calculate color 
-					if(($date->getColor() == '' || $date->getColor() == '#') && $date->getGid() > 0){
-						//group color of this calendar 
-						$groupColor = $this->entityManager->getRepository('Almanach_Entity_Color')->findBy(array('aid'=>$item->getAid(), 'gid' => $date->getGid()));
-						if(isset($groupColor[0]))
-							$color = $groupColor[0]->getColor();
-						else {
-							$group = $this->entityManager->find('Almanach_Entity_Group', $date->getGid());
-							$color = $group->getColor();
-						}
-					} else {
-						$color = $date->getColor();
+		}
+		
+		echo "<br/><br/>item<br/><br/>";
+		print_r($item);
+		
+		if($item->getGoogleId()){
+			if($deleted){
+				echo "deleted";
+				$googleApi->deleteEvent(ModUtil::apiFunc('Almanach', 'GoogleCalendarApi', 'getCalendarIdByAid', $item->getAid()), $item->getGoogleId());
+				LogUtil::RegisterStatus($this->__f("Date sucessfully deleted of google-calendar." , array()));
+			} else {
+				echo "newColor";
+				//calculate color 
+				if(($date->getColor() == '' || $date->getColor() == '#') && $date->getGid() > 0){
+					//group color of this calendar 
+					$groupColor = $this->entityManager->getRepository('Almanach_Entity_Color')->findBy(array('aid'=>$item->getAid(), 'gid' => $date->getGid()));
+					if(isset($groupColor[0]))
+						$color = $groupColor[0]->getColor();
+					else {
+						$group = $this->entityManager->find('Almanach_Entity_Group', $date->getGid());
+						$color = $group->getColor();
 					}
-					
-					
-					echo 'Update';
-					$googleApi->updateEvent($item->getGoogleId(),
-						ModUtil::apiFunc('Almanach', 'GoogleCalendarApi', 'getCalendarIdByAid', $item->getAid()),
-						array('titel' => $date->getTitle(),
-						'location' => $date->getLocation(),
-						'description' => $date->getDescription(),
-						'start' => $date->getStartdate(),
-						'end' => $date->getEnddate(),
-						'user' => $date->getUserName(),
-						'userId'=> $date->getUid(),
-						'group' => $date->getGroupName(),
-						'groupId' => $date->getGid(),
-						'googlePlusId' => false,
-						'recur' => false,
-						'visibility' =>  $date->getVisibility(),
-						'color' => $color));
+				} else {
+					$color = $date->getColor();
 				}
+				
+				
+				echo 'Update';
+				$googleApi->updateEvent($item->getGoogleId(),
+					ModUtil::apiFunc('Almanach', 'GoogleCalendarApi', 'getCalendarIdByAid', $item->getAid()),
+					array('titel' => $date->getTitle(),
+					'location' => $date->getLocation(),
+					'description' => $date->getDescription(),
+					'start' => $date->getStartdate(),
+					'end' => $date->getEnddate(),
+					'user' => $date->getUserName(),
+					'userId'=> $date->getUid(),
+					'group' => $date->getGroupName(),
+					'groupId' => $date->getGid(),
+					'googlePlusId' => false,
+					'recur' => false,
+					'visibility' =>  $date->getVisibility(),
+					'color' => $color));
 			}
+		}
 		    	
         	if($deleted){
         		$this->entityManager->remove($item);
@@ -317,47 +317,47 @@ class Almanach_Handler_DateEdit extends Zikula_Form_AbstractHandler
         	
         	if(ModUtil::apiFunc('Almanach', 'GoogleCalendarApi', 'getCalendarIdByAid', $aid) != ''){
         		//calculate color 
-				if(($date->getColor() == '' || $date->getColor() == '#') && $date->getGid() > 0){
-					//group color of this calendar 
-					$groupColor = $this->entityManager->getRepository('Almanach_Entity_Color')->findBy(array('aid'=>$aid, 'gid' => $date->getGid()));
-					if(isset($groupColor[0])){
-						print_r($groupColor);
-						$color = $groupColor[0]->getColor();
-					}else {
-						$group = $this->entityManager->find('Almanach_Entity_Group', $date->getGid());
-						$color = $group->getColor();
-					}
-				} else {
-					$color = $date->getColor();
+			if(($date->getColor() == '' || $date->getColor() == '#') && $date->getGid() > 0){
+				//group color of this calendar 
+				$groupColor = $this->entityManager->getRepository('Almanach_Entity_Color')->findBy(array('aid'=>$aid, 'gid' => $date->getGid()));
+				if(isset($groupColor[0])){
+					print_r($groupColor);
+					$color = $groupColor[0]->getColor();
+				}else {
+					$group = $this->entityManager->find('Almanach_Entity_Group', $date->getGid());
+					$color = $group->getColor();
 				}
-				
-				$connection->setGoogleId(
-					$googleApi->createEvent(ModUtil::apiFunc('Almanach', 'GoogleCalendarApi', 'getCalendarIdByAid', $aid),
-						array('titel' => $date->getTitle(),
-						'location' => $date->getLocation(),
-						'description' => $date->getDescription(),
-						'start' => $date->getStartdate(),
-						'end' => $date->getEnddate(),
-						'user' => $date->getUserName(),
-						'userId'=> $date->getUid(),
-						'group' => $date->getGroupName(),
-						'groupId' => $date->getGid(),
-						'googlePlusId' => false,
-						'recur' => false,
-						'visibility' =>  $date->getVisibility(),
-						'color' => $color))
-					);
+			} else {
+				$color = $date->getColor();
 			}
 			
-			$connection->setDid($did);
-			$connection->setAid($aid);
-			if($this->getVar('AllowDateColloring') || SecurityUtil::checkPermission('Almanach::', '::' , ACCESS_ADMIN))
-				$connection->setColor($myColor);
-			$this->entityManager->persist($connection);
-			$this->entityManager->flush();
-			
-			print_r($connection);
-			LogUtil::RegisterStatus($this->__f("The date has been entered into calendar %s successfully.", array($almanachName)));
+			$connection->setGoogleId(
+				$googleApi->createEvent(ModUtil::apiFunc('Almanach', 'GoogleCalendarApi', 'getCalendarIdByAid', $aid),
+					array('titel' => $date->getTitle(),
+					'location' => $date->getLocation(),
+					'description' => $date->getDescription(),
+					'start' => $date->getStartdate(),
+					'end' => $date->getEnddate(),
+					'user' => $date->getUserName(),
+					'userId'=> $date->getUid(),
+					'group' => $date->getGroupName(),
+					'groupId' => $date->getGid(),
+					'googlePlusId' => false,
+					'recur' => false,
+					'visibility' =>  $date->getVisibility(),
+					'color' => $color))
+				);
+		}
+		
+		$connection->setDid($did);
+		$connection->setAid($aid);
+		if($this->getVar('AllowDateColloring') || SecurityUtil::checkPermission('Almanach::', '::' , ACCESS_ADMIN))
+			$connection->setColor($myColor);
+		$this->entityManager->persist($connection);
+		$this->entityManager->flush();
+		
+		print_r($connection);
+		LogUtil::RegisterStatus($this->__f("The date has been entered into calendar %s successfully.", array($almanachName)));
         }
 		print_r($date);
 		//die();

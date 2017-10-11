@@ -72,12 +72,18 @@ class Almanach_Controller_User extends Zikula_AbstractController
     			$myDate->setColor($group->getColor());
     		}
     		
-    		if($myDate->getEnddate() < $now)
-    			$oldKey ++;
+    		if($myDate->getEnddate() < $now){
+    		    $oldKey ++;
+    		    $today ++;
+    		    $week ++;
+    		    $month ++;
+    		    $year ++;
+    		}
 			if($myDate->getStartdate()->format(' d. M Y') ==  $now->format(' d. M Y'))
 				$today ++;
-			if($myDate->getStartdate()->format(' W Y') ==  $now->format(' W Y'))
+			if($myDate->getStartdate()->format(' W Y') ==  $now->format(' W Y')){
 				$week ++;
+			}
 			if($myDate->getStartdate()->format(' M Y') ==  $now->format(' M Y'))
 				$month ++;
 			if($myDate->getStartdate()->format('Y') ==  $now->format('Y'))

@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: Almanach\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-05-14 19:18+0000\n"
-"PO-Revision-Date: 2016-05-14 21:19+0100\n"
+"PO-Revision-Date: 2017-10-11 19:49+0200\n"
 "Last-Translator: Sascha Rösler <i-loko@t-online.de>\n"
 "Language-Team: Sascha Rösler <i-loko@t-online.de>\n"
-"Language: Deutsch (DE)\n"
+"Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 1.8.7.1\n"
 
 #: lib/Almanach/Handler/GeneralSettings.php:31
 msgid "Google Calendar Api is not installed!"
@@ -501,7 +501,7 @@ msgstr ""
 
 #: templates/Admin/DateEdit.tpl:181
 msgid "Input this Date into "
-msgstr "Diesen Termin in folgenden Kalener eintragen"
+msgstr "Diesen Termin in folgenden Kalender eintragen"
 
 #: templates/Admin/DateEdit.tpl:183 templates/Admin/CalendarEdit.tpl:84
 msgid "no calendar selected"
